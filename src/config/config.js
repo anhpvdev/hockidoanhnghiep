@@ -2,21 +2,6 @@ const express = require("express");
 const path = require("path");
 
 const handlebars = require("express-handlebars")
-// .create({
-//   defaultLayout: "main",
-//   helpers:{
-//     indexup:function(value, options)
-//     {
-//         return parseInt(value) + 1;
-//     },
-//     same:function(v1, v2, options) {
-//       if(v1 === v2) {
-//         return options.fn(this);
-//       }
-//       return options.inverse(this);
-//     }
-//   }
-// });
 
 
 const config = (app) => {

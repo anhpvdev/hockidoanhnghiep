@@ -2,7 +2,7 @@ const randomeCode = Math.floor(Math.random() * (9999 - 0)) + 0
 
 const connection = require('../../config/connect_db')
 
-const userServices = {
+const BuyerServices = {
     register: (req, res) => {   
         const { username, password, confirmPassword } = req.body
         // check all fields are typed
@@ -468,4 +468,4 @@ const userServices = {
     }
 }
 
-module.exports = userServices
+module.exports = BuyerServices

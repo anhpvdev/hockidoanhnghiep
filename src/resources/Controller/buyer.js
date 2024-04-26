@@ -11,7 +11,7 @@ const userupload = require("../middlewares/upload/User_avatar");
 
 
 
-const userRoutes = (app) => {
+const BuyerRoutes = (app) => {
   router.get('/',buyerServices.allcomic)
   // router.get('/',checkauth,comicServices.allcomic)
   // router.get('/?page=:id',checkauth,comicServices.allcomic)
@@ -48,5 +48,5 @@ const userRoutes = (app) => {
 
   return app.use("/", router)
 }
-module.exports = userRoutes
+module.exports = BuyerRoutes
 
