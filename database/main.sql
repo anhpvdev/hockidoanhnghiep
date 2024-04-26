@@ -77,7 +77,6 @@ CREATE TABLE `buyers` (
 CREATE TABLE `buyer_purchases` (
   `Purchase_id` int(11) NOT NULL,
   `Buyer_id` int(11) DEFAULT NULL,
-  `Quantity` int(11) DEFAULT NULL,
   `Price` decimal(10,2) DEFAULT NULL,
   `Last_Price` decimal(10,2) DEFAULT NULL,
   `notes` varchar(255) DEFAULT NULL,
@@ -142,7 +141,7 @@ CREATE TABLE `classify` (
 
 --
 -- Cấu trúc bảng cho bảng `classify_types`
---
+--carts
 
 CREATE TABLE `classify_types` (
   `Classify_type_id` int(11) NOT NULL,

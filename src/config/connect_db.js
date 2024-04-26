@@ -1,16 +1,14 @@
-const { HOST, USER, PASSWORD, DATABASE } = require("dotenv").config()["parsed"]
+require("dotenv").config()
 const mysql = require("mysql");
 
-const conToDb = mysql.createConnection({
-  host: HOST ,
-  user: USER ,
-  password: PASSWORD ,
-  database: DATABASE 
+const connection = mysql.createPool({
+  host: process.env.HOST ,
+  user: process.env.USER ,
+  password: process.env.PASSWORD ,
+  database: process.env.DATABASE,
+  waitForConnections:true,
+  connectionLimit:10,
+  queueLimit: 0
 })
 
-conToDb.connect((err) => {
-  if (err) throw err;
-  console.log("Connected to mysql")
-})
-
-module.exports = conToDb
+module.exports = connection

@@ -1,5 +1,7 @@
 const randomeCode = Math.floor(Math.random() * (9999 - 0)) + 0
 
+const connection = require('../../config/connect_db')
+
 const userServices = {
     register: (req, res) => {   
         const { username, password, confirmPassword } = req.body
@@ -14,20 +16,20 @@ const userServices = {
         }
 
         // create connection to mysql
-        const { HOST, USER, PASSWORD, DATABASE } = require("dotenv").config()["parsed"]
-        const mysql = require("mysql");
+        
+        // const mysql = require("mysql");
 
-        const conToDb = mysql.createConnection({
-        host: HOST ,
-        user: USER ,
-        password: PASSWORD ,
-        database: DATABASE 
-        })
+        // const conToDb = mysql.createConnection({
+        // host: HOST ,
+        // user: USER ,
+        // password: PASSWORD ,
+        // database: DATABASE 
+        // })
 
-        conToDb.connect((err) => {
-        if (err) throw err;
-        console.log("Connected to mysql")
-        })
+        // conToDb.connect((err) => {
+        // if (err) throw err;
+        // console.log("Connected to mysql")
+        // })
          // connected to mysql successfully
 
         const sql = `SELECT * FROM users WHERE username="${username}"`

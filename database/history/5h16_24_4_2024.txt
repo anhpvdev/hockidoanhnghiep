@@ -1,5 +1,8 @@
-insert dữ liệu mẩu vào các bảng
-- ciy
-- dic
-- war
-- user
+đã insert dữ liệu vào các bảng
+
+2 bảng chưa insert là:
+- evaluate
+- evaluate_img
+
+
+

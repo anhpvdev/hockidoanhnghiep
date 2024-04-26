@@ -6,15 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="/seach" method="post">
-        <input type="text" name="content">
-        <button type="submit"></button>
-    </form>
     helllo I Am <%= name %>
     <div>
-        <% for(var i = 0; i < data.length; i++) { %>
-            <li><%= data[i].Name %></li>
-          <% } %> 
+        <li><%= data.name %></li>
+        <li><%= data.type %></li>
+        <li><%= data.info %></li>
+        <li><%= data.Star %></li>
     </div>
 </body>
 </html>
