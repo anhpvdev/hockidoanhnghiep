@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../public/Scripts/jquery.js"></script>
+</head>
+<body>
+    <form action="/registry" method="post">
+        <input type="text" name="mail">
+        <button id="sendopt" type="button">laays max</button>
+        <button type="submit">dk</button>
+    </form>
+    status: <%= content %>
+   
+</body>
+
+<script>
+    document.getElementById("sendopt").onclick = function(){
+        $.ajax({
+            url: '/test',
+            type: 'POST',
+            success: function(data) {
+                console.log(data)
+            }
+        });
+        document.getElementById("sendopt").disabled = "true"
+        alert("đã gửi thành công")
+    }
+
+</script>
+</html>
