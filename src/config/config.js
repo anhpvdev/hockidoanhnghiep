@@ -1,16 +1,12 @@
 const express = require("express");
 const path = require("path");
 
-const handlebars = require("express-handlebars")
-
-
 const config = (app) => {
   app.use( express.urlencoded({ extended: true }));
   app.use(express.json());
   
   // setup views for server using handlebars template
-  app.engine("handlebars", handlebars.engine);
-  app.set("view engine", "handlebars");
+  app.set('view engine', 'ejs');
   app.set("views", [
     path.join(__dirname, "../resources/views/user")
     // path.join(__dirname, "../resources/views/admin"),

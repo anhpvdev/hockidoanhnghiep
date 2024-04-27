@@ -3,8 +3,8 @@ const PORT = process.env.PORT || 5000
 const express = require('express')
 const app = express()
 
-app.set('view engine', 'ejs');
-app.set('views', './resources/views')
+// app.set('view engine', 'ejs');
+// app.set('views', './resources/views')
 // config
 const config = require("./config/config")
 config(app)

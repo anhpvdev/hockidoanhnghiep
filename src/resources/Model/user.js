@@ -9,6 +9,7 @@ const UserServices = {
             else {
                 console.log(row)
                 var name = "phan huu viet anh"
+                
                 return res.render(path.join(__dirname+"../../views/Users/home.ejs"),{data:row,name:name})
             }
         })
@@ -18,7 +19,7 @@ const UserServices = {
             if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
             else {
                 console.log(row)
-                var name = "phan huu viet anh"
+                var name = "all san pham"
                 return res.render(path.join(__dirname+"../../views/Users/products.ejs"),{data:row,name:name})
             }
         })
