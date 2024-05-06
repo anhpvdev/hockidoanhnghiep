@@ -44,15 +44,19 @@ const UserServices = {
     addcart: async (req, res) => {
         return res.sendFile(__dirname+"../../views/Users/home.html")
     },
-    view_registry: async (req, res) => {
+    get_registry: async (req, res) => {
         return res.render(path.join(__dirname+"../../views/Users/registry.ejs"),{content:""})
     },
-    registry: async (req, res) => {
-        let {mail} = req.body
-        // const emailServices = require("../../config/mailer")
-        // const sendmail = await emailServices(mail,randomeCode)
-        if(randomeCode == mail) return res.render(path.join(__dirname+"../../views/Users/registry.ejs"),{content:"dk thanfh coong"})
-        else{ return res.render(path.join(__dirname+"../../views/Users/registry.ejs"),{content:"mã sai"})}
+    post_registry: async (req, res) => {
+        let {mail,pass} = req.body
+        console.log(mail,pass)
+        connection.query('select * from buyers where Email = ?',[mail],(err,row)=>{
+            console.log(row.length)
+            console.log("checkk")
+        })
+        // if(randomeCode == mail) return res.render(path.join(__dirname+"../../views/Users/registry.ejs"),{content:"dk thanfh coong"})
+        // else{ return res.render(path.join(__dirname+"../../views/Users/registry.ejs"),{content:"mã sai"})}
+        res.json({success:true,data:"Đăng ký thành công"})
     }, 
     SendGmail: async (req, res) => {
         let {mail} = req.body

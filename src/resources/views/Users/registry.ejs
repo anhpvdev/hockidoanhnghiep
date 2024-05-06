@@ -7,26 +7,38 @@
     <script src="../../../public/Scripts/jquery.js"></script>
 </head>
 <body>
-    <form action="/registry" method="post">
-        <input type="text" name="mail">
-        <button id="sendopt" type="button">laays max</button>
-        <button type="submit">dk</button>
-    </form>
+    <div>
+        <input type="text" id="gmail" name="mail">
+        <input type="password" id="pass1" name="pass1">
+        <input type="password" id="pass2" name="pass2">
+        <button id="registry" type="button">đăng ký</button>
+    </div>
     status: <%= content %>
    
 </body>
 
 <script>
-    document.getElementById("sendopt").onclick = function(){
-        $.ajax({
-            url: '/test',
-            type: 'POST',
-            success: function(data) {
-                console.log(data)
-            }
-        });
-        document.getElementById("sendopt").disabled = "true"
-        alert("đã gửi thành công")
+    document.getElementById("registry").onclick = function(){
+        let pass1 = document.getElementById("pass1").value
+        let pass2 = document.getElementById("pass2").value
+        if(pass1!=pass2) alert("mật khẩu xác nhận không giống mật khẩu đã nhập")
+        else{
+            let mail = document.getElementById("gmail").value
+            $.ajax({
+                url: '/registry',
+                type: 'POST',
+                data:{
+                    mail:mail,
+                    pass:pass1
+                },
+                success: function(data) {
+                    console.log(data.success)
+                    if(data.success){
+                        alert(data.data)
+                    }
+                }
+            });
+        }
     }
 
 </script>

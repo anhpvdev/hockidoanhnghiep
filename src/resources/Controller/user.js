@@ -16,8 +16,8 @@ const userRoutes = (app) => {
   // router.get('/login/',(req, res) => { res.sendFile(path.join(__dirname+"../../views/Users/login.html")) })
   // router.get('/registry/',(req, res) => { res.sendFile(path.join(__dirname+"../../views/Users/registry.html")) })
 
-  router.get('/registry',UserModel.view_registry)
-  router.post('/registry',UserModel.registry)
+  router.get('/registry',UserModel.get_registry)
+  router.post('/registry',UserModel.post_registry)
   router.post('/test',UserModel.test)
   return app.use("/", router)
 }
