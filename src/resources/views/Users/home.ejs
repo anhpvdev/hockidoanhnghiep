@@ -4,17 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="../../../public/Scripts/jquery.js"></script>
 </head>
 <body>
-    <form action="/seach" method="post">
-        <input type="text" name="content">
+    <form action="/longseach" method="post">
+        <input type="text" name="content" id="input_seach" placeholder="Tìm san pham...">
         <button type="submit"></button>
+        <div id="list_seach" style="display: none;">
+            
+            <div></div>
+        </div>
     </form>
-    helllo I Am <%= name %>
+    <div><h1></h1></br></div>
+    helllo I Am <%= name %>. dưới này là body để làm gì đấy
     <div>
         <% for(var i = 0; i < data.length; i++) { %>
             <li><a href=""><%= data[i].Name %></a></li>
           <% } %> 
     </div>
+    <div>//////////////////////////////////////////////////////////////////</div>
+    <div>duoứi này là list danh mục sản phẩm</div>
+    <% for(var i = 0; i < type.length; i++) { %>
+        <li><a href="/products/type/<%= type[i].Product_Types_id%>"><%= type[i].name %></a></li>
+      <% } %> 
+    <script>
+        var seachproduct = document.getElementById("input_seach");
+        var showproduct = document.getElementById("list_seach");
+        var listitem = []
+        seachproduct.oninput = function(){
+
+            if(seachproduct.value){
+                showproduct.style.display ="block"
+                $.ajax({
+                    type: "post",
+                    url: "/sortseach",
+                    data: {
+                        content:seachproduct.value
+                    },
+                    success: function(data) {   
+                        console.log(data) 
+                        if(data.success){
+                            if(data.success =="err") alert("đã có lỗi sảy ra, vui lòng thử lại sau")
+                            else{
+                                listitem = data.data 
+                                let content_node = "<h3>đây là list sản phẩm cần tìm</h3>"
+                                for(i=0; i<listitem.length;i++){
+                                    content_node += `<div>${listitem[i].name}</div>`
+                                }
+                                showproduct.innerHTML = content_node
+                            }
+                        }else{
+                            showproduct.style.display ="none"
+                        }                 
+                    }
+                })
+            }else{
+                showproduct.style.display ="none"
+            }
+        };
+    </script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 const connection = require('../../config/connect_db')
 const path = require('path')
+
 const BuyerServices = {
     profile: (req, res) => {
         let user = req.user
@@ -34,15 +35,61 @@ const BuyerServices = {
         }
     },
 
-    cart: (req, res) => {
+    buy: (req, res) => {
         let user = req.user
         if(!user) return res.render(path.join(__dirname+"../../views/Users/login.ejs"))
         else{
             console.log(user)
             let {product,num} = req.body
-            console.log(product,num)
-            res.json({success:true,data:"Đăng ký thành công"})
+            connection.query('SELECT * FROM `carts` WHERE user_id = ? and classify_type_id =?',[user.id,product], async(err,row)=>{
+                if(err) return res.render(path.json(__dirname+"../../views/404.ejs"))
+            
+                if(row.length !=0){
+                    let num_up = parseInt(num) + row[0].Quantity
+
+                    connection.query('update carts set Quantity = ?  where  user_id = ? and classify_type_id =?;',[num_up,user.id,product], async(err,data)=>{
+                        console.log(data)
+                        if(err) return res.json({success:false,data:"thêm giỏ hàng thất bại"})
+        
+                        res.json({success:true,data:"thêm giỏ hàng thành công"})
+                        
+                    })
+                }else{
+                    connection.query('INSERT INTO `carts` (`user_id`, `classify_type_id`, `Quantity`) VALUES (?, ?, ?);',[user.id,product,num], async(err,data)=>{
+                        console.log(data)
+                        if(err) return res.json({success:false,data:"thêm giỏ hàng thất bại"})
+        
+                        res.json({success:true,data:"thêm giỏ hàng thành công"})
+                        
+                    })
+                }
+            })
         }
+    },
+    get_seller: (req, res) => {
+        console.log(req.user,req.role)
+        if(req.role==3) return res.redirect("/seller")
+        else if(req.role==2) return res.render(path.join(__dirname+"../../views/Buyers/noti.ejs"),{content:"đã đăng ký thành công, vui lòng đợi đội ngũ ad duyệt, thông báo sẽ được gửi về gmail đăng ký"})
+        else return res.render(path.join(__dirname+"../../views/Buyers/seller.ejs"),{content:""})
+    },
+    post_seller: (req, res) => {
+        const{name}=req.body
+        const user = req.user
+
+        connection.query('SELECT * FROM `sellers` WHERE Shop_name = ?',[name], async(err,row)=>{
+            if(err) return res.render(path.json(__dirname+"../../views/404.ejs"))
+        
+            if(row.length !=0){
+                return res.render(path.join(__dirname+"../../views/Buyers/seller.ejs"),{content:"tên shop đã tồn tại"})
+            }else{
+                connection.query('INSERT into seller_registries(Shop_name,Buyer_id) VALUES(?,?)',[name,user.id], async(err,data)=>{
+                    console.log(data)
+                    if(err) return res.render(path.join(__dirname+"../../views/Buyers/seller.ejs"),{content:"có lỗi sảy ra, xin thử lại sau"})
+    
+                    return res.render(path.join(__dirname+"../../views/Buyers/noti.ejs"),{content:"đã đăng ký thành công, vui lòng đợi đội ngũ ad duyệt, thông báo sẽ được gửi về gmail đăng ký"})
+                })
+            }
+        })
     },
 }
 

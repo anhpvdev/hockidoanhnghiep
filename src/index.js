@@ -17,8 +17,8 @@ UserRoutes(app)
 const BuyerRoutes = require("./resources/Controller/buyer")
 BuyerRoutes(app)
 
-// const AdminRoutes = require("./resources/routes/admin")
-// AdminRoutes(app)
+const AdminRoutes = require("./resources/Controller/admin")
+AdminRoutes(app)
 
 // const SellerRoutes = require("./resources/routes/seller")
 // SellerRoutes(app)

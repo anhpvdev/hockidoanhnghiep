@@ -43,16 +43,13 @@
                 url: '/buyer/buy',
                 type: 'POST',
                 data:{
-                    product:mail,
-                    num:pass1
+                    product: last_call.id,
+                    num: numadd.value
                 },
                 success: function(data) {
                     console.log(data.success)
                     if(data.success){
-                        document.querySelector(".container").innerHTML = `<div id="mail">${data.mail}</div>
-                        <div >vui longf nhập otp đã gửi về mail</div>
-                        <input type="text" id="OTP" name="OTP">
-                        <button id="registry_otp" type="button" onclick="Check_otp()">Xác nhận</button>`
+                       alert(data.data)
                     }else{
                         alert(data.data)
                         window.location.reload()

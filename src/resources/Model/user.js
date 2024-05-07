@@ -12,9 +12,12 @@ const UserServices = {
                 var name = "phan huu viet anh"
 
                 console.log(req.user)
+                connection.query('SELECT * FROM `product_types`',(err,type)=>{
+                    if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
 
-                if(req.user) return res.render(path.join(__dirname+"../../views/Users/home.ejs"),{data:row,name:req.user.gmail})
-                else return res.render(path.join(__dirname+"../../views/Users/home.ejs"),{data:row,name:"chưa đăng nhập bro"})
+                    if(req.user) return res.render(path.join(__dirname+"../../views/Users/home.ejs"),{data:row,type:type,name:req.user.gmail})
+                    else return res.render(path.join(__dirname+"../../views/Users/home.ejs"),{data:row,type:type,name:"chưa đăng nhập bro"})
+                })
             }
         })
     },
@@ -41,6 +44,18 @@ const UserServices = {
 
         })
     },
+
+    products_type:async (req, res) => {
+        connection.query('SELECT pr.*,prt.name as pname FROM products as pr INNER JOIN types as t on t.Type_id = pr.type INNER JOIN product_types as prt on t.Product_type_id = prt.Product_Types_id WHERE prt.Product_Types_id = ?;',[req.params.id],(err,row)=>{
+            if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
+            else {
+                console.log(row)
+                var name = "all san pham"
+                return res.render(path.join(__dirname+"../../views/Users/products.ejs"),{data:row,name:name})
+            }
+        })
+    },
+
     seach:async (req, res) => {
         var content =req.body.content
         return res.render(path.join(__dirname+"../../views/Users/seach.ejs"),{content:content})
@@ -156,6 +171,35 @@ const UserServices = {
 
         return res.render(path.join(__dirname+"../../views/Users/change_password.ejs"),{content:"",})
     },
+
+    sortseach: async (req, res) => {
+        let {content} = req.body
+
+        console.log(content)
+        connection.query('SELECT * FROM `products` WHERE name like "%'+content+'%" LIMIT 10 OFFSET 0',async(err,row)=>{
+            if(err) return res.json({success:"err",data:"có lỗi sảy ra"})
+                
+            if(row.length ==0) res.json({success:false,data:"không có dữ liệu cần tìm"})
+            else{
+
+                res.json({success:true,data:row})
+            }
+        })
+    },
+
+    longseach:async (req, res) => {
+        const {content} = req.body
+        connection.query('SELECT * FROM `products` WHERE name like "%'+content+'%"',(err,row)=>{
+            if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
+            else {
+                console.log(row)
+                var name = `all san pham da tim theo <${content}>`
+                return res.render(path.join(__dirname+"../../views/Users/products.ejs"),{data:row,name:name})
+            }
+        })
+    },
+
+    
 
 }
 

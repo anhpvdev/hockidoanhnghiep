@@ -1,34 +1,27 @@
-const express = require("express")
-const router = express.Router()
-const comicupload = require("../middlewares/upload/Admin_comic")
-const chapterupload = require("../middlewares/upload/Admin_chapter")
-const adminAuth = require("../middlewares/adminAuth")
-const path = require("path")
+require("dotenv").config()
+const express = require("express");
+const router = express.Router();
+const path = require('path')
+// const checkauth = require("../Middleware/checkuser");
+const checkadmin = require("../Middleware/checkadmin");
+const AdminModel = require("../Model/admin")
 
-const adminServices = require("../services/admin")
-
-const adminRoutes = (app) => {
-    // render views
-    // router.get("/login", (req, res) => res.render("admin-login"))
-    // router.get("/logout", (req, res) => {
-    //     res.clearCookie("credential")
-    //     res.redirect('/admin/login')
-    // })
-    // router.get("/commic", adminAuth, adminServices.admincomic)
-
-    // router.get("/chapter/:id",adminAuth, (req, res) => {
-    //     res.render("admin_chapter",{ isLoggedIn: true ,comic:req.params.id})
-    // })
-    // // services
-    // router.post("/login", adminServices.login)
-
-    // //add comic/chapter
-    // router.post("/addnewcomic",comicupload.single("image"),adminServices.addcomic)
-    // router.post("/addnewchapter",chapterupload.array("image"),adminServices.addchapter,adminServices.addfolderchapter)
-    // router.post("/deletecomic",adminServices.deletecomic)
+const BuyerRoutes = (app) => {
+    router.get('/',checkadmin.any,AdminModel.home)
+    // router.get('/listadmin',checkadmin.any,AdminModel.home)
+    // router.get('/listadmin',checkadmin.any,AdminModel.home)
+    // router.get('/category',checkadmin.any,AdminModel.home)
+    router.get('/seller',checkadmin.Admin3,AdminModel.seller)
+    router.get('/seller/regis',checkadmin.Admin3,AdminModel.seller_add)
     
-    // // return routes
-    // return app.use("/admin", router)
-}
+    
+    
+    router.get('/login',AdminModel.get_login)
+    router.post('/login',AdminModel.post_login)
 
-module.exports = adminRoutes
+
+    router.get('/404',checkadmin.any,AdminModel.admute)
+    return app.use("/admin", router)
+}
+module.exports = BuyerRoutes
+
