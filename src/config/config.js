@@ -8,8 +8,8 @@ const config = (app) => {
   // setup views for server using handlebars template
   app.set('view engine', 'ejs');
   app.set("views", [
-    path.join(__dirname, "../resources/views/user")
-    // path.join(__dirname, "../resources/views/admin"),
+    path.join(__dirname, "../resources/views/Users"),
+    path.join(__dirname, "../resources/views/Buyers")
     // path.join(__dirname, "../resources/views/commics"),
     // path.join(__dirname, "../resources/views/api-ajax")
   ]);

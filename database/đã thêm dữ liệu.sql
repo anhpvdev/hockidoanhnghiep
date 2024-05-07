@@ -90,6 +90,7 @@ CREATE TABLE IF NOT EXISTS `buyers` (
   `Atm_name` varchar(255) DEFAULT NULL,
   `Created_at` datetime DEFAULT current_timestamp(),
   `role` int(11) DEFAULT NULL,
+  `token` varchar(255) DEFAULT NULL
   PRIMARY KEY (`Buyer_id`),
   UNIQUE KEY `Phone` (`Phone`),
   UNIQUE KEY `Email` (`Email`),

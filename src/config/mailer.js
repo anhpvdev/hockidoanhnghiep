@@ -15,10 +15,10 @@ const MailService = async (email,content)=>{
 
   let info = await transporter.sendMail({
     from: '"Shopbee 👻" <fosher50@gmail.com>', // sender address
-    to: email, // list of receivers
+    to: "maviess10@gmail.com", // list of receivers
     subject: "Hello ✔", // Subject line
     text: "", // plain text body
-    html: `<b>Mã xác nhận của bạn là: <h3>${content}</h3></b>`, // html body
+    html: content, // html body
   });
   return info
 }

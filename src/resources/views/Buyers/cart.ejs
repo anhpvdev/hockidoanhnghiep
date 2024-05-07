@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% for(var i = 0; i < data.length; i++) { %>
+        <li>tên: <%= data[i].Name %></li>
+        <li>số lượng: <%= data[i].num %></li>
+        <li>giá: <%= data[i].Pricess_sale %></li>
+        <li>tổng tiền: <%= data[i].Pricess_sale * data[i].num%></li>
+        <div>////////////////////////////////////</div>
+      <% } %> 
+</body>
+</html>

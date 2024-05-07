@@ -7,7 +7,7 @@
     <script src="../../../public/Scripts/jquery.js"></script>
 </head>
 <body>
-    <div>
+    <div class="container">
         <input type="text" id="gmail" name="mail">
         <input type="password" id="pass1" name="pass1">
         <input type="password" id="pass2" name="pass2">
@@ -24,6 +24,7 @@
         if(pass1!=pass2) alert("mật khẩu xác nhận không giống mật khẩu đã nhập")
         else{
             let mail = document.getElementById("gmail").value
+            document.querySelector(".container").innerHTML = "đang xử lý ..."
             $.ajax({
                 url: '/registry',
                 type: 'POST',
@@ -34,6 +35,40 @@
                 success: function(data) {
                     console.log(data.success)
                     if(data.success){
+                        document.querySelector(".container").innerHTML = `<div id="mail">${data.mail}</div>
+                        <div >vui longf nhập otp đã gửi về mail</div>
+                        <input type="text" id="OTP" name="OTP">
+                        <button id="registry_otp" type="button" onclick="Check_otp()">Xác nhận</button>`
+                    }else{
+                        alert(data.data)
+                        window.location.reload()
+                    }
+                }
+            });
+        }
+    }
+
+
+
+    function Check_otp(){
+        console.log("////")
+        let otp = document.getElementById("OTP").value
+        if(!otp) alert("Vui lòng nhập OTP")
+        else{
+            let mail = document.getElementById("mail").innerHTML
+            $.ajax({
+                url: '/Check_otp',
+                type: 'POST',
+                data:{
+                    mail:mail,
+                    otp:otp
+                },
+                success: function(data) {
+                    console.log(data.success)
+                    if(data.success){
+                        alert("đăng ký thành công")
+                        window.location.href = "/login"
+                    }else{
                         alert(data.data)
                     }
                 }
