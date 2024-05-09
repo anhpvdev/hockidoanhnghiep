@@ -6,9 +6,11 @@ const checkauth = require("../Middleware/checkuser");
 const BuyerModel = require("../Model/buyer")
 
 const BuyerRoutes = (app) => {
-  router.get('/profile',checkauth.buyer,BuyerModel.profile)
+  router.get('/profile',checkauth.buyer,BuyerModel.get_profile)
+  router.post('/profile',checkauth.buyer,BuyerModel.post_profile)
   router.get('/cart',checkauth.buyer,BuyerModel.cart)
-
+  router.get('/history',checkauth.buyer,BuyerModel.history)
+  router.get('/history/:id',checkauth.buyer,BuyerModel.history_detail)
   router.post('/buy',checkauth.buyer,BuyerModel.buy)
 
   router.get('/seller',checkauth.buyer,BuyerModel.get_seller)

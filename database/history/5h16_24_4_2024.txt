@@ -1,8 +1,25 @@
-đã insert dữ liệu vào các bảng
+insert dữ liệu mẩu vào các bảng
+- ciy
+- dic
+- war
+- user
+- seller
+- admin-role
+- admin
+- product_types
+- type
+- trademark
+- products
+- classify_types
+- carts
+- transports
+- buyer_purchases
+- 
+- 
+- 
+- 
 
-2 bảng chưa insert là:
-- evaluate
-- evaluate_img
+
 
 
 

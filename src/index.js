@@ -20,7 +20,10 @@ BuyerRoutes(app)
 const AdminRoutes = require("./resources/Controller/admin")
 AdminRoutes(app)
 
-// const SellerRoutes = require("./resources/routes/seller")
-// SellerRoutes(app)
+const SellerRoutes = require("./resources/Controller/seller")
+SellerRoutes(app)
+
+const AdressRoutes = require("./resources/Controller/adress")
+AdressRoutes(app)
 
 app.listen(PORT, () => console.log(`server is running on port http://localhost:${PORT}`))

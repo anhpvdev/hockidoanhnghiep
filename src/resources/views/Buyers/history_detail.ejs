@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3><%= data[0].Created_at %></h3>
+    <% for(var i = 0; i < data.length; i++) { %>
+    <p>tên:<%= data[i].Name3 %> --- loại: <%= data[i].Name2 %> --<%= data[i].Name1 %></p>
+    <p>số lượng: <%= data[i].Quantity %></p>
+    <p>Giá : <%= data[i].Pricess_sale %></p>
+        <div>////////////////////////////////////</div>
+      <% } %> 
+
+
+      <div>
+        <p>/////////</p>
+        <p>/////////</p>
+        <p>/////////</p>
+      </div>
+      <p>Tổng tiền:<%= data[0].Price %> đ</p>
+      <p>Voucher:<%= data[0].Voucher %> đ</p>
+      <p>VOucher shop: <%= data[0].Voucher_shop %> đ</p>
+      <p>Phí vận chuyển: <%= data[0].Transport_fee %> đ</p>
+      <p>Giảm giá phí vận chuyển: <%= data[0].Transport_voucher %> đ</p>
+      <p>Thành tiền: <%= data[0].Last_Price %> đ</p>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% for(var i = 0; i < data.length; i++) { %>
+        <li><a href="/buyer/history/<%= data[i].Purchase_id %>">thời gian: <%= data[i].Created_at %></a></li>
+        <li>giá: <%= data[i].Last_Price %></li>
+        <div>////////////////////////////////////</div>
+      <% } %> 
+</body>
+</html>
