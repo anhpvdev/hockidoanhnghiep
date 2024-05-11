@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../public/Scripts/jquery.js"></script>
+</head>
+<body>
+    thong tin khach hang: <%= data.Email %>
+   <div>
+    <% if(data.Avatar ==1){ %>
+        <img src="/public/images/Avatar/<%= data.Buyer_id %>.jpg" alt="">
+    <% } else{%>
+        <img src="/public/images/Avatar/anonymous.jpg" alt="">
+    <% }%>
+        id: <%= data.Buyer_id %><br>
+        Name:<%= data.Name %> <br>
+        Phone:<%= data.Phone %> <br>
+        đường: <%= data.Address %><br>
+       thành phố : <%= data.city %><br>
+        Quận : <%= data.district %><br>
+        Phường: <%= data.wname %><br>
+        
+    </div>
+   <div>
+    <p>///</p>
+    <p>///</p>
+    <p>///</p>
+    <p>///</p>
+   </div>
+   <form action="/admin/seller/regis" method="post">
+    <input type="text" value="<%= data.Buyer_id %>" name="seller" hidden="true">
+        <button type="submit">lưu</button>
+   </form>
+
+
+</body>
+</html>

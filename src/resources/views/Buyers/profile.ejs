@@ -40,6 +40,21 @@
         </div>
         <button type="submit">Lưu</button>
    </form>
+   <div>
+    <p>///</p>
+    <p>///</p>
+    <% if(data.Avatar ==1){ %>
+        <img src="/public/images/Avatar/<%= data.Buyer_id %>.jpg" alt="">
+    <% } else{%>
+        <img src="/public/images/Avatar/anonymous.jpg" alt="">
+    <% }%>
+    <p>///</p>
+    <p>///</p>
+   </div>
+   <form action="/buyer/avatar" method="post" enctype="multipart/form-data">
+        <input type="file" name="avatarfile">
+        <button type="submit">lưu</button>
+   </form>
 
     <script>
 

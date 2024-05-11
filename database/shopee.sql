@@ -354,6 +354,8 @@ CREATE TABLE `products` (
   `Trademark` int(11) DEFAULT NULL,
   `Seller_id` int(11) DEFAULT NULL,
   `info` varchar(255) DEFAULT NULL,
+  `classname` VARCHAR(255),
+  `typename` VARCHAR(255);
   `Star` float DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -458,6 +460,7 @@ CREATE TABLE `seller_registries` (
   `Shop_name` varchar(255) DEFAULT NULL,
   `Buyer_id` int(11) DEFAULT NULL,
   `Registed_at` datetime DEFAULT current_timestamp()
+  `status` int(11)  DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -1031,3 +1034,16 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+CREATE TABLE `products_image` (
+  `image_id` int(11) NOT NULL,
+  `Product_id ` int(11) NOT NULL,
+  `image` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+ALTER TABLE `products_image`
+  ADD PRIMARY KEY (`image_id`),
+  ADD KEY `Product_id` (`Product_id`);

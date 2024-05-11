@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../public/Scripts/jquery.js"></script>
+    <style>
+        .cloneprice{
+            margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    Tên sản phẩm: <input type="text" name="product" id="product_name"> <br>
+    thuộc tính 1: <input type="text" id="product_type1">
+    thuộc tính 2: <input type="text" id="product_type2">
+    <p>/////////</p>
+    <div id="maintype">
+        <div class="type">
+            <input type="text" class="clonetype">------
+        </div>
+        <button value="0" onclick="addtype(this)">Thêm thuộc tính 2</button>
+    </div>
+   
+    <div>////////</div>
+   
+    <div class="type"></div>
+    <button id="addtype">Thêm thuộc tính 1</button>
+
+    <div><p>//////////////</p></div>
+    <button id="addproduct">Thêm</button>
+    <script>
+        var numlist = 0
+        const addtype1 = document.getElementById('addtype')
+        const addproduct =  document.getElementById('addproduct')
+
+        addtype1.onclick = function(){
+            var infoproduct = document.getElementById('maintype')
+            console.log(infoproduct)
+            let numtype = infoproduct.querySelectorAll('.type').length
+
+
+            let typeDiv = document.createElement("div");
+            typeDiv.classList.add("type");
+            infoproduct.appendChild(typeDiv)
+
+            let buttonElement = document.createElement("button");
+            buttonElement.setAttribute("value", numtype);
+            buttonElement.setAttribute("onclick", "addtype(this)");
+            buttonElement.textContent = "Thêm thuộc tính 2";
+            infoproduct.appendChild(buttonElement)
+
+
+            var lastcall = document.getElementById('maintype').querySelectorAll(".type")
+            infoproduct = document.getElementById('maintype').querySelectorAll(".type")[lastcall.length-1]
+
+            let inputElement = document.createElement("input");
+            inputElement.setAttribute("type", "text");
+            inputElement.classList.add("clonetype");
+
+            infoproduct.appendChild(inputElement)
+
+        }
+        function addtype(__node){
+            let node = document.querySelectorAll('.type')[__node.value]
+            let inputtype = document.createElement("input");
+            inputtype.classList.add("clonetype");
+
+            let inputPriceElement = document.createElement("input");
+            inputPriceElement.classList.add("cloneprice");
+            node.appendChild(inputtype)
+            node.appendChild(inputPriceElement)
+        }
+
+        addproduct.onclick = function(){
+            var list_type1 = []
+            var product_name = document.getElementById("product_name").value
+            var product_type1 = document.getElementById("product_type1").value
+            var product_type2 = document.getElementById("product_type2").value
+
+            var list_main = document.getElementById('maintype')
+            var list_type = list_main.querySelectorAll(".type")
+            var product_post = []
+            for(i=0;i<list_type.length;i++){
+                let clone_type = list_type[i].querySelectorAll(".clonetype")
+                let clone_price = list_type[i].querySelectorAll(".cloneprice")
+                let queue = []
+                let data_submit = {
+                    name:clone_type[0].value,
+                    data:[]
+                }
+                for(j=1;j<clone_type.length;j++){
+                    data_submit.data.push({name:clone_type[j].value,price:clone_price[j-1].value})
+                }
+                console.log(data_submit)
+                product_post.push(data_submit)
+            }
+            console.log(product_post)
+            
+            
+            $.ajax({
+                    type: "post",
+                    url: "/seller/add_product",
+                    data: {
+                        name:product_name,
+                        type1:product_type1,
+                        type2:product_type2,
+                        fulldata:product_post
+                    },
+                    success: function(data) {   
+                        console.log(data)
+                    }
+                })
+        }
+        
+
+
+    </script>
+</body>
+</html>

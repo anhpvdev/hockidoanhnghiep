@@ -68,6 +68,7 @@ const UserServices = {
     post_registry: async (req, res) => {
         let {mail,pass} = req.body
         console.log(mail,pass)
+
         connection.query('select * from buyers where Email = ?',[mail],async(err,row)=>{
             if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
             
@@ -81,15 +82,18 @@ const UserServices = {
            }else{
                 let code_otp = Math.floor(Math.random() * 900000) + 100000
                 connection.query('INSERT INTO `buyers` (`Email`, `Password`, `token`) VALUES(?,?,?);',[mail,pass,code_otp], async(err,data)=>{
-                    console.log(data)
                     if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
 
+
+                        console.log(data.insertId)
                     const sendmail = await emailServices(mail,`<b>Mã xác nhận của bạn là: <h3>${code_otp}</h3></b>`)
                     if(sendmail) return res.json({success:true,mail:mail})
                     
                 })
             }
         })
+
+        
     }, 
 
     Check_otp: async (req, res) => {

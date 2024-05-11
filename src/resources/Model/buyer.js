@@ -142,6 +142,19 @@ const BuyerServices = {
             
         })
     },
+    avatar:(req,res) =>{
+        let user = req.user
+
+        connection.query('UPDATE buyers SET Avatar= 1 WHERE Buyer_id = ?',[user.id],async(err,row)=>{
+            if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
+            
+            
+            return res.redirect('/buyer/profile')
+
+
+        })
+        
+    },
 }
 
 module.exports = BuyerServices

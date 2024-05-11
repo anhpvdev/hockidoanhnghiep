@@ -13,6 +13,8 @@ const BuyerRoutes = (app) => {
     // router.get('/category',checkadmin.any,AdminModel.home)
     router.get('/seller',checkadmin.Admin3,AdminModel.seller)
     router.get('/seller/regis',checkadmin.Admin3,AdminModel.seller_add)
+    router.post('/seller/regis',checkadmin.Admin3,AdminModel.post_seller_add)
+    router.get('/seller/regis/:id',checkadmin.Admin3,AdminModel.seller_add_detail)
     
     
     

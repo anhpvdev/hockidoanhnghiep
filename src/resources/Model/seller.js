@@ -46,6 +46,16 @@ const seller = {
         if(req.role !=3) return res.render(path.join(__dirname+"../../views/Sellers/login.ejs"),{content:""})
         else return res.redirect("/seller")
     },
+    get_addproduct: async (req, res) => {
+        return res.render(path.join(__dirname+"../../views/Sellers/add_product.ejs"))
+      
+    },
+    post_addproduct: async (req, res) => {
+        const {name, type1,type2, fulldata} = req.body
+        console.log(name, type1,type2, fulldata)
+        res.json(fulldata)
+    },
+    
 
 }
 

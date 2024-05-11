@@ -14,7 +14,6 @@ III. Seller
 
 I. Admin:
 1. Đăng nhập
-4. Duyệt seller
 
 /////////////////////////////////////////////////////////////////////
 yêu cầu tối thiểu: làm hệ thống website có tối thiểu các chức năng sau:
@@ -36,4 +35,7 @@ III. Seller
 I. Admin:
 2. Thêm admin
 3. Thêm/sửa/xoá/hiển thị category
+4. Duyệt seller
 5. Hiển thị thống kê danh sách seller và doanh thu của seller theo tháng
+
+

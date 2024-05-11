@@ -39,6 +39,7 @@ const checkauth = {
                         console.log(err) 
                         res.redirect("/login")
                     }
+
                     connection.query('select * from buyers where Email = ? and Password = ?',[decoded.gmail,decoded.password],(err,row)=>{
                         if(err) res.redirect("/login")
                         else {
