@@ -69,8 +69,13 @@ const checkauth = {
                         if(err) res.redirect("/seller/login")
                         else {
                             req.user = decoded
-                            req.role = row[0].role ==3
-                            next()
+                            if(row[0].role ==3){
+                                req.role = row[0].role
+                                next()
+                            }else{
+                                res.redirect("/seller/login")
+                            }
+                            
                         }
                     })
 

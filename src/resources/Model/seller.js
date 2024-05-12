@@ -29,7 +29,7 @@ function addclassify(product,value,data){
                 var list_classify = ""
                 for(let j=0;j<classifydata.length;j++){
                     console.log(classifydata[j].name,classifydata[j].price)
-                    list_classify += `(${classifyid},'${classifydata[j].name}', ${classifydata[j].price},100),`           
+                    list_classify += `(${classifyid},'${classifydata[j].name}', ${classifydata[j].price},${classifydata[j].num}),`           
                 }
                 list_classify = list_classify.slice(0,-1)
                 await addtype(list_classify)
@@ -109,10 +109,33 @@ const seller = {
                     .catch(()=>{return res.render(path.join(__dirname+"../../views/404.ejs"))})
                
             }   
-            res.json("thêm thành công")
+            res.json({success:true,data:productid})
 
         })
 
+
+
+    },
+    imageproduct: async (req, res) => {
+        const pr_file = req.files
+        const prductid = req.body.product_id
+       
+        var list_insert = ""
+        for(i=0;i<pr_file.length;i++){
+            let filename = prductid+"_"+pr_file[i].originalname
+            list_insert += `(${prductid},'${filename}'),`
+ 
+        }
+        list_insert = list_insert.slice(0,-1)
+        console.log(list_insert)
+        var query = `INSERT INTO products_image(Product_id,image) VALUES ${list_insert};`
+        console.log(query)
+        
+        connection.query(query,async(err,product)=>{
+            if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
+       
+            res.redirect("/products/"+prductid)
+            })
     },
     typeproduct: async (req, res) => {
         const {product} = req.body

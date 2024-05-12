@@ -7,10 +7,14 @@
     <script src="../../../public/Scripts/jquery.js"></script>
 </head>
 <body>
+    <% for(var i = 0; i < image.length; i++) { %>
+        <img src="/public/images/Products/<%= image[i].image %>" alt="">
+      <% } %> 
+        
     <%= data[0].prname %>
     <div>
         <% for(var i = 0; i < data.length; i++) { %>
-            <button id="<%= data[i].Classify_type_id%>" style="color: #9e9e9e;" onclick="changetype(this)"  value="<%= data[i].Pricess_sale%>"><%= data[i].Name %> - <%=data[i].clname %></button>
+            <button id="<%= data[i].Classify_type_id%>" style="color: #9e9e9e;" onclick="changetype(this)"  value="<%= data[i].Prices%>"><%= data[i].Name %> - <%=data[i].clname %></button>
           <% } %> 
         <div style="display: flex;"><button id="num_dow">-</button> <input id="num_add" type="text" value="1"> <button id="num_up">+</button></div>
         <div class="price"></div>
@@ -22,7 +26,8 @@
             if(last_call) last_call.style.color = "#9e9e9e"
             node.style.color = "black"
             last_call = node
-            document.querySelector(".price").innerHTML = node.value +" VND"
+            let price = parseInt(node.value) * parseInt(numadd.value)
+            document.querySelector(".price").innerHTML = price +" VND"
         }
 
         const numadd = document.getElementById("num_add")
@@ -31,10 +36,14 @@
         const buycart = document.getElementById("buy_cart")
         numup.onclick = function(){
             numadd.value = parseInt(numadd.value) + 1
+            let price = parseInt(last_call.value) * parseInt(numadd.value)
+            document.querySelector(".price").innerHTML = price +" VND"
         }
         numdow.onclick = function(){
             if(numadd.value>=1){
                 numadd.value = parseInt(numadd.value) - 1
+                let price = parseInt(last_call.value) * parseInt(numadd.value)
+                document.querySelector(".price").innerHTML = price +" VND"
             }
         }
 

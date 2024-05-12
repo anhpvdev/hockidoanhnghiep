@@ -37,9 +37,15 @@ const UserServices = {
         connection.query('SELECT cl_t.*,cl.Quantity as clnum,cl.name as clname,pr.name as prname FROM classify as cl INNER JOIN products as pr on cl.Product_id = pr.Product_id INNER JOIN classify_types as cl_t on cl_t.classify_id = cl.classify_id WHERE pr.Product_id = ?;',[req.params.id],(err,row)=>{
             if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
             else {
-                console.log(row)
-                var name = "chi tiet san pham"
-                return res.render(path.join(__dirname+"../../views/Users/products_detal.ejs"),{data:row,name:name})
+
+                connection.query('SELECT * FROM `products_image` WHERE Product_id = ?;',[req.params.id],(err,image)=>{
+                    if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
+                    else {
+                        var name = "chi tiet san pham"
+                        return res.render(path.join(__dirname+"../../views/Users/products_detal.ejs"),{data:row,image:image,name:name})
+                    }
+
+                })
             }
 
         })

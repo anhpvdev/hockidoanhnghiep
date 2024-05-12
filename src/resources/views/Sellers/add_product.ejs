@@ -6,7 +6,7 @@
     <title>Document</title>
     <script src="../../../public/Scripts/jquery.js"></script>
     <style>
-        .cloneprice{
+        .clonenum{
             margin-right: 20px;
         }
     </style>
@@ -37,7 +37,8 @@
     <div class="type"></div>
     <button id="addtype">Thêm thuộc tính 1</button>
     <div><p>//////////////</p></div>
-        thông tin chi tiết <textarea name="info" id="">asdas</textarea>
+        thông tin chi tiết <textarea name="info" id="">asdas</textarea><br><br>
+
     <div><p>//////////////</p></div>
     <button id="addproduct">Thêm</button>
     <script>
@@ -79,15 +80,20 @@
 
             let inputPriceElement = document.createElement("input");
             inputPriceElement.classList.add("cloneprice");
+            let inputNumElement = document.createElement("input");
+            inputNumElement.classList.add("clonenum");
             node.appendChild(inputtype)
             node.appendChild(inputPriceElement)
+            node.appendChild(inputNumElement)
         }
 
         addproduct.onclick = function(){
+           
             var list_type1 = []
-            var product_name = document.getElementById("product_name").value
-            var product_type1 = document.getElementById("product_type1").value
-            var product_type2 = document.getElementById("product_type2").value
+            var product_name = document.getElementById("product_name").value 
+            var product_type1 = document.getElementById("product_type1").value 
+            var product_type2 = document.getElementById("product_type2").value 
+
             var type_product1 = document.getElementById("type_product1")
             var type_product2 = document.getElementById("type_product2")
             var trademark = document.getElementById("trademark")
@@ -97,20 +103,21 @@
             for(i=0;i<list_type.length;i++){
                 let clone_type = list_type[i].querySelectorAll(".clonetype")
                 let clone_price = list_type[i].querySelectorAll(".cloneprice")
+                let clone_num = list_type[i].querySelectorAll(".clonenum")
                 let queue = []
                 let data_submit = {
                     name:clone_type[0].value,
                     data:[]
                 }
                 for(j=1;j<clone_type.length;j++){
-                    data_submit.data.push({name:clone_type[j].value,price:clone_price[j-1].value})
+                    data_submit.data.push({name:clone_type[j].value,price:clone_price[j-1].value,num:parseInt(clone_num[j-1].value)})
                 }
                 console.log(data_submit)
                 product_post.push(data_submit)
             }
             console.log(product_post)
             
-            
+            document.body.innerHTML = "Đang Xử Lý ....."
             $.ajax({
                     type: "post",
                     url: "/seller/add_product",
@@ -124,13 +131,20 @@
                         fulldata:product_post
                     },
                     success: function(data) {   
-                        console.log(data)
+                        if(data.success){
+                            document.body.innerHTML = `<form action="/seller/addimageproduct" method="post" enctype="multipart/form-data" >
+            <input type="text" name="product_id" hidden="true" value="${data.data}">
+            <input type="file" name="product_img" multiple="multiple">
+            <button type="submit">Theem</button>
+        </form>`
+                        }else{
+                            document.body.innerHTML = "đã có lỗi sảy ra, vui lòng thử lại"
+                        }
                     }
                 })
         }
         
         type_product1.addEventListener('change',function(){
-            console.log(this.value)
             $.ajax({
                     type: "post",
                     url: "/seller/typeproduct",
@@ -147,6 +161,8 @@
                             }
                             type_product2.disabled = false
 
+                        }else{
+                            document.body.innerHTML = "đã có lỗi sảy ra, vui lòng thử lại"
                         }
                     }
                 })
