@@ -85,7 +85,6 @@ const UserServices = {
                     if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
 
 
-                        console.log(data.insertId)
                     const sendmail = await emailServices(mail,`<b>Mã xác nhận của bạn là: <h3>${code_otp}</h3></b>`)
                     if(sendmail) return res.json({success:true,mail:mail})
                     

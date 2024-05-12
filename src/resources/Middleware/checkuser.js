@@ -65,7 +65,7 @@ const checkauth = {
                         res.redirect("/404")///nodelai
                     }
 
-                    connection.query('select * from buyers where Email = ? and Password = ?',[decoded.gmail,decoded.password],(err,row)=>{
+                    connection.query('select * from buyers where Email = ? and Password = ? and role =3',[decoded.gmail,decoded.password],(err,row)=>{
                         if(err) res.redirect("/seller/login")
                         else {
                             req.user = decoded

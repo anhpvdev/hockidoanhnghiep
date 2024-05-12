@@ -13,6 +13,15 @@
 </head>
 <body>
     Tên sản phẩm: <input type="text" name="product" id="product_name"> <br>
+    ngành hàng:<select name="district" id="type_product1">
+        <% for(var i = 0; i < type.length; i++) { %>
+            <option value="<%= type[i].Product_Types_id %>"> <%= type[i].name %></option>
+          <% } %> 
+    </select>
+    loại hàng:<select name="ward" id="type_product2" disabled="disabled">
+        <option value=""> </option>
+    </select>
+    thương hiệu: <input type="text"  id="trademark"> <br>
     thuộc tính 1: <input type="text" id="product_type1">
     thuộc tính 2: <input type="text" id="product_type2">
     <p>/////////</p>
@@ -27,7 +36,8 @@
    
     <div class="type"></div>
     <button id="addtype">Thêm thuộc tính 1</button>
-
+    <div><p>//////////////</p></div>
+        thông tin chi tiết <textarea name="info" id="">asdas</textarea>
     <div><p>//////////////</p></div>
     <button id="addproduct">Thêm</button>
     <script>
@@ -78,7 +88,9 @@
             var product_name = document.getElementById("product_name").value
             var product_type1 = document.getElementById("product_type1").value
             var product_type2 = document.getElementById("product_type2").value
-
+            var type_product1 = document.getElementById("type_product1")
+            var type_product2 = document.getElementById("type_product2")
+            var trademark = document.getElementById("trademark")
             var list_main = document.getElementById('maintype')
             var list_type = list_main.querySelectorAll(".type")
             var product_post = []
@@ -104,6 +116,9 @@
                     url: "/seller/add_product",
                     data: {
                         name:product_name,
+                        type_product1:type_product1.value,
+                        type_product2:type_product2.value,
+                        trademark:trademark.value,
                         type1:product_type1,
                         type2:product_type2,
                         fulldata:product_post
@@ -114,7 +129,28 @@
                 })
         }
         
+        type_product1.addEventListener('change',function(){
+            console.log(this.value)
+            $.ajax({
+                    type: "post",
+                    url: "/seller/typeproduct",
+                    data: {
+                        product:this.value
+                    },
+                    success: function(data) {   
+                        if(data.success){
+                            var listtype= data.data
+                            console.log(listtype)
+                            type_product2.innerHTML = '<option value=""></option>'
+                            for(i=0;i<listtype.length;i++){
+                                type_product2.innerHTML += `<option value="${listtype[i].Type_id}">${listtype[i].name}</option>`
+                            }
+                            type_product2.disabled = false
 
+                        }
+                    }
+                })
+        })
 
     </script>
 </body>
