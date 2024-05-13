@@ -5,19 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="../../../public/Scripts/jquery.js"></script>
+    <style>
+        .img_pr{
+            width: 200px;
+            height: auto;
+        }
+        h1{
+            color: red;
+        }
+    </style>
 </head>
 <body>
+    <h1><%= data[0].prname %></h1>
     <% for(var i = 0; i < image.length; i++) { %>
-        <img src="/public/images/Products/<%= image[i].image %>" alt="">
+        <img class="img_pr" src="/public/images/Products/<%= image[i].image %>" alt="">
       <% } %> 
-        
-    <%= data[0].prname %>
+    <div></div>
+    <h3>Phân Loại</h3>
     <div>
         <% for(var i = 0; i < data.length; i++) { %>
             <button id="<%= data[i].Classify_type_id%>" style="color: #9e9e9e;" onclick="changetype(this)"  value="<%= data[i].Prices%>"><%= data[i].Name %> - <%=data[i].clname %></button>
           <% } %> 
+        <div>-----</div>
         <div style="display: flex;"><button id="num_dow">-</button> <input id="num_add" type="text" value="1"> <button id="num_up">+</button></div>
         <div class="price"></div>
+        <div>-----</div>
         <button id="buy_cart">mua hàng</button>
     </div>
     <script>

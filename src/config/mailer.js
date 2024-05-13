@@ -15,7 +15,7 @@ const MailService = async (email,content)=>{
 
   let info = await transporter.sendMail({
     from: '"Shopbee 👻" <fosher50@gmail.com>', // sender address
-    to: "maviess10@gmail.com", // list of receivers
+    to: email, // list of receivers
     subject: "Hello ✔", // Subject line
     text: "", // plain text body
     html: content, // html body

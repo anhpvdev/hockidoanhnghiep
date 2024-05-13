@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 24, 2024 lúc 12:01 PM
+-- Thời gian đã tạo: Th5 12, 2024 lúc 09:27 AM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
 -- Phiên bản PHP: 8.2.0
 
@@ -28,11 +28,20 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admins` (
-  `Admin_d` int(11) NOT NULL,
+  `Admin_id` int(11) NOT NULL,
   `Admin_name` varchar(255) DEFAULT NULL,
   `Password` varchar(255) DEFAULT NULL,
   `Role` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `admins`
+--
+
+INSERT INTO `admins` (`Admin_id`, `Admin_name`, `Password`, `Role`) VALUES
+(0, 'Admin3', '123123', 3),
+(1, 'maviess10', '123123', 1),
+(2, 'Admin2', '123123', 2);
 
 -- --------------------------------------------------------
 
@@ -44,6 +53,15 @@ CREATE TABLE `admins_roles` (
   `Role_id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `admins_roles`
+--
+
+INSERT INTO `admins_roles` (`Role_id`, `name`) VALUES
+(1, 'Admin'),
+(2, 'Mod_product'),
+(3, 'Mod_seler');
 
 -- --------------------------------------------------------
 
@@ -64,9 +82,22 @@ CREATE TABLE `buyers` (
   `Ward` int(11) DEFAULT NULL,
   `Atm` varchar(255) DEFAULT NULL,
   `Atm_name` varchar(255) DEFAULT NULL,
-  `Created_at` datetime DEFAULT NULL,
-  `role` int(11) DEFAULT NULL
+  `Created_at` datetime DEFAULT current_timestamp(),
+  `role` int(11) DEFAULT NULL,
+  `token` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `buyers`
+--
+
+INSERT INTO `buyers` (`Buyer_id`, `Name`, `Gender`, `Birth`, `Phone`, `Email`, `Avatar`, `Password`, `Address`, `Ward`, `Atm`, `Atm_name`, `Created_at`, `role`, `token`) VALUES
+(1, 'Nguyễn Văn A', 1, '1990-01-01 00:00:00', '0123456789', 'maviess@gmail.com', '1', '123123', '123 Đường A', 1, NULL, NULL, '2024-04-24 17:08:03', 3, NULL),
+(2, 'Trần Thị B', 2, '1992-02-02 00:00:00', '0987654321', 'tranthib@example.com', NULL, '123123', '456 Đường B', 2, NULL, NULL, '2024-04-24 17:08:03', 3, NULL),
+(3, 'Lê Văn C', 1, '1988-03-03 00:00:00', '0123456790', 'levanc@example.com', NULL, '123123', '789 Đường C', 3, NULL, NULL, '2024-04-24 17:08:03', 3, NULL),
+(4, 'Phạm Thị D', 2, '1995-04-04 00:00:00', '0987654320', 'phamthid@example.com', NULL, '123123', '321 Đường D', 4, NULL, NULL, '2024-04-24 17:08:03', 3, NULL),
+(5, 'Ngô Văn E', 1, '1985-05-05 00:00:00', '0123456791', 'maviess10@gmail.com', NULL, '123123', '654 Đường E', 1, NULL, NULL, '2024-04-24 17:08:03', 2, NULL),
+(6, NULL, NULL, NULL, NULL, 'maviess11@gmail.com', NULL, '123123', NULL, NULL, NULL, NULL, '2024-05-06 10:46:01', 1, '849884');
 
 -- --------------------------------------------------------
 
@@ -91,6 +122,17 @@ CREATE TABLE `buyer_purchases` (
   `Last_Update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `buyer_purchases`
+--
+
+INSERT INTO `buyer_purchases` (`Purchase_id`, `Buyer_id`, `Price`, `Last_Price`, `notes`, `Created_at`, `Transport_fee`, `Transport_voucher`, `Voucher_shop`, `Voucher`, `Transport`, `payment`, `Status`, `Last_Update`) VALUES
+(1, 1, '100.00', '90.00', 'Đơn hàng 1 của người dùng 1', '2024-04-25 16:52:17', '5.00', '2.00', '10.00', '5.00', 1, 1, 1, '2024-04-25 09:52:17'),
+(2, 1, '150.00', '130.00', 'Đơn hàng 2 của người dùng 1', '2024-04-25 16:52:17', '7.00', '2.00', '15.00', '7.00', 2, 1, 1, '2024-04-25 09:52:17'),
+(3, 2, '200.00', '180.00', 'Đơn hàng 1 của người dùng 2', '2024-04-25 16:52:17', '5.00', '3.00', '20.00', '10.00', 1, 1, 2, '2024-04-25 09:52:17'),
+(4, 2, '250.00', '220.00', 'Đơn hàng 2 của người dùng 2', '2024-04-25 16:52:17', '10.00', '5.00', '25.00', '15.00', 2, 1, 1, '2024-04-25 09:52:17'),
+(5, 1, '300.00', '270.00', 'Đơn hàng 3 của người dùng 1', '2024-04-25 16:52:17', '12.00', '6.00', '30.00', '20.00', 1, 1, 1, '2024-04-25 09:52:17');
+
 -- --------------------------------------------------------
 
 --
@@ -102,6 +144,18 @@ CREATE TABLE `carts` (
   `classify_type_id` int(11) NOT NULL,
   `Quantity` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `carts`
+--
+
+INSERT INTO `carts` (`user_id`, `classify_type_id`, `Quantity`) VALUES
+(1, 1, 2),
+(1, 6, 10),
+(1, 16, 11),
+(1, 19, 4),
+(2, 2, 3),
+(2, 5, 2);
 
 -- --------------------------------------------------------
 
@@ -137,11 +191,30 @@ CREATE TABLE `classify` (
   `Quantity` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `classify`
+--
+
+INSERT INTO `classify` (`classify_id`, `Product_id`, `Name`, `Quantity`) VALUES
+(1, 2, 'loại tốt', 100),
+(2, 2, 'loại rẻ', 80),
+(4, 1, 'Tập', 50),
+(6, 3, 'vitamin C', 200),
+(7, 3, 'vitamin D', 120),
+(8, 4, 'hũ', 30),
+(9, 4, 'chiết', 15),
+(46, 36, 'Đen', NULL),
+(47, 36, '', NULL),
+(48, 36, '', NULL),
+(49, 37, 'Đen', NULL),
+(50, 37, 'Trắng', NULL),
+(51, 37, 'nâu', NULL);
+
 -- --------------------------------------------------------
 
 --
 -- Cấu trúc bảng cho bảng `classify_types`
---carts
+--
 
 CREATE TABLE `classify_types` (
   `Classify_type_id` int(11) NOT NULL,
@@ -151,6 +224,44 @@ CREATE TABLE `classify_types` (
   `Prices` decimal(10,2) DEFAULT NULL,
   `Pricess_sale` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `classify_types`
+--
+
+INSERT INTO `classify_types` (`Classify_type_id`, `classify_id`, `Name`, `Quantity`, `Prices`, `Pricess_sale`) VALUES
+(1, 1, 'màu đen', 100, '3000.00', '2500.00'),
+(2, 1, 'màu đỏ', 80, '5000.00', '4000.00'),
+(4, 4, 'Sách Ngữ văn 10 - Tập 1', 50, '15000.00', '12000.00'),
+(5, 4, 'Sách Ngữ văn 10 - Tập 2', 50, '15000.00', '12000.00'),
+(6, 6, '50 viên', 200, '25000.00', '20000.00'),
+(7, 6, '100 viên', 120, '15000.00', '12000.00'),
+(8, 8, '200g', 30, '30000.00', '25000.00'),
+(9, 8, '300g', 15, '50000.00', '40000.00'),
+(16, 2, 'màu đen', 100, '5000.00', '3500.00'),
+(17, 2, 'màu đỏ', 80, '5000.00', '4000.00'),
+(18, 7, '50 viên', 200, '25000.00', '20000.00'),
+(19, 7, '100 viên', 200, '48000.00', '36000.00'),
+(20, 9, '10g', 100, '2000.00', '15000.00'),
+(21, 9, '20g', 100, '3000.00', '25000.00'),
+(22, 9, '50g', 100, '7000.00', '50000.00'),
+(32, 46, '40', 33, '110000.00', NULL),
+(33, 46, '41', 55, '120000.00', NULL),
+(34, 46, '42', 101, '130000.00', NULL),
+(35, 47, '40', 22, '110000.00', NULL),
+(36, 47, '41', 123, '120000.00', NULL),
+(37, 47, '42', 202, '130000.00', NULL),
+(38, 48, '40', 55, '110000.00', NULL),
+(39, 48, '41', 111, '120000.00', NULL),
+(40, 48, '42', 101, '130000.00', NULL),
+(41, 49, '39', 22, '100000.00', NULL),
+(42, 49, '40', 33, '100000.00', NULL),
+(43, 49, '41', 55, '100000.00', NULL),
+(44, 50, '39', 55, '100000.00', NULL),
+(45, 50, '40', 55, '100000.00', NULL),
+(46, 50, '41', 44, '100000.00', NULL),
+(47, 51, '44', 33, '111.00', NULL),
+(48, 51, '33', 33, '33.00', NULL);
 
 -- --------------------------------------------------------
 
@@ -215,6 +326,18 @@ CREATE TABLE `payment_methods` (
   `name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `payment_methods`
+--
+
+INSERT INTO `payment_methods` (`Methods_id`, `name`) VALUES
+(1, 'Tiền mặt khi nhận hàng'),
+(2, 'Thẻ tín dụng'),
+(3, 'Thẻ ghi nợ'),
+(4, 'Ví điện tử Momo'),
+(5, 'Ví ZaloPay'),
+(6, 'Chuyển khoản ngân hàng');
+
 -- --------------------------------------------------------
 
 --
@@ -225,11 +348,51 @@ CREATE TABLE `products` (
   `Product_id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL,
   `type` int(11) DEFAULT NULL,
-  `Trademark` int(11) DEFAULT NULL,
+  `Trademark` varchar(255) DEFAULT NULL,
   `Seller_id` int(11) DEFAULT NULL,
   `info` varchar(255) DEFAULT NULL,
-  `Star` float DEFAULT NULL
+  `Star` float DEFAULT NULL,
+  `classname` varchar(255) DEFAULT NULL,
+  `typename` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `products`
+--
+
+INSERT INTO `products` (`Product_id`, `name`, `type`, `Trademark`, `Seller_id`, `info`, `Star`, `classname`, `typename`) VALUES
+(1, 'Sách Ngữ văn 10', 1, '1', 1, 'Sách giáo khoa Ngữ văn lớp 10', 4.5, NULL, NULL),
+(2, 'Bút bi Thiên Long 0.5mm', 2, '1', 1, 'Bút bi 0.5mm màu đen', 4.3, NULL, NULL),
+(3, 'Viên bổ sung Vitamin', 3, '2', 3, 'Viên uống tăng cường Vitamin C', 4.7, NULL, NULL),
+(4, 'Kem dưỡng da ban đêm', 4, '2', 1, 'Kem dưỡng da ban đêm Olay', 4.6, NULL, NULL),
+(36, 'Giày thể thao', 5, 'Nike', 1, NULL, NULL, 'Màu', 'Size'),
+(37, 'Áo Sơ Mi Nam', 5, 'err', 1, NULL, NULL, 'Màu', 'Size');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `products_image`
+--
+
+CREATE TABLE `products_image` (
+  `image_id` int(11) NOT NULL,
+  `Product_id` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `products_image`
+--
+
+INSERT INTO `products_image` (`image_id`, `Product_id`, `image`) VALUES
+(20, 36, '36_4d71eebfeedd1b1e427cdcf8f682e78e.jpg'),
+(21, 36, '36_9acc545da76a369a052e3c13b10b5579.jpg'),
+(22, 36, '36_187f7e066baa264fd59ee183bdeee2ba.jpg'),
+(23, 36, '36_385ae7f4b7550080e90f5b15916bc848.jpg'),
+(24, 37, '37_0e95834059f4e8901395639f8a09e7ac.jpg'),
+(25, 37, '37_0e342041061a689f6380f4de46a7a549.jpg'),
+(26, 37, '37_4d71eebfeedd1b1e427cdcf8f682e78e.jpg'),
+(27, 37, '37_9acc545da76a369a052e3c13b10b5579.jpg');
 
 -- --------------------------------------------------------
 
@@ -239,9 +402,20 @@ CREATE TABLE `products` (
 
 CREATE TABLE `product_types` (
   `Product_Types_id` int(11) NOT NULL,
-  `Type_id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `product_types`
+--
+
+INSERT INTO `product_types` (`Product_Types_id`, `name`) VALUES
+(1, 'Sách và Văn phòng phẩm'),
+(2, 'Sức khỏe và Làm đẹp'),
+(3, 'Nhà cửa và Đồ gia dụng'),
+(4, 'Điện tử và Công nghệ'),
+(5, 'Thời trang và Phụ kiện'),
+(6, 'Đồ chơi');
 
 -- --------------------------------------------------------
 
@@ -256,6 +430,17 @@ CREATE TABLE `purchases_products` (
   `Price` decimal(10,2) DEFAULT NULL,
   `Pricess_sale` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `purchases_products`
+--
+
+INSERT INTO `purchases_products` (`Purchase_id`, `classify_type_id`, `Quantity`, `Price`, `Pricess_sale`) VALUES
+(1, 1, 2, '50.00', '45.00'),
+(1, 2, 1, '40.00', '35.00'),
+(3, 4, 1, '70.00', '65.00'),
+(4, 5, 2, '80.00', '75.00'),
+(5, 6, 4, '90.00', '85.00');
 
 -- --------------------------------------------------------
 
@@ -272,6 +457,15 @@ CREATE TABLE `sellers` (
   `Shop_Ward` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `sellers`
+--
+
+INSERT INTO `sellers` (`Seller_id`, `Buyer_id`, `Shop_name`, `phone`, `Shop_Address`, `Shop_Ward`) VALUES
+(1, 1, 'hihi', '0123456789', '123 Đường A', 1),
+(2, 2, 'Cửa hàng B', '0987654321', '456 Đường B', 10),
+(3, 3, 'Cửa hàng C', '0123456790', '789 Đường C', 15);
+
 -- --------------------------------------------------------
 
 --
@@ -282,8 +476,17 @@ CREATE TABLE `seller_registries` (
   `Seller_Registry_id` int(11) NOT NULL,
   `Shop_name` varchar(255) DEFAULT NULL,
   `Buyer_id` int(11) DEFAULT NULL,
-  `Registed_at` datetime DEFAULT NULL
+  `Registed_at` datetime DEFAULT current_timestamp(),
+  `status` int(11) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `seller_registries`
+--
+
+INSERT INTO `seller_registries` (`Seller_Registry_id`, `Shop_name`, `Buyer_id`, `Registed_at`, `status`) VALUES
+(1, 'test thôi', 4, '2024-05-07 22:09:08', 1),
+(2, 'omg bobby', 5, '2024-05-07 22:29:35', 0);
 
 -- --------------------------------------------------------
 
@@ -295,6 +498,17 @@ CREATE TABLE `status_purchases` (
   `Status_id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `status_purchases`
+--
+
+INSERT INTO `status_purchases` (`Status_id`, `name`) VALUES
+(1, 'Chưa giao'),
+(2, 'Đang vận chuyển'),
+(3, 'Đã giao'),
+(4, 'Đã hủy'),
+(5, 'Đang chờ xác nhận');
 
 -- --------------------------------------------------------
 
@@ -308,6 +522,18 @@ CREATE TABLE `trademark` (
   `info` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Đang đổ dữ liệu cho bảng `trademark`
+--
+
+INSERT INTO `trademark` (`Trademark_id`, `name`, `info`) VALUES
+(1, 'Thiên Long', 'Nhãn hiệu bút và văn phòng phẩm nổi tiếng'),
+(2, 'Olay', 'Thương hiệu mỹ phẩm nổi tiếng'),
+(3, 'Philips', 'Nhãn hiệu điện gia dụng từ Hà Lan'),
+(4, 'Apple', 'Nhãn hiệu điện tử và công nghệ'),
+(5, 'Adidas', 'Thương hiệu thời trang và phụ kiện nổi tiếng'),
+(6, 'LEGO', 'Thương hiệu đồ chơi nổi tiếng của Đan Mạch');
+
 -- --------------------------------------------------------
 
 --
@@ -318,6 +544,17 @@ CREATE TABLE `transports` (
   `Transports_id` int(11) NOT NULL,
   `name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `transports`
+--
+
+INSERT INTO `transports` (`Transports_id`, `name`) VALUES
+(1, 'Giao hàng nhanh'),
+(2, 'Giao hàng tiết kiệm'),
+(3, 'Viettel Post'),
+(4, 'Vietnam Post'),
+(5, 'J&T Express');
 
 -- --------------------------------------------------------
 
@@ -330,6 +567,25 @@ CREATE TABLE `types` (
   `Product_type_id` int(11) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `types`
+--
+
+INSERT INTO `types` (`Type_id`, `Product_type_id`, `name`) VALUES
+(1, 1, 'Sách giáo khoa'),
+(2, 1, 'Bút'),
+(3, 2, 'Son môi'),
+(4, 2, 'Nước hoa'),
+(5, 3, 'Dụng cụ nhà bếp'),
+(6, 3, 'Bàn ghế'),
+(7, 4, 'Điện thoại di động'),
+(8, 4, 'Máy tính bảng'),
+(9, 5, 'Quần áo thời trang'),
+(10, 5, 'Giày dép thời trang'),
+(11, 6, 'Đồ chơi trẻ em'),
+(12, 6, 'Đồ chơi mô hình'),
+(13, 1, 'Truyện tranh');
 
 -- --------------------------------------------------------
 
@@ -406,7 +662,7 @@ INSERT INTO `ward` (`Ward_id`, `Name`, `District`) VALUES
 -- Chỉ mục cho bảng `admins`
 --
 ALTER TABLE `admins`
-  ADD PRIMARY KEY (`Admin_d`),
+  ADD PRIMARY KEY (`Admin_id`),
   ADD KEY `Role` (`Role`);
 
 --
@@ -497,15 +753,20 @@ ALTER TABLE `payment_methods`
 ALTER TABLE `products`
   ADD PRIMARY KEY (`Product_id`),
   ADD KEY `Seller_id` (`Seller_id`),
-  ADD KEY `Trademark` (`Trademark`),
   ADD KEY `type` (`type`);
+
+--
+-- Chỉ mục cho bảng `products_image`
+--
+ALTER TABLE `products_image`
+  ADD PRIMARY KEY (`image_id`),
+  ADD KEY `Product_id` (`Product_id`);
 
 --
 -- Chỉ mục cho bảng `product_types`
 --
 ALTER TABLE `product_types`
-  ADD PRIMARY KEY (`Product_Types_id`) USING BTREE,
-  ADD KEY `Type_id` (`Type_id`);
+  ADD PRIMARY KEY (`Product_Types_id`) USING BTREE;
 
 --
 -- Chỉ mục cho bảng `purchases_products`
@@ -567,28 +828,22 @@ ALTER TABLE `ward`
 --
 
 --
--- AUTO_INCREMENT cho bảng `admins`
---
-ALTER TABLE `admins`
-  MODIFY `Admin_d` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT cho bảng `admins_roles`
 --
 ALTER TABLE `admins_roles`
-  MODIFY `Role_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Role_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `buyers`
 --
 ALTER TABLE `buyers`
-  MODIFY `Buyer_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Buyer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `buyer_purchases`
 --
 ALTER TABLE `buyer_purchases`
-  MODIFY `Purchase_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Purchase_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `city`
@@ -600,13 +855,13 @@ ALTER TABLE `city`
 -- AUTO_INCREMENT cho bảng `classify`
 --
 ALTER TABLE `classify`
-  MODIFY `classify_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `classify_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT cho bảng `classify_types`
 --
 ALTER TABLE `classify_types`
-  MODIFY `Classify_type_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Classify_type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT cho bảng `district`
@@ -630,55 +885,61 @@ ALTER TABLE `evaluate_image`
 -- AUTO_INCREMENT cho bảng `payment_methods`
 --
 ALTER TABLE `payment_methods`
-  MODIFY `Methods_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Methods_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `Product_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+
+--
+-- AUTO_INCREMENT cho bảng `products_image`
+--
+ALTER TABLE `products_image`
+  MODIFY `image_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT cho bảng `product_types`
 --
 ALTER TABLE `product_types`
-  MODIFY `Product_Types_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Product_Types_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `sellers`
 --
 ALTER TABLE `sellers`
-  MODIFY `Seller_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Seller_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT cho bảng `seller_registries`
 --
 ALTER TABLE `seller_registries`
-  MODIFY `Seller_Registry_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Seller_Registry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `status_purchases`
 --
 ALTER TABLE `status_purchases`
-  MODIFY `Status_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Status_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `trademark`
 --
 ALTER TABLE `trademark`
-  MODIFY `Trademark_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Trademark_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT cho bảng `transports`
 --
 ALTER TABLE `transports`
-  MODIFY `Transports_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Transports_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `types`
 --
 ALTER TABLE `types`
-  MODIFY `Type_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Type_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `ward`
@@ -753,8 +1014,13 @@ ALTER TABLE `evaluate_image`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`Seller_id`) REFERENCES `sellers` (`Seller_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`Trademark`) REFERENCES `trademark` (`Trademark_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `products_ibfk_3` FOREIGN KEY (`type`) REFERENCES `types` (`Type_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `products_image`
+--
+ALTER TABLE `products_image`
+  ADD CONSTRAINT `products_image_ibfk_1` FOREIGN KEY (`Product_id`) REFERENCES `products` (`Product_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Các ràng buộc cho bảng `purchases_products`

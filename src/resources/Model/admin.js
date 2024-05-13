@@ -62,10 +62,10 @@ const adminServices = {
             return res.render(path.join(__dirname+"../../views/Admins/seller_add.ejs"),{data:row,content:"",admin:req.admin})
         })
     },
-    seller_add_detail: async (req, res) => {
+    seller_detail: async (req, res) => {
         let user = req.params.id
 
-        connection.query('select b.* ,w.Name as wname,d.name as district,c.name as city from buyers as b LEFT JOIN ward as w on b.Ward = w.Ward_id LEFT JOIN district as d on w.District = d.District_id LEFT JOIN city as c on c.City_id = d.City WHERE b.Buyer_id =?',[user],async(err,row)=>{
+        connection.query('select b.*,se.Shop_name ,w.Name as wname,d.name as district,c.name as city from buyers as b LEFT JOIN sellers as se on se.Buyer_id = b.Buyer_id LEFT JOIN ward as w on b.Ward = w.Ward_id LEFT JOIN district as d on w.District = d.District_id LEFT JOIN city as c on c.City_id = d.City WHERE b.Buyer_id = ?',[user],async(err,row)=>{
             if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
         
             if(row.length ==0) res.render(path.join(__dirname+"../../views/Users/login.ejs"))

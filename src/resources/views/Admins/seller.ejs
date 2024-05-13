@@ -10,7 +10,7 @@
     <button><a href="/admin/seller/regis">duyệt seller</a></button>
     <div>
         <% for(var i = 0; i < data.length; i++) { %>
-            <li><a href="/products/<%= data[i].Seller_id %>"><%= data[i].Shop_name %></a>   </li>
+            <li><a href="seller/regis/<%= data[i].Seller_id %>"><%= data[i].Shop_name %></a>   </li>
           <% } %> 
     </div>
 </body>

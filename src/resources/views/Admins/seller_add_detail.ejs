@@ -7,7 +7,7 @@
     <script src="../../../public/Scripts/jquery.js"></script>
 </head>
 <body>
-    thong tin khach hang: <%= data.Email %>
+    thong tin shop: <%= data.Shop_name %>
    <div>
     <% if(data.Avatar ==1){ %>
         <img src="/public/images/Avatar/<%= data.Buyer_id %>.jpg" alt="">
@@ -29,10 +29,10 @@
     <p>///</p>
     <p>///</p>
    </div>
-   <form action="/admin/seller/regis" method="post">
+   <!-- <form action="/admin/seller/regis" method="post">
     <input type="text" value="<%= data.Buyer_id %>" name="seller" hidden="true">
         <button type="submit">lưu</button>
-   </form>
+   </form> -->
 
 
 </body>
