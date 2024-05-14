@@ -10,6 +10,8 @@ const BuyerRoutes = (app) => {
     router.get('/login',checkauth.seller,SellerModel.get_login)
     router.post('/login',checkauth.seller,SellerModel.post_login)
     router.get('/addproduct',checkauth.seller,SellerModel.get_addproduct)
+    router.get('/profile',checkauth.seller,SellerModel.get_profile)
+    router.post('/profile',checkauth.seller,SellerModel.post_profile)
     router.post('/add_product',checkauth.seller,SellerModel.post_addproduct)
     router.post('/addimageproduct',checkauth.seller,Productupload.array("product_img"),SellerModel.imageproduct)
     router.post('/typeproduct',checkauth.seller,SellerModel.typeproduct)

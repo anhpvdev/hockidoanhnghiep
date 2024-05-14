@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/admin/addadmin" method="post">
+        admin: <input type="text" name="name">
+        <%= status %>
+        <div>---</div>
+        pass: <input type="text" name="pass">
+        <div>---</div>
+        role: <select name="role" id="">
+            <% for(var i = 0; i < data.length; i++) { %>
+                <option value="<%= data[i].Role_id %>"><%= data[i].name %></option>
+               <% } %> 
+        </select>
+        <div>---</div>
+        <div>---</div>
+        <button type="submit">Theem</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>danh sách admin</div>
+    <button><a href="/admin/addadmin">Thêm admin</a></button>
+    <div>///////////</div>
+    <% for(var i = 0; i < data.length; i++) { %>
+        admin name: <%= data[i].Admin_name %>--||--
+        admin role: <%= data[i].name %>
+        <a href="/admin/listadmin/<%= data[i].Admin_id  %>">Chi tiết</a>
+        <div>------------------------------</div>
+      <% } %> 
+</body>
+</html>

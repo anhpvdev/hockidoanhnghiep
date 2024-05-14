@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/admin/update" method="post" >
+            
+        <input type="text" name="admin"  value="<%= data.Admin_id  %>" hidden="true">
+        admin: <input type="text" name="name"  value="<%= data.Admin_name %>"><br><div>-</div>
+        pass: <input type="text" name="name"  value="<%= data.Password %>"><br><div>-</div>
+        role: <input type="text" name="name"  value="<%= data.name %>"><br><div>-</div>
+        <button type="submit">lưu</button>
+   </form>
+
+
+  
+   <div>/////</div>
+</body>
+</html>

@@ -64,24 +64,25 @@ const checkauth = {
                         console.log(err) 
                         res.redirect("/404")///nodelai
                     }
-
+                    console.log(decoded)
                     connection.query('select * from buyers where Email = ? and Password = ? and role =3',[decoded.gmail,decoded.password],(err,row)=>{
-                        if(err) res.redirect("/seller/login")
+                        if(err) res.redirect("/login")
                         else {
-                            req.user = decoded
-                            if(row[0].role ==3){
-                                req.role = row[0].role
-                                next()
-                            }else{
-                                res.redirect("/seller/login")
-                            }
-                            
+                            if(row.length ==0) res.redirect("/login")
+                            else{
+                                req.user = decoded
+                                if(row[0].role ==3){
+                                    req.role = row[0].role
+                                    next()
+                                }else{
+                                    res.redirect("/login")
+                                }}
                         }
                     })
 
                 })
             }else {
-                res.redirect("/seller/login")
+                res.redirect("/login")
             }
         }
     }

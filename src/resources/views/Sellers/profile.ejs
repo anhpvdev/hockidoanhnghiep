@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../public/Scripts/jquery.js"></script>
+</head>
+<body>
+    thong tin khach hang: <%= data.Email %>
+   <form action="/seller/profile" method="post">
+        Name:<input type="text" name="name" value="<%= data.Shop_name %>"> <br>
+        Phone:<input type="text" name="Phone" value="<%= data.phone %>"> <br>
+        Địa chỉ: <input type="text" name="adress" value="<%= data.Shop_Address%>">
+        <br>
+        <select name="city" id="city">
+            <option value="<%= data.CID %>"><%= data.city %></option>
+            <option value="1">Đà Nẵng</option>
+            <option value="2">Hà Nội</option>
+            <option value="3">TP Hồ Chí Minh</option>
+            <option value="3">Nha Trang</option>
+        </select>
+        <select name="district" id="district" disabled="disabled">
+            <option value=""><%= data.district %></option>
+        </select>
+        <select name="ward" id="ward" disabled="disabled">
+            <option value=""><%= data.wname %> </option>
+        </select>
+
+        <button type="submit">Lưu</button>
+   </form>
+   <div>
+    <p>///</p>
+    <p>///</p>
+    <% if(data.Avatar ==1){ %>
+        <img src="/public/images/Avatar/<%= data.Buyer_id %>.jpg" alt="">
+    <% } else{%>
+        <img src="/public/images/Avatar/anonymous.jpg" alt="">
+    <% }%>
+    <p>///</p>
+    <p>///</p>
+   </div>
+
+    <script>
+
+
+        var city = document.getElementById("city")
+        var district = document.getElementById("district")
+        var ward = document.getElementById("ward")
+
+
+        city.addEventListener('change',function(){
+            $.ajax({
+                    type: "post",
+                    url: "/adress/city",
+                    data: {
+                        city:this.value
+                    },
+                    success: function(data) {   
+                        if(data.success){
+                            var listcity = data.data
+                            district.innerHTML = '<option value=""></option>'
+                            for(i=0;i<listcity.length;i++){
+                                district.innerHTML  += `<option value="${listcity[i].District_id}">${listcity[i].Name}</option>`
+                            }
+                            district.disabled = false
+
+                        }
+                    }
+                })
+        })
+
+        district.addEventListener('change',function(){
+            $.ajax({
+                    type: "post",
+                    url: "/adress/district",
+                    data: {
+                        district:this.value
+                    },
+                    success: function(data) {   
+                        if(data.success){
+                            var listdistrict= data.data
+                            console.log(listdistrict)
+                            ward.innerHTML = '<option value=""></option>'
+                            for(i=0;i<listdistrict.length;i++){
+                                ward.innerHTML += `<option value="${listdistrict[i].Ward_id}">${listdistrict[i].Name}</option>`
+                            }
+                            ward.disabled = false
+
+                        }
+                    }
+                })
+        })
+    </script>
+</body>
+</html>

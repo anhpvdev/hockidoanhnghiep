@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>danh sách danh mục của <h3><%= data[0].pname %></h3></div>
+    <div>////////</div>
+    <form action="/admin/category/type/add" method="post">
+
+        <input type="text" name="type"  value="<%= data[0].back %>" hidden="true">
+        Nhập tên danh mục: <input type="text" name="name"  value="">
+            <button type="submit">Lưu</button>
+    </form>
+    <div>/////</div>
+    <div>/////</div>
+    <% for(var i = 0; i < data.length; i++) { %>
+       <form action="/admin/category/type2" method="post" style="float: left;margin-right: 20px;">
+
+            <input type="text" name="back"  value="<%= data[i].back %>" hidden="true">
+            <input type="text" name="type"  value="<%= data[i].Type_id %>" hidden="true">
+            <input type="text" name="name"  value="<%= data[i].name %>">
+            <button type="submit">lưu</button>
+       </form>
+       <form action="/admin/category/dell2" method="post" >
+        <input type="text" name="back"  value="<%= data[i].back %>" hidden="true">
+        <input type="text" name="dellid"  value="<%= data[i].Type_id %>" hidden="true">
+        <button type="submit">Xóa</button>
+   </form>
+       <div>/////</div>
+      <% } %> 
+</body>
+</html>

@@ -86,7 +86,7 @@ const UserServices = {
                     if(sendmail) return res.json({success:true,mail:mail})
                 }
            }else{
-                let code_otp = Math.floor(Math.random() * 900000) + 100000
+                const code_otp = Math.floor(Math.random() * 900000) + 100000
                 connection.query('INSERT INTO `buyers` (`Email`, `Password`, `token`) VALUES(?,?,?);',[mail,pass,code_otp], async(err,data)=>{
                     if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
 
