@@ -26,4 +26,7 @@ SellerRoutes(app)
 const AdressRoutes = require("./resources/Controller/adress")
 AdressRoutes(app)
 
+const PayRoutes = require("./resources/Controller/payment")
+PayRoutes(app)
+
 app.listen(PORT, () => console.log(`server is running on port http://localhost:${PORT}`))

@@ -14,5 +14,10 @@
         <li>tổng tiền: <%= data[i].Prices * data[i].num%></li>
         <div>////////////////////////////////////</div>
       <% } %> 
+
+      <form action="/pay/test" method="post">
+         <input type="text" name="money" value="1234567">
+         <button type="submit">pay</button>
+      </form>
 </body>
 </html>

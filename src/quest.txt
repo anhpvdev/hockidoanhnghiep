@@ -1,2 +1,0 @@
-- thêm table image cho sản phẩm
-- thêm table giới tính
