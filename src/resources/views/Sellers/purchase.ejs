@@ -6,9 +6,10 @@
     <title>Document</title>
 </head>
 <body>
+    <h1>đơn hàng <%= status %></h1>
     <% for(var i = 0; i < data.length; i++) { %>
-        <li><a href="/buyer/history/<%= data[i].Purchase_id %>">thời gian: <%= data[i].Created_at %></a></li>
-        trạng thái : <%= data[i].sname %>
+        <li><a href="/seller/purchase/<%= data[i].Purchase_id %>">thời gian: <%= data[i].Created_at %></a></li>
+         <!-- trạng thái : <%= data[i].sname %> -->
         <li>giá: <%= data[i].Price %></li>
         <div>////////////////////////////////////</div>
       <% } %> 

@@ -173,8 +173,48 @@ const seller = {
         })
        
     },
+    purchase: (req, res) => {
+        let user = req.user
 
+        connection.query('SELECT bp.* FROM `buyer_purchases` as bp LEFT JOIN transports as t on bp.Transport = t.Transports_id LEFT JOIN carts as c on c.Purchase_id = bp.Purchase_id LEFT JOIN classify_types as cl_t on c.classify_type_id = cl_t.Classify_type_id LEFT JOIN classify as cl on cl_t.classify_id = cl.classify_id LEFT JOIN products as pr on pr.Product_id = cl.Product_id LEFT JOIN status_purchases as spr on spr.Status_id = bp.Status WHERE bp.Status =5 and pr.Seller_id = ?;',[user.id],async(err,row)=>{
+            if(err) console.log(err)
+                
+                return res.render(path.join(__dirname+"../../views/Sellers/purchase.ejs"),{data:row,status:"chưa xác nhận"})
+        })
+       
+    },
+    detail_purchase: (req, res) => {
+        const user = req.user
+        const index = req.params.id
+        connection.query('SELECT bp.Purchase_id, spr.name as sname,c.user_id,bp.Price,bp.Created_at,bp.Status, t.Price as price_trans,t.name as trans, cl_t.Name,cl_t.Prices,cl.Name as subcat,pr.name as cat,c.Quantity,c.status FROM `buyer_purchases` as bp LEFT JOIN transports as t on bp.Transport = t.Transports_id LEFT JOIN carts as c on c.Purchase_id = bp.Purchase_id LEFT JOIN classify_types as cl_t on c.classify_type_id = cl_t.Classify_type_id LEFT JOIN classify as cl on cl_t.classify_id = cl.classify_id LEFT JOIN products as pr on pr.Product_id = cl.Product_id LEFT JOIN status_purchases as spr on spr.Status_id = bp.Status WHERE bp.Purchase_id = ? and pr.Seller_id = ?',[index,user.id],async(err,row)=>{
+            if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
+            
+                if(row[0].user_id == user.id){
+                    let check = JSON.stringify(row[0].Created_at)
+                    row[0].Created_at = check.substring(1,11)
+                    console.log(row[0])
+                    
+                 
+                    return res.render(path.join(__dirname+"../../views/Sellers/purchase_detail.ejs"),{data:row})
+                }else{
+                    return res.render(path.join(__dirname+"../../views/404.ejs"))
+                }
+            
+        })
+       
+    },
 
+    acp_purchase: (req, res) => {
+        const user = req.user
+        const {purchase} = req.body
+        connection.query('update buyer_purchases set Status = 3 WHERE Purchase_id = ?',[purchase],async(err,row)=>{
+            if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
+            
+                return res.redirect("/seller/purchase")
+            
+        })
+        console.log(purchase)
+    },
 }
 
 module.exports = seller

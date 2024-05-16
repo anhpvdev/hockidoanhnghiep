@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% for(var i = 0; i < data.length; i++) { %>
+        <div id="product">
+            <li><%= data[i].pname %></li>
+            <li>Phân loại: <%= data[i].Name %> ---- <%= data[i].cname %></li>
+            <li>số lượng: <%= data[i].num %></li>
+            <li>giá: <%= data[i].Prices %></li>
+            <li>tổng tiền: <span class="monsum"><%= data[i].Prices * data[i].num%></span></li>
+        </div>
+        <div>////////////////////////////////////</div>
+      <% } %> 
+
+      <!-- <form action="/pay/test" method="post">
+         <input type="text" name="money" value="1234567">
+         <button type="submit">pay</button>
+      </form> -->
+      <form action="/pay/test" method="post">
+        đơn vị vận chuyển:
+        <select name="name" id="transport">
+          <option value="2">Giao hàng tiết kiệm (15.000)</option>
+          <option value="3">Viettel Post (35.000)</option>
+          <option value="5">J&T Express (20.000)</option>
+        </select>
+        <input type="text" name="money" id="tongtien" value="">
+        <% for(var i = 0; i < data.length; i++) { %>
+            <input type="text" name="name" hidden="true" value="<%= data[i].cart_id %>">
+
+
+          <% } %> 
+    
+        <button type="submit">pay</button>
+     </form>
+
+     <script>
+      var transport = document.getElementById("transport")
+
+      transport.addEventListener('change',function(){
+        if(this.value ==2){
+          trans = 15000
+          document.getElementById("tongtien").value = parseInt(money) + parseInt(trans)
+        }else if(this.value ==3){
+          trans = 35000
+          document.getElementById("tongtien").value = parseInt(money) + parseInt(trans)
+        }else{
+          trans = 20000
+          document.getElementById("tongtien").value =parseInt(money) + parseInt(trans)
+        }
+      })
+
+        var arr =[]
+        var money = 0
+        var trans = 0
+        var list_mon = document.querySelectorAll(".monsum")
+
+        for( let i=0;i<list_mon.length;i++){
+                money += parseInt(list_mon[i].textContent)
+            }
+            console.log(money)
+            document.getElementById("tongtien").value = parseInt(money) + 15000
+     </script>
+</body>
+</html>

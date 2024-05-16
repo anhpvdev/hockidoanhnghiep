@@ -37,7 +37,7 @@ const BuyerServices = {
         if(!user) return res.render(path.join(__dirname+"../../views/Users/login.ejs"))
         else{
             console.log(user)
-            connection.query('select c.Quantity as num,cl_t.*,cl.name as cname,pr.name as pname,pr.Seller_id from carts as c LEFT JOIN buyers as b ON c.user_id = b.Buyer_id LEFT JOIN classify_types as cl_t on c.classify_type_id = cl_t.Classify_type_id LEFT JOIN classify as cl on cl_t.classify_id = cl.classify_id LEFT JOIN products as pr on pr.Product_id = cl.Product_id WHERE b.Buyer_id = ?;',[user.id],async(err,row)=>{
+            connection.query('select c.cart_id,c.Quantity as num,cl_t.*,cl.name as cname,pr.name as pname,pr.Seller_id from carts as c LEFT JOIN buyers as b ON c.user_id = b.Buyer_id LEFT JOIN classify_types as cl_t on c.classify_type_id = cl_t.Classify_type_id LEFT JOIN classify as cl on cl_t.classify_id = cl.classify_id LEFT JOIN products as pr on pr.Product_id = cl.Product_id WHERE b.Buyer_id = ? and status =0;',[user.id],async(err,row)=>{
                 if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
             
                 console.log(row[0])
@@ -106,7 +106,7 @@ const BuyerServices = {
     history: (req, res) => {
         let user = req.user
         console.log(user)
-        connection.query('SELECT * FROM `buyer_purchases` WHERE Buyer_id = ?;',[user.id],async(err,row)=>{
+        connection.query('SELECT bp.*, spr.name as sname FROM `buyer_purchases` as bp LEFT JOIN status_purchases as spr on spr.Status_id = bp.Status WHERE bp.Buyer_id = ?;',[user.id],async(err,row)=>{
             if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
             
             console.log(row[0])
@@ -123,18 +123,15 @@ const BuyerServices = {
     history_detail: (req, res) => {
         let user = req.user
         const index = req.params.id
-        connection.query('SELECT bp.*,pp.Quantity,pp.Pricess_sale,ct.Name as Name1,c.Name as Name2,p.name as Name3 FROM buyer_purchases as bp LEFT JOIN purchases_products as pp on bp.Purchase_id = pp.Purchase_id LEFT JOIN classify_types as ct on ct.Classify_type_id = pp.classify_type_id LEFT JOIN classify as c on c.classify_id = ct.classify_id LEFT JOIN products as p on p.Product_id = c.Product_id WHERE bp.Purchase_id = ?',[index],async(err,row)=>{
+        connection.query('SELECT spr.name as sname,c.user_id,bp.Price,bp.Created_at,bp.Status, t.Price as price_trans,t.name as trans, cl_t.Name,cl_t.Prices,cl.Name as subcat,pr.name as cat,c.Quantity,c.status FROM `buyer_purchases` as bp LEFT JOIN transports as t on bp.Transport = t.Transports_id LEFT JOIN carts as c on c.Purchase_id = bp.Purchase_id LEFT JOIN classify_types as cl_t on c.classify_type_id = cl_t.Classify_type_id LEFT JOIN classify as cl on cl_t.classify_id = cl.classify_id LEFT JOIN products as pr on pr.Product_id = cl.Product_id LEFT JOIN status_purchases as spr on spr.Status_id = bp.Status WHERE bp.Purchase_id = ?',[index],async(err,row)=>{
             if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
             
-                if(row[0].Buyer_id == user.id){
-                    for(i=0;i<row.length;i++){
-                        let check = JSON.stringify(row[i].Created_at)
-                        row[i].Created_at = check.substring(1,11)
-                    }
-                    console.log(row)
-                    // var last_price = (parseInt(row[0].Price) + parseInt(row[0].Transport_fee)) - (parseInt(row[0].Transport_voucher) + parseInt(row[0].Voucher_shop) + parseInt(row[0].Voucher))
+                if(row[0].user_id == user.id){
+                    let check = JSON.stringify(row[0].Created_at)
+                    row[0].Created_at = check.substring(1,11)
+                    console.log(row[0])
                     
-                    // console.log(last_price)
+                 
                     return res.render(path.join(__dirname+"../../views/Buyers/history_detail.ejs"),{data:row})
                 }else{
                     return res.render(path.join(__dirname+"../../views/404.ejs"))

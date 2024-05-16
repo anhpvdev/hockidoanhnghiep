@@ -7,17 +7,42 @@
 </head>
 <body>
     <% for(var i = 0; i < data.length; i++) { %>
-        <li><%= data[i].pname %></li>
-        <li>Phân loại: <%= data[i].Name %> ---- <%= data[i].cname %></li>
-        <li>số lượng: <%= data[i].num %></li>
-        <li>giá: <%= data[i].Prices %></li>
-        <li>tổng tiền: <%= data[i].Prices * data[i].num%></li>
+        <div id="product">
+            <input type="checkbox" onchange="resetpoduct(this)" value="<%= data[i].cart_id %>">
+            <li><%= data[i].pname %></li>
+            <li>Phân loại: <%= data[i].Name %> ---- <%= data[i].cname %></li>
+            <li>số lượng: <%= data[i].num %></li>
+            <li>giá: <%= data[i].Prices %></li>
+            <li>tổng tiền: <%= data[i].Prices * data[i].num%></li>
+        </div>
         <div>////////////////////////////////////</div>
       <% } %> 
 
-      <form action="/pay/test" method="post">
+      <!-- <form action="/pay/test" method="post">
          <input type="text" name="money" value="1234567">
          <button type="submit">pay</button>
-      </form>
+      </form> -->
+      <form action="/pay/payment" method="post">
+        <input type="text" name="name" id="123" value="1">
+  
+        <button type="submit">pay</button>
+     </form>
+
+     <script>
+        var arr =[]
+        function resetpoduct(node){
+            // console.log(node.parentElement)
+            if(node.checked ==true){
+                console.log("true")
+                arr.push(node.value)
+                console.log(arr)
+            }else{
+                console.log("false")
+                arr = arr.filter(function(item) {return item !== node.value})
+                console.log(arr)
+            }
+            document.getElementById("123").value = arr
+        }
+     </script>
 </body>
 </html>

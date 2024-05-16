@@ -26,7 +26,10 @@
       <p>Trạng thái: <%= data[0].sname %></p>
       <p>đơn vị vận chuyển: <%= data[0].trans %> đ</p>
       <p>Phí vận chuyển: <%= data[0].price_trans %> đ</p>
-      
       <p>Thành tiền: <%= data[0].Price %> đ</p>
+      <form action="/seller/purchase/acp" method="post">
+        <input type="text" hidden="true" value="<%= data[0].Purchase_id %>" name="purchase">
+        <button type="submit">Duyệt</button>
+      </form>
 </body>
 </html>

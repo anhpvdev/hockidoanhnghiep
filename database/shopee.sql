@@ -140,6 +140,7 @@ INSERT INTO `buyer_purchases` (`Purchase_id`, `Buyer_id`, `Price`, `Last_Price`,
 --
 
 CREATE TABLE `carts` (
+ ` cart_id` int(11) PRIMARY KEY AUTO_INCREMENT
   `user_id` int(11) NOT NULL,
   `classify_type_id` int(11) NOT NULL,
   `Quantity` int(11) DEFAULT NULL

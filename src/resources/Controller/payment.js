@@ -9,7 +9,8 @@ const Payment = require("../Model/payment")
 
 
 const PayRoutes = (app) => {
-  router.get('/home',Payment.home)
+  router.get('/home',checkauth.buyer,Payment.home)
+  router.post('/payment',Payment.payment)
   router.post('/test',Payment.test)
   return app.use("/pay", router)
 }
