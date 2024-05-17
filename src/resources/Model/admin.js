@@ -105,23 +105,27 @@ const adminServices = {
             return res.render(path.join(__dirname+"../../views/Admins/seller_add.ejs"),{data:row,content:"",admin:req.admin})
         })
     },
+    //thong ke doanh thu theo thang
     seller_detail: async (req, res) => {
         let user = req.params.id
 
-        connection.query('select b.*,se.Shop_name ,w.Name as wname,d.name as district,c.name as city from buyers as b LEFT JOIN sellers as se on se.Buyer_id = b.Buyer_id LEFT JOIN ward as w on b.Ward = w.Ward_id LEFT JOIN district as d on w.District = d.District_id LEFT JOIN city as c on c.City_id = d.City WHERE b.Buyer_id = ?',[user],async(err,row)=>{
+        connection.query('select b.*,se.Shop_name ,w.Name as wname,d.name as district,c.name as city from buyers as b LEFT JOIN sellers as se on se.Buyer_id = b.Buyer_id LEFT JOIN ward as w on b.Ward = w.Ward_id LEFT JOIN district as d on w.District = d.District_id LEFT JOIN city as c on c.City_id = d.City WHERE se.Seller_id = ?',[user],async(err,row)=>{
             if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
         
             if(row.length ==0) res.render(path.join(__dirname+"../../views/Users/login.ejs"))
             else{
                 var checkdate=new Date(row[0].Birth)
                 row[0].Birth = checkdate
-                // row[0].Birth = {
-                //     d:checkdate.getDate(),
-                //     m:checkdate.getMonth() +1,
-                //     y:checkdate.getFullYear()
-                // }
-                // console.log(checkdate.getDate(),checkdate.getMonth(),checkdate.getFullYear())
-                return res.render(path.join(__dirname+"../../views/Admins/seller_add_detail.ejs"),{data:row[0]})
+                const currentYear = new Date().getFullYear();
+                connection.query('SELECT c.*,pr.Seller_id,cl_t.Prices, SUM(c.Quantity * cl_t.Prices) as total FROM `buyer_purchases` as b_p LEFT JOIN carts as c on c.Purchase_id = b_p.Purchase_id LEFT JOIN classify_types as cl_t on cl_t.Classify_type_id = c.classify_type_id LEFT JOIN classify as cl on cl.classify_id = cl_t.classify_id LEFT JOIN products as pr on pr.Product_id = cl.Product_id WHERE b_p.status = 1 and pr.Seller_id = ?  and YEAR(b_p.Created_at) = ? GROUP BY pr.Seller_id;',[user,currentYear],async(err,profit)=>{
+                    if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
+                    
+                        if(profit.length ==0) return res.render(path.join(__dirname+"../../views/Admins/seller_profit.ejs"),{data:row[0],profit:0})
+
+                        return res.render(path.join(__dirname+"../../views/Admins/seller_profit.ejs"),{data:row[0],profit:profit[0].total})
+                    
+                })
+                
             }
         })
     },

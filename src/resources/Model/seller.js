@@ -215,6 +215,34 @@ const seller = {
         })
         console.log(purchase)
     },
+
+    profit: (req, res) => {
+        const user = req.user
+        const currentYear = new Date().getFullYear();
+        console.log(currentYear)
+        connection.query('SELECT c.*,pr.Seller_id,cl_t.Prices, SUM(c.Quantity * cl_t.Prices) as total FROM `buyer_purchases` as b_p LEFT JOIN carts as c on c.Purchase_id = b_p.Purchase_id LEFT JOIN classify_types as cl_t on cl_t.Classify_type_id = c.classify_type_id LEFT JOIN classify as cl on cl.classify_id = cl_t.classify_id LEFT JOIN products as pr on pr.Product_id = cl.Product_id WHERE b_p.status = 1 and pr.Seller_id = ?  and YEAR(b_p.Created_at) = ? GROUP BY pr.Seller_id;',[user.id,currentYear],async(err,row)=>{
+            if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
+            
+                if(row.length ==0) return res.render(path.join(__dirname+"../../views/Sellers/profit.ejs"),{data:{Price:0}})
+                return res.render(path.join(__dirname+"../../views/Sellers/profit.ejs"),{data:row[0]})
+            
+        })
+    },
+
+    profit_month: (req, res) => {
+        const user = req.user
+        const {month}=req.body
+        const currentYear = new Date().getFullYear();
+        console.log(currentYear)
+        connection.query('SELECT SUM(c.Quantity * cl_t.Prices) as total FROM `buyer_purchases` as b_p LEFT JOIN carts as c on c.Purchase_id = b_p.Purchase_id LEFT JOIN classify_types as cl_t on cl_t.Classify_type_id = c.classify_type_id LEFT JOIN classify as cl on cl.classify_id = cl_t.classify_id LEFT JOIN products as pr on pr.Product_id = cl.Product_id WHERE b_p.status = 1 and pr.Seller_id = ?  and YEAR(b_p.Created_at) = ? and MONTH(b_p.Created_at) = ? GROUP BY pr.Seller_id;',[user.id,currentYear,month],async(err,row)=>{
+            if(err) return res.json({success:false,data:"Có lỗi sảy ra"})
+            
+            if(row.length ==0) return res.json({success:true,data:0})
+
+            return res.json({success:true,data:row[0].total})
+            
+        })
+    },
 }
 
 module.exports = seller

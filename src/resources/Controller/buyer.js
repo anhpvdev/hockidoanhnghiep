@@ -15,6 +15,8 @@ const BuyerRoutes = (app) => {
   router.get('/cart',checkauth.buyer,BuyerModel.cart)
   router.get('/history',checkauth.buyer,BuyerModel.history)
   router.get('/history/:id',checkauth.buyer,BuyerModel.history_detail)
+  router.get('/spending',checkauth.buyer,BuyerModel.spending)
+  router.post('/spending/month',checkauth.buyer,BuyerModel.spendingmonth)
   router.post('/buy',checkauth.buyer,BuyerModel.buy)
 
   router.get('/seller',checkauth.buyer,BuyerModel.get_seller)

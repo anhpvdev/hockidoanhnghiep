@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../../../public/Scripts/jquery.js"></script>
+</head>
+<body>
+    thong tin shop: <%= data.Shop_name %>
+   <div>
+    <% if(data.Avatar ==1){ %>
+        <img src="/public/images/Avatar/<%= data.Buyer_id %>.jpg" alt="">
+    <% } else{%>
+        <img src="/public/images/Avatar/anonymous.jpg" alt="">
+    <% }%>
+        id: <%= data.Buyer_id %><br>
+        Name:<%= data.Name %> <br>
+        Phone:<%= data.Phone %> <br>
+        đường: <%= data.Address %><br>
+       thành phố : <%= data.city %><br>
+        Quận : <%= data.district %><br>
+        Phường: <%= data.wname %><br>
+        
+    </div>
+   <div>
+    <p>///</p>
+    <p>///</p>
+    <p>///</p>
+    <p>///</p>
+   </div>
+   Tổng lợi nhuận trong năm: <%= profit %>
+
+
+   <div>////</div>
+   <select name="month" id="month_spending">
+       <option value="0">Tháng</option>
+       <option value="1">Tháng 1</option>
+       <option value="2">Tháng 2</option>
+       <option value="3">Tháng 3</option>
+       <option value="4">Tháng 4</option>
+       <option value="5">Tháng 5</option>
+       <option value="6">Tháng 6</option>
+       <option value="7">Tháng 7</option>
+       <option value="8">Tháng 8</option>
+       <option value="9">Tháng 9</option>
+       <option value="10">Tháng 10</option>
+       <option value="11">Tháng 11</option>
+       <option value="12">Tháng 12</option>
+   </select>
+   <div class="month_spending"> </div>
+   <script>
+       const spen_month = document.getElementById("month_spending")
+       const show_send = document.querySelector(".month_spending")
+       spen_month.addEventListener('change',function(){
+           if(this.value >0){
+               $.ajax({
+                   type: "post",
+                   url: "/Seller/profit/month",
+                   data: {
+                       month:this.value
+                   },
+                   success: function(data) {   
+                       if(data.success){
+                         show_send.textContent = `Chi tiêu tháng ${this.value} là: ${data.data} vnd`
+                       }else alert(data.data)
+                   }
+               })
+           }else{
+               show_send.textContent = ``
+           }
+         
+       })
+   </script>
+
+
+   
+</body>
+</html>

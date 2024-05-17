@@ -152,6 +152,34 @@ const BuyerServices = {
         })
         
     },
+    spending:(req,res) =>{
+        let user = req.user
+        const currentYear = new Date().getFullYear();
+        console.log(currentYear)
+
+        connection.query('SELECT SUM(Price) as Price FROM `buyer_purchases` WHERE Buyer_id = ? and YEAR(Created_at) = ? GROUP by Buyer_id;',[user.id,currentYear],async(err,row)=>{
+            if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
+            
+            if(row.length ==0) return res.render(path.join(__dirname+"../../views/Buyers/spending.ejs"),{data:{Price:0}})
+
+            return res.render(path.join(__dirname+"../../views/Buyers/spending.ejs"),{data:row[0]})
+        })
+        
+    },
+    spendingmonth:(req,res) =>{
+        let user = req.user
+        const currentYear = new Date().getFullYear();
+        console.log(currentYear)
+        let {month} = req.body
+        connection.query('SELECT SUM(Price) as Price FROM `buyer_purchases` WHERE Buyer_id = ? and YEAR(Created_at) = ? and MONTH(Created_at) =? GROUP by Buyer_id;',[user.id,currentYear,month],async(err,row)=>{
+            if(err) return res.json({success:false,data:"có lỗi sảy ra"})
+            
+            if(row.length ==0) return res.json({success:true,data:0})
+
+            return  res.json({success:true,data:row[0].Price})
+        })
+        
+    },
 }
 
 module.exports = BuyerServices

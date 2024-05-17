@@ -21,6 +21,10 @@ const BuyerRoutes = (app) => {
     router.get('/purchase',checkauth.seller,SellerModel.purchase)
     router.get('/purchase/:id',checkauth.seller,SellerModel.detail_purchase)
     router.post('/purchase/acp',checkauth.seller,SellerModel.acp_purchase)
+
+    //thống kê
+    router.get('/profit',checkauth.seller,SellerModel.profit)
+    router.post('/profit/month',checkauth.seller,SellerModel.profit_month)
     return app.use("/seller", router)
 }
 module.exports = BuyerRoutes
