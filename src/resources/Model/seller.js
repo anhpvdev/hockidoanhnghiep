@@ -183,18 +183,35 @@ const seller = {
         })
        
     },
+    purchase_acp: (req, res) => {
+        let user = req.user
+
+        connection.query('SELECT bp.* FROM `buyer_purchases` as bp LEFT JOIN transports as t on bp.Transport = t.Transports_id LEFT JOIN carts as c on c.Purchase_id = bp.Purchase_id LEFT JOIN classify_types as cl_t on c.classify_type_id = cl_t.Classify_type_id LEFT JOIN classify as cl on cl_t.classify_id = cl.classify_id LEFT JOIN products as pr on pr.Product_id = cl.Product_id LEFT JOIN status_purchases as spr on spr.Status_id = bp.Status WHERE bp.Status =3 and pr.Seller_id = ?;',[user.id],async(err,row)=>{
+            if(err) console.log(err)
+                
+                return res.render(path.join(__dirname+"../../views/Sellers/purchase.ejs"),{data:row,status:"đã xác nhận"})
+        })
+       
+    },
+    purchase_done: (req, res) => {
+        let user = req.user
+
+        connection.query('SELECT bp.* FROM `buyer_purchases` as bp LEFT JOIN transports as t on bp.Transport = t.Transports_id LEFT JOIN carts as c on c.Purchase_id = bp.Purchase_id LEFT JOIN classify_types as cl_t on c.classify_type_id = cl_t.Classify_type_id LEFT JOIN classify as cl on cl_t.classify_id = cl.classify_id LEFT JOIN products as pr on pr.Product_id = cl.Product_id LEFT JOIN status_purchases as spr on spr.Status_id = bp.Status WHERE bp.Status =1 and pr.Seller_id = ?;',[user.id],async(err,row)=>{
+            if(err) console.log(err)
+                
+                return res.render(path.join(__dirname+"../../views/Sellers/purchase.ejs"),{data:row,status:"Đã Giao thành công"})
+        })
+       
+    },
     detail_purchase: (req, res) => {
         const user = req.user
         const index = req.params.id
-        connection.query('SELECT bp.Purchase_id, spr.name as sname,c.user_id,bp.Price,bp.Created_at,bp.Status, t.Price as price_trans,t.name as trans, cl_t.Name,cl_t.Prices,cl.Name as subcat,pr.name as cat,c.Quantity,c.status FROM `buyer_purchases` as bp LEFT JOIN transports as t on bp.Transport = t.Transports_id LEFT JOIN carts as c on c.Purchase_id = bp.Purchase_id LEFT JOIN classify_types as cl_t on c.classify_type_id = cl_t.Classify_type_id LEFT JOIN classify as cl on cl_t.classify_id = cl.classify_id LEFT JOIN products as pr on pr.Product_id = cl.Product_id LEFT JOIN status_purchases as spr on spr.Status_id = bp.Status WHERE bp.Purchase_id = ? and pr.Seller_id = ?',[index,user.id],async(err,row)=>{
+        connection.query('SELECT pr.Seller_id,bp.Purchase_id, spr.name as sname,c.user_id,bp.Price,bp.Created_at,bp.Status, t.Price as price_trans,t.name as trans, cl_t.Name,cl_t.Prices,cl.Name as subcat,pr.name as cat,c.Quantity,c.status FROM `buyer_purchases` as bp LEFT JOIN transports as t on bp.Transport = t.Transports_id LEFT JOIN carts as c on c.Purchase_id = bp.Purchase_id LEFT JOIN classify_types as cl_t on c.classify_type_id = cl_t.Classify_type_id LEFT JOIN classify as cl on cl_t.classify_id = cl.classify_id LEFT JOIN products as pr on pr.Product_id = cl.Product_id LEFT JOIN status_purchases as spr on spr.Status_id = bp.Status WHERE bp.Purchase_id = ? and pr.Seller_id = ?',[index,user.id],async(err,row)=>{
             if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
-            
-                if(row[0].user_id == user.id){
+                if(row[0].Seller_id == user.id){
                     let check = JSON.stringify(row[0].Created_at)
                     row[0].Created_at = check.substring(1,11)
-                    console.log(row[0])
-                    
-                 
+
                     return res.render(path.join(__dirname+"../../views/Sellers/purchase_detail.ejs"),{data:row})
                 }else{
                     return res.render(path.join(__dirname+"../../views/404.ejs"))
@@ -215,6 +232,70 @@ const seller = {
         })
         console.log(purchase)
     },
+
+    buyer_purchase: (req, res) => {
+        const user = req.user
+        const {buyer_seach} = req.body
+        connection.query('update buyer_purchases set Status = 3 WHERE Purchase_id = ?',[purchase],async(err,row)=>{
+            if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
+            
+                return res.redirect("/seller/purchase")
+            
+        })
+        console.log(purchase)
+    },
+
+    buyer: (req, res) => {
+        const user = req.user
+        let month = req.query.month
+        console.log(month)
+        if(month == undefined || month ==0){
+            connection.query('SELECT b.*,cl_t.Prices, SUM(c.Quantity * cl_t.Prices) as total FROM `buyer_purchases` as b_p LEFT JOIN buyers as b on b_p.Buyer_id = b.Buyer_id LEFT JOIN carts as c on c.Purchase_id = b_p.Purchase_id LEFT JOIN classify_types as cl_t on cl_t.Classify_type_id = c.classify_type_id LEFT JOIN classify as cl on cl.classify_id = cl_t.classify_id LEFT JOIN products as pr on pr.Product_id = cl.Product_id WHERE b_p.status = 1 and pr.Seller_id = ? and YEAR(b_p.Created_at) = 2024 GROUP BY Buyer_id;',[user.id],async(err,row)=>{
+                if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
+                
+                    
+                    return res.render(path.join(__dirname+"../../views/Sellers/buyer.ejs"),{data:row, status:"Danh sách khách hàng"})
+                
+            })
+        }else{
+            connection.query('SELECT b.*,cl_t.Prices, SUM(c.Quantity * cl_t.Prices) as total FROM `buyer_purchases` as b_p LEFT JOIN buyers as b on b_p.Buyer_id = b.Buyer_id LEFT JOIN carts as c on c.Purchase_id = b_p.Purchase_id LEFT JOIN classify_types as cl_t on cl_t.Classify_type_id = c.classify_type_id LEFT JOIN classify as cl on cl.classify_id = cl_t.classify_id LEFT JOIN products as pr on pr.Product_id = cl.Product_id WHERE b_p.status = 1 and pr.Seller_id = ? and YEAR(b_p.Created_at) = 2024 and MONTH(b_p.Created_at) = ? GROUP BY Buyer_id;',[user.id,month],async(err,row)=>{
+                if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
+                
+                    
+                    return res.render(path.join(__dirname+"../../views/Sellers/buyer.ejs"),{data:row, status:`Danh sách khách hàng tháng ${month}`})
+                
+            })
+        }
+        
+    },
+
+    buyer_detail: (req, res) => {
+        const user = req.user
+        const buyer = req.params.id
+        let month = req.query.month
+        console.log(buyer,month)
+        
+        if(month == undefined || month ==0){
+            connection.query('SELECT b.*,cl_t.Prices, SUM(c.Quantity * cl_t.Prices) as total FROM `buyer_purchases` as b_p LEFT JOIN buyers as b on b_p.Buyer_id = b.Buyer_id LEFT JOIN carts as c on c.Purchase_id = b_p.Purchase_id LEFT JOIN classify_types as cl_t on cl_t.Classify_type_id = c.classify_type_id LEFT JOIN classify as cl on cl.classify_id = cl_t.classify_id LEFT JOIN products as pr on pr.Product_id = cl.Product_id WHERE b_p.status = 1 and pr.Seller_id = ? and YEAR(b_p.Created_at) = 2024 and b.Buyer_id = ? GROUP BY Buyer_id;',[user.id,buyer],async(err,row)=>{
+                if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
+                
+                    console.log(row[0])
+                    return res.render(path.join(__dirname+"../../views/Sellers/buyer_detail.ejs"),{data:row[0], status:"Tổng chi tiêu năm 2024"})
+                
+            })
+        }else{
+            connection.query('SELECT b.*,cl_t.Prices, SUM(c.Quantity * cl_t.Prices) as total FROM `buyer_purchases` as b_p LEFT JOIN buyers as b on b_p.Buyer_id = b.Buyer_id LEFT JOIN carts as c on c.Purchase_id = b_p.Purchase_id LEFT JOIN classify_types as cl_t on cl_t.Classify_type_id = c.classify_type_id LEFT JOIN classify as cl on cl.classify_id = cl_t.classify_id LEFT JOIN products as pr on pr.Product_id = cl.Product_id WHERE b_p.status = 1 and pr.Seller_id = ? and YEAR(b_p.Created_at) = 2024 and MONTH(b_p.Created_at) = ? and b.Buyer_id = ? GROUP BY Buyer_id;',[user.id,month,buyer],async(err,row)=>{
+                if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
+                
+                    console.log(row[0])
+                   if(row.length ==0)  return res.render(path.join(__dirname+"../../views/Sellers/buyer_detail.ejs"),{data:{Buyer_id:buyer,total:0}, status:`Tổng chi tiêu tháng ${month} năm 2024`})
+                   else  return res.render(path.join(__dirname+"../../views/Sellers/buyer_detail.ejs"),{data:row[0], status:`Tổng chi tiêu tháng ${month} năm 2024`})
+                
+            })
+        }
+        
+    },
+
 
     profit: (req, res) => {
         const user = req.user

@@ -19,8 +19,14 @@ const BuyerRoutes = (app) => {
 
 
     router.get('/purchase',checkauth.seller,SellerModel.purchase)
+    router.get('/purchase_acp',checkauth.seller,SellerModel.purchase_acp)
+    router.get('/purchase_done',checkauth.seller,SellerModel.purchase_done)
+
     router.get('/purchase/:id',checkauth.seller,SellerModel.detail_purchase)
     router.post('/purchase/acp',checkauth.seller,SellerModel.acp_purchase)
+
+    router.get('/buyer',checkauth.seller,SellerModel.buyer)
+    router.get('/buyer/:id',checkauth.seller,SellerModel.buyer_detail)
 
     //thống kê
     router.get('/profit',checkauth.seller,SellerModel.profit)

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Tháng: <select name="" id="status_pur">
+            <option value=""></option>
+            <option value="/seller/buyer?month=0">Toàn bộ</option>
+            <option value="/seller/buyer?month=1">Tháng 1</option>
+            <option value="/seller/buyer?month=2">Tháng 2</option>
+            <option value="/seller/buyer?month=3">Tháng 3</option>
+            <option value="/seller/buyer?month=4">Tháng 4</option>
+            <option value="/seller/buyer?month=5">Tháng 5</option>
+            <option value="/seller/buyer?month=6">Tháng 6</option>
+            <option value="/seller/buyer?month=7">Tháng 7</option>
+            <option value="/seller/buyer?month=8">Tháng 8</option>
+            <option value="/seller/buyer?month=9">Tháng 9</option>
+            <option value="/seller/buyer?month=10">Tháng 10</option>
+            <option value="/seller/buyer?month=11">Tháng 11</option>
+            <option value="/seller/buyer?month=12">Tháng 12</option>
+    </select>
+    <h1><%= status %></h1>
+    <% for(var i = 0; i < data.length; i++) { %>
+        <li><a href="/seller/buyer/<%= data[i].Buyer_id%>">Tên: <%= data[i].Name%></a></li>
+         <!-- trạng thái : <%= data[i].sname %> -->
+        <li>Chi tiêu: <%= data[i].total %></li>
+        <div>////////////////////////////////////</div>
+      <% } %> 
+</body>
+
+<script>
+    var selectEl = document.getElementById('status_pur');
+
+    selectEl.onchange = function(){
+        var goto = this.value;
+        if (goto != '') {
+            window.location = goto;
+        }
+
+    };
+</script>
+</html>

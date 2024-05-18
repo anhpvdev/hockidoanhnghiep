@@ -1,0 +1,36 @@
+đã làm api
+II. Buyer
+1. Đăng ký: phải gửi otp đến email nhé
+2. Đăng nhập 
+3. Quên password
+4. Sửa profile
+5. Thêm vào giỏ hàng
+6. Mua hàng
+7. Thanh toán online ( chưa làm thanh toán = tiền mặt)
+8. Quản lý hoá đơn
+9. Thông kê tổng tiền đã mua hàng tháng
+10. Sort, filter product theo tên, loại hàng, giá bán
+
+III. Seller
+1. Đăng ký: 
+2. Đăng nhập 
+4. Sửa profile
+5. Thêm mặt hàng, chú ý mỗi mặt hàng sẽ có những phiên bản khác nhau. Ví dụ: giày bitis hunter 1 mặt hàng, nhưng sẽ có các màu khác nhau, mỗi màu sẽ có số lượng tồn kho khác nhau
+6. Quản lý trạng thái đơn hàng: đơn nào đã đặt, đơn nào đã thanh toán, đơn nào đã giao, đơn nào đã hoàn thành(chưa làm hủy đơn hàng đã xác nhận)
+8. Thống kê doanh thu theo tháng
+9. Thống kê tiền lời theo tháng 
+10.  Thống kê khách hàng và doanh thu của mỗi khách theo tháng
+
+I. Admin:
+1. Đăng nhập
+2. Thêm admin
+3. Thêm/sửa/xoá/hiển thị category
+4. Duyệt seller
+5. Hiển thị thống kê danh sách seller
+/////////////////////////////////////////////////////////////////////
+
+yêu cầu tối thiểu: làm hệ thống website có tối thiểu các chức năng sau:
+
+III. Seller
+
+7. Thống kê hàng tồn theo tháng

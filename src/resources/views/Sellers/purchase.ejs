@@ -6,6 +6,12 @@
     <title>Document</title>
 </head>
 <body>
+    trạng thái đơn hàng: <select name="" id="status_pur">
+        <option value=""></option>
+        <option value="/seller/purchase">Chưa xác nhận</option>
+        <option value="/seller/purchase_acp">Đã Xác Nhận</option>
+        <option value="/seller/purchase_done">Đã Giao Thành Công</option>
+    </select>
     <h1>đơn hàng <%= status %></h1>
     <% for(var i = 0; i < data.length; i++) { %>
         <li><a href="/seller/purchase/<%= data[i].Purchase_id %>">thời gian: <%= data[i].Created_at %></a></li>
@@ -14,4 +20,16 @@
         <div>////////////////////////////////////</div>
       <% } %> 
 </body>
+
+<script>
+    var selectEl = document.getElementById('status_pur');
+
+    selectEl.onchange = function(){
+        var goto = this.value;
+        if (goto != '') {
+            window.location = goto;
+        }
+
+    };
+</script>
 </html>
