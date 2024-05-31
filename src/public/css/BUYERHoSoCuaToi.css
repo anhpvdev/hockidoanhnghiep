@@ -1,0 +1,156 @@
+/*=========== TABLE OF CONTENTS ===========
+1. Common CSS
+2. Page CSS
+==========================================*/
+/*-------------------------------------
+  1. Common CSS
+--------------------------------------*/
+.ng-y-sinh {
+  color: var(--blue_gray_500) !important;
+  align-self: start;
+}
+/*-------------------------------------
+  2. Page CSS
+--------------------------------------*/
+.group-777 {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: var(--space-11xl);
+  @media only screen and (max-width: 1050px) {
+    flex-direction: column;
+    width: 100%;
+    padding: var(--space-11xl);
+  }
+}
+.container-220 {
+  margin-top: 72px;
+  align-self: end;
+  background-color: var(--white_A700);
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 26px 30px var(--space-8xl) 40px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--gray_300);
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+  @media only screen and (max-width: 550px) {
+    padding-top: var(--space-11xl);
+    padding-left: var(--space-11xl);
+    padding-right: var(--space-11xl);
+  }
+}
+.button-205-1 {
+  gap: var(--space-lg);
+  align-self: end;
+  min-width: 104px;
+  border-radius: 6px !important;
+}
+.group-283 {
+  width: 58%;
+  display: flex;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+.group-776 {
+  gap: 13px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+.t-n {
+  height: 27px;
+  color: var(--blue_gray_500) !important;
+  align-self: start;
+  width: 26px;
+}
+
+.group-772 {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-11xl);
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+.image-134 {
+  height: 26px;
+  margin-top: 33px;
+  margin-left: -1px;
+  position: relative;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+    margin-left: 0px;
+  }
+}
+.group-768 {
+  margin-left: 29px;
+  gap: var(--space-4xl);
+  display: flex;
+  width: 36%;
+  flex-direction: column;
+  align-items: end;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+    margin-left: 0px;
+  }
+}
+.t-i-app-3 {
+  margin-right: 112px;
+  font-family: Noto Sans !important;
+  @media only screen and (max-width: 1050px) {
+    margin-right: 0px;
+  }
+}
+.group-767 {
+  align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: var(--space-11xl);
+}
+.thumbs-up-3 {
+  height: 26px;
+}
+.container-204-5 {
+  background-color: var(--white_A700);
+  width: 40%;
+  padding: var(--space-3xl);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gray_300);
+}
+.group-757 {
+  width: 69%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-11xl);
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+.group-176 {
+  margin-left: 8px;
+  gap: var(--space-2xl);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  @media only screen and (max-width: 1050px) {
+    margin-left: 0px;
+  }
+}
+.sitemap-link-4 {
+  margin-left: 8px;
+  align-self: end;
+  @media only screen and (max-width: 1050px) {
+    margin-left: 0px;
+  }
+}
+

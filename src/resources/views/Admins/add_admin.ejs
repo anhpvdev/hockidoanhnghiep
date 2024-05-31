@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -22,4 +22,102 @@
         <button type="submit">Theem</button>
     </form>
 </body>
+</html> -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Thêm tài khoản</title>
+    <link rel="icon" href="../../../public/images/shop/Logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <img
+      alt="Logo"
+      src="https://appproject.dhiwise.com/dhiwise-logo.png?c=&v="
+      style="width: 0px; height: 0px; display: none"
+    />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/index.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/font.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/components.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/ADMINThemTaiKhoanAdmin.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/HeaderADMIN.css" />
+  </head>
+  <body>
+    <div class="flex-col-center-center adminthemtaikhoanadmin">
+      <header class="container-204-1">
+        <div class="group-878">
+          <img src="../../../public/images/shop/Logo_Text.png" alt="header logo" class="header-logo" />
+          <ul class="group-481">
+            <li>
+              <a href="./ADMINQuanLyTaiKhoan.html">
+                <div class="group-205">
+                  <h6 class="qu-n-l-t-i-kho-n-1 ui heading size-s">Quản lý tài khoản</h6>
+                  <div class="rectangle"></div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="qu-n-l-danh-m-c-link">
+                <p class="qu-n-l-danh-m-c ui text size-lg">Quản lý danh mục</p>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="qu-n-l-danh-m-c-link">
+                <p class="qu-n-l-danh-m-c ui text size-lg">Duyệt tài khoản bán hàng</p>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="qu-n-l-danh-m-c-link">
+                <p class="qu-n-l-danh-m-c ui text size-lg">Thống kê</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <div class="group-612">
+        <div class="group-611">
+          <a href="./ADMINQuanLyTaiKhoan.html" target="_blank">
+            <img src="../../../public/images/shop/icon_Back.png" alt="arrow down" class="arrow-down-1" />
+          </a>
+          <h1 class="ch-m-s-c-kh-ch-h-ng ui heading size-2xl">Thêm tài khoản admin</h1>
+        </div>
+        <form action="/admin/addadmin" method="post" class="group-158 container-xs">
+          <div class="line-43-1"></div>
+          <div class="group-156">
+            <div class="group-149">
+                <h2 class="t-i-kho-n ui heading size-s">Vai trò</h2>
+                <label class="textfield-2 ui input gray_100 size-sm fill round">
+                  <!-- <input name="Textfield" placeholder="Nhập tên tài khoản" type="text" /> -->
+                  <select name="role" id="">
+                    <% for(var i = 0; i < data.length; i++) { %>
+                        <option value="<%= data[i].Role_id %>"><%= data[i].name %></option>
+                       <% } %> 
+                </select>
+                </label>
+              </div>
+            <div class="group-149">
+              <h2 class="t-i-kho-n ui heading size-s">Tên tài khoản</h2>
+              <label class="textfield-2 ui input gray_100 size-sm fill round">
+                <input name="name" placeholder="Nhập tên tài khoản" type="text" />
+              </label>
+            </div>
+            <div class="textbox-5">
+              <h3 class="t-i-kho-n ui heading size-s">Mật khẩu</h3>
+              <label class="textfield-2 ui input gray_100 size-sm fill round">
+                <input name="pass" placeholder="Nhập mật khẩu" type="text" />
+              </label>
+            </div>
+           
+            <a href="https://www.youtube.com/embed/bv8Fxk0sz7I" target="_blank">
+              <button type="submit" class="button-18 ui button deep_orange_300 size-xl fill round">Thêm</button>
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>
+

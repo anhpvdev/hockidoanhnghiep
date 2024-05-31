@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,6 +17,89 @@
    
 </body>
 
+</html> -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Đăng ký</title>
+    <link rel="icon" href="../../../public/images/shop/Logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <img
+      alt="Logo"
+      src="https://appproject.dhiwise.com/dhiwise-logo.png?c=&v="
+      style="width: 0px; height: 0px; display: none"
+    />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/index.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/font.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/components.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/BUYERDangKy.css" />
+    <script src="../../../public/Scripts/jquery.js"></script>
+  </head>
+  <body>
+    <div class="buyerdangky">
+      <div class="group-626 container">
+        <img src="../../../public/images/shop/Logo_Text.png" alt="header logo" class="header-logo-4" />
+        <div class="group-625">
+          <img src="../../../public/images/shop/backgroundlogin1.png" alt="image 100" class="image-100-1" />
+          <div class="container-158-1">
+            <div class="group-624">
+              <div class="group-623">
+                <a href="./BUYERDangNhap.html">
+                  <img src="../../../public/images/shop/singup_back.png" alt="nav left 1" class="nav-left-1" />
+                </a>
+                <h1 class="ng-k-t-i-kho-n ui heading size-2xl">Đăng ký tài khoản</h1>
+              </div>
+              <div class="group-162">
+                <div class="textbox-39-1">
+                  <h2 class="t-i-kho-n ui heading size-md">Tài khoản</h2>
+                  <label class="textfield-4 ui input gray_100 size-md fill">
+                    <img src="../../../public/images/shop/icon_email.png" alt="lock" class="lock" />
+                    <input id="gmail" name="Textfield" placeholder="Nhập email" type="email" />
+                  </label>
+                </div>
+                <div class="textbox-40-1">
+                  <h3 class="t-i-kho-n ui heading size-md">Mật khẩu</h3>
+                  <label class="textfield-5 ui input gray_100 size-md fill">
+                    <img src="../../../public/images/shop/icon_password.png" alt="lock" class="lock" />
+                    <input id="pass1" name="Textfield" placeholder="Nhập mật khẩu" type="password" />
+                  </label>
+                </div>
+                <div class="textbox-40-1">
+                  <h4 class="t-i-kho-n ui heading size-md">Nhập lại mật khẩu</h4>
+                  <label class="textfield-5 ui input gray_100 size-md fill">
+                    <img src="../../../public/images/shop/icon_password.png" alt="lock" class="lock" />
+                    <input id="pass2" name="Textfield" placeholder="Nhập mật khẩu" type="password" />
+                  </label>
+                </div>
+                <!-- <div class="group-159">
+                  <div class="textbox-39-2">
+                    <h5 class="t-i-kho-n ui heading size-md">Nhập mã OTP</h5>
+                    <label class="textfield-9 ui input gray_100 size-md fill">
+                      <input name="Textfield" placeholder="Nhập OTP" type="text" />
+                    </label>
+                  </div>
+                  <button class="button-151-1 ui button orange_300 size-5xl fill">
+                    <img src="../../../public/images/shop/icon_reload.png" alt="reload" class="lock" />
+                    <span> Gửi OTP</span>
+                  </button>
+                </div> -->
+                <div class="buttondangky">
+                    <button id="registry" class="button-151-2 ui button deep_orange_300 size-5xl fill">Đăng ký</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <img src="../../../public/images/shop/backgroundlogin2.png" alt="image 101" class="image-101-1" />
+        </div>
+      </div>
+    </div>
+  </body>
+  
 <script>
     document.getElementById("registry").onclick = function(){
         let pass1 = document.getElementById("pass1").value
@@ -24,7 +107,7 @@
         if(pass1!=pass2) alert("mật khẩu xác nhận không giống mật khẩu đã nhập")
         else{
             let mail = document.getElementById("gmail").value
-            document.querySelector(".container").innerHTML = "đang xử lý ..."
+            document.querySelector(".group-162").innerHTML = "đang xử lý ..."
             $.ajax({
                 url: '/registry',
                 type: 'POST',
@@ -35,10 +118,20 @@
                 success: function(data) {
                     console.log(data.success)
                     if(data.success){
-                        document.querySelector(".container").innerHTML = `<div id="mail">${data.mail}</div>
-                        <div >vui longf nhập otp đã gửi về mail</div>
-                        <input type="text" id="OTP" name="OTP">
-                        <button id="registry_otp" type="button" onclick="Check_otp()">Xác nhận</button>`
+                        document.querySelector(".group-162").innerHTML =  `<div class="group-159">
+                  <div class="textbox-39-2">
+                    <h5 class="t-i-kho-n ui heading size-md">Nhập mã OTP đã gửi về gmail: <label id="mail">${data.mail}</label></h5>
+                    <label class="textfield-9 ui input gray_100 size-md fill">
+                      <input name="Textfield" id="OTP" placeholder="Nhập OTP" type="text" />
+                    </label>
+                  </div>
+                  <button id="registry_otp" onclick="Check_otp()"" class="button-151-1 ui button orange_300 size-5xl fill">
+                    <img src="../images/icon_reload.png" alt="reload" class="lock" />
+                    <span> Gửi OTP</span>
+                  </button>
+                </div>`
+
+                       
                     }else{
                         alert(data.data)
                         window.location.reload()
@@ -78,3 +171,4 @@
 
 </script>
 </html>
+

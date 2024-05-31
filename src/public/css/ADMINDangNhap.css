@@ -1,0 +1,115 @@
+/*=========== TABLE OF CONTENTS ===========
+1. Common CSS
+2. Page CSS
+==========================================*/
+/*-------------------------------------
+  1. Common CSS
+--------------------------------------*/
+.textfield {
+  color: var(--gray_400) !important;
+  align-self: stretch;
+  border-radius: var(--radius-7xl);
+  border: 1px solid var(--gray_500_01);
+  @media only screen and (max-width: 550px) {
+    padding-right: var(--space-11xl);
+  }
+}
+/*-------------------------------------
+  2. Page CSS
+--------------------------------------*/
+.admindangnhap {
+  gap: var(--space-16xl);
+  background-color: var(--white_A700);
+  box-shadow: var(--shadow-xs);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  padding: var(--space-3xl) 34px 141px 34px;
+  @media only screen and (max-width: 1050px) {
+    padding-bottom: var(--space-11xl);
+  }
+  @media only screen and (max-width: 550px) {
+    padding-left: var(--space-11xl);
+    padding-right: var(--space-11xl);
+  }
+}
+.group-877 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+.group-550 {
+  margin-top: 48px;
+  padding-left: 290px;
+  padding-right: 290px;
+  @media only screen and (max-width: 1050px) {
+    padding-left: var(--space-11xl);
+    padding-right: var(--space-11xl);
+    padding: var(--space-11xl);
+  }
+}
+.container-198 {
+  padding-bottom: 157px;
+  padding-left: 40px;
+  padding-right: 40px;
+  background-color: var(--white_A700);
+  border-radius: var(--radius-md);
+  @media only screen and (max-width: 1050px) {
+    padding-bottom: var(--space-11xl);
+  }
+  @media only screen and (max-width: 550px) {
+    padding-left: var(--space-11xl);
+    padding-right: var(--space-11xl);
+  }
+}
+.group-147 {
+  margin-left: 122px;
+  gap: 13px;
+  align-self: start;
+  display: flex;
+  width: 57%;
+  align-items: start;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+    margin-left: 0px;
+  }
+}
+.image {
+  height: 84px;
+  width: 84px;
+  border-radius: 50%;
+}
+.bushop {
+  color: var(--blue_gray_900) !important;
+  margin-top: 13px;
+}
+.ng-nh-p-admin {
+  color: var(--blue_gray_900) !important;
+  margin-top: 6px;
+}
+.group-152 {
+  margin-top: 16px;
+  align-self: stretch;
+}
+.group-150 {
+  margin-top: 19px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.button-137 {
+  margin-top: 63px;
+  width: 100%;
+  border-radius: var(--radius-8xl);
+  @media only screen and (max-width: 550px) {
+    padding-left: var(--space-11xl);
+    padding-right: var(--space-11xl);
+  }
+}
+

@@ -1,0 +1,105 @@
+.buyerquenmatkhau {
+  padding-top: 34px;
+  gap: 45px;
+  background-color: var(--gray_50_01);
+  box-shadow: var(--shadow-xs);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  @media only screen and (max-width: 550px) {
+    padding-top: var(--space-11xl);
+  }
+}
+.group-629 {
+  margin-top: 45px;
+  padding-left: 270px;
+  padding-right: 269px;
+  @media only screen and (max-width: 1050px) {
+    padding-left: var(--space-11xl);
+    padding-right: var(--space-11xl);
+    padding: var(--space-11xl);
+  }
+}
+.container-158-2 {
+  background-color: var(--white_A700);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  justify-content: center;
+  padding: 40px 40px 83px 22px;
+  border-radius: var(--radius-6xl);
+  @media only screen and (max-width: 1050px) {
+    padding-bottom: var(--space-11xl);
+  }
+  @media only screen and (max-width: 550px) {
+    padding: var(--space-11xl);
+  }
+}
+.group-628 {
+  width: 94%;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+.group-627 {
+  align-self: start;
+  width: 78%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-11xl);
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+.nav-left-1-1 {
+  height: 42px;
+  align-self: start;
+  width: 42px;
+}
+.textbox-39-3 {
+  margin-top: 23px;
+  gap: var(--space-sm);
+  display: flex;
+  width: 90%;
+  flex-direction: column;
+  align-items: start;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+.button-151-3 {
+  margin-top: 73px;
+  margin-right: 94px;
+  min-width: 295px;
+  border-radius: var(--radius-2xl);
+  @media only screen and (max-width: 1050px) {
+    margin-right: 0px;
+  }
+  @media only screen and (max-width: 550px) {
+    padding-left: var(--space-11xl);
+    padding-right: var(--space-11xl);
+  }
+}
+.image-101 {
+  height: 306px;
+  align-self: end;
+  margin-bottom: 160px;
+  width: 22%;
+  object-fit: cover;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+.image-100-1 {
+  margin-top: 200px;
+  height: 370px;
+  width: 31%;
+  object-fit: cover;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+

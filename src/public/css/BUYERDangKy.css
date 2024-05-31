@@ -1,0 +1,158 @@
+/*=========== TABLE OF CONTENTS ===========
+1. Common CSS
+2. Page CSS
+==========================================*/
+/*-------------------------------------
+  1. Common CSS
+--------------------------------------*/
+.textbox-40-1 {
+  margin-top: 15px;
+  margin-left: 9px;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  @media only screen and (max-width: 1050px) {
+    margin-left: 0px;
+  }
+}
+/*-------------------------------------
+  2. Page CSS
+--------------------------------------*/
+.buyerdangky {
+  padding-top: 34px;
+  background-color: var(--gray_50_01);
+  box-shadow: var(--shadow-xs);
+  width: 100%;
+  @media only screen and (max-width: 550px) {
+    padding-top: var(--space-11xl);
+  }
+}
+.group-626 {
+  gap: 45px;
+  display: flex;
+  flex-direction: column;
+}
+.group-625 {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: var(--space-11xl);
+  @media only screen and (max-width: 1050px) {
+    flex-direction: column;
+  }
+}
+.container-158-1 {
+  margin-bottom: 143px;
+  background-color: var(--white_A700);
+  box-shadow: var(--shadow-md);
+  width: 44%;
+  display: flex;
+  justify-content: center;
+  padding: 40px 40px 67px 22px;
+  border-radius: var(--radius-6xl);
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+    padding-bottom: var(--space-11xl);
+    padding: var(--space-11xl);
+  }
+}
+.group-624 {
+  gap: var(--space-11xl);
+  display: flex;
+  width: 94%;
+  flex-direction: column;
+  align-items: start;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+.group-623 {
+  width: 82%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: var(--space-11xl);
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+.nav-left-1 {
+  height: 42px;
+  width: 42px;
+}
+.ng-k-t-i-kho-n {
+  margin-top: 4px;
+  font-family: Noto Sans !important;
+}
+.group-162 {
+  align-self: end;
+  width: 91%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+.textbox-39-1 {
+  margin-left: 9px;
+  gap: var(--space-sm);
+  display: flex;
+  align-self: stretch;
+  flex-direction: column;
+  align-items: start;
+  @media only screen and (max-width: 1050px) {
+    margin-left: 0px;
+  }
+}
+.buttondangky{
+  align-items: center;
+  width: 100%;
+}
+.group-159 {
+  margin-top: 16px;
+  margin-left: 9px;
+  gap: 32px;
+  display: flex;
+  width: 90%;
+  align-items: center;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+    margin-left: 0px;
+  }
+  @media only screen and (max-width: 550px) {
+    flex-direction: column;
+  }
+}
+.textfield-9 {
+  align-self: stretch;
+  border-radius: var(--radius-2xl);
+  @media only screen and (max-width: 550px) {
+    padding-right: var(--space-11xl);
+  }
+}
+.button-151-1 {
+  gap: var(--space-4xl);
+  align-self: end;
+  min-width: 138px;
+  border-radius: var(--radius-2xl);
+}
+.button-151-2 {
+  margin-top: 15px;
+  width: 100%;
+  border-radius: var(--radius-2xl);
+  @media only screen and (max-width: 550px) {
+    padding-left: var(--space-11xl);
+    padding-right: var(--space-11xl);
+  }
+}
+.image-101-1 {
+  height: 306px;
+  width: 22%;
+  object-fit: cover;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+

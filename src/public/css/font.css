@@ -1,0 +1,51 @@
+
+@font-face {
+  font-display: swap;
+  font-style: normal;
+  src: url("../public/fonts/CatamaranRegular.ttf");
+  font-family: "Catamaran";
+  font-weight: 400;
+}
+@font-face {
+  font-display: swap;
+  font-style: normal;
+  src: url("../public/fonts/NotoSansBold.ttf");
+  font-family: "Noto Sans";
+  font-weight: 700;
+}
+@font-face {
+  font-display: swap;
+  font-style: normal;
+  src: url("../public/fonts/NotoSansRegular.ttf");
+  font-family: "Noto Sans";
+  font-weight: 400;
+}
+@font-face {
+  font-display: swap;
+  font-style: normal;
+  src: url("../public/fonts/CatamaranBold.ttf");
+  font-family: "Catamaran";
+  font-weight: 700;
+}
+@font-face {
+  font-display: swap;
+  font-style: normal;
+  src: url("../public/fonts/NotoSansSemiBold.ttf");
+  font-family: "Noto Sans";
+  font-weight: 600;
+}
+@font-face {
+  font-display: swap;
+  font-style: normal;
+  src: url("../public/fonts/NotoSansMedium.ttf");
+  font-family: "Noto Sans";
+  font-weight: 500;
+}
+@font-face {
+  font-display: swap;
+  font-style: normal;
+  src: url("../public/fonts/CatamaranSemiBold.ttf");
+  font-family: "Catamaran";
+  font-weight: 600;
+}
+

@@ -1,0 +1,103 @@
+/*===========·TABLE·OF·CONTENTS·===========
+1.·Common·CSS
+2.·Page·CSS
+==========================================*/
+/*-------------------------------------
+··1.·Common·CSS
+--------------------------------------*/
+.textfield-11 {
+  color: var(--gray_400) !important;
+  gap: var(--space-14xl);
+  align-self: stretch;
+  border: 1px solid var(--gray_500_01);
+}
+/*-------------------------------------
+  2. Page CSS
+--------------------------------------*/
+.group-291 {
+  width: 76%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: var(--space-11xl);
+  @media only screen and (max-width: 1050px) {
+    flex-direction: column;
+    width: 100%;
+    padding: var(--space-11xl);
+  }
+}
+.group-474 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.27px;
+  padding: 0px;
+  li {
+    width: 100%;
+  }
+  a {
+    gap: var(--space-2xl);
+    align-self: start;
+    color: var(--blue_gray_800);
+    font-weight: 400;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: var(--space-6xl);
+    &:hover {
+      color: var(--deep_orange_300);
+      font-weight: 700 !important;
+    }
+  }
+}
+.group-290 {
+  margin-top: 66px;
+  gap: 76px;
+  display: flex;
+  width: 68%;
+  flex-direction: column;
+  align-items: start;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+    gap: 57px;
+  }
+  @media only screen and (max-width: 550px) {
+    gap: 38px;
+  }
+}
+.container-220-2 {
+  gap: 29px;
+  align-self: end;
+  background-color: var(--white_A700);
+  display: flex;
+  width: 75%;
+  flex-direction: column;
+  align-items: end;
+  padding: 26px 32px 28px 32px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--gray_300);
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+  @media only screen and (max-width: 550px) {
+    padding: var(--space-11xl);
+  }
+}
+.button-198 {
+  margin-right: 40px;
+  min-width: 101px;
+  border-radius: 6px !important;
+  @media only screen and (max-width: 1050px) {
+    margin-right: 0px;
+  }
+}
+.logo-linkedin-2-6 {
+  margin-left: 16px;
+  width: 24px;
+  @media only screen and (max-width: 1050px) {
+    margin-left: 0px;
+  }
+}
+

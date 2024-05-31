@@ -1,0 +1,28 @@
+.group-545 {
+  margin-top: 83px;
+  padding-left: 179px;
+  padding-right: 180px;
+  @media only screen and (max-width: 1050px) {
+    padding-left: var(--space-11xl);
+    padding-right: var(--space-11xl);
+    padding: var(--space-11xl);
+  }
+}
+.newscreenbody {
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.o-warning-1 {
+  height: 242px;
+  width: 242px;
+}
+.class-404l-i-kh-ng-t-m {
+  color: var(--deep_orange_300) !important;
+  font-family: Noto Sans !important;
+  text-align: center;
+  width: 100%;
+  line-height: 84px;
+}
+

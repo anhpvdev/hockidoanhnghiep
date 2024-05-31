@@ -1,0 +1,97 @@
+/*=========== TABLE OF CONTENTS ===========
+1. Common CSS
+2. Page CSS
+==========================================*/
+/*-------------------------------------
+  1. Common CSS
+--------------------------------------*/
+.textfield-2 {
+  color: var(--gray_900) !important;
+  align-self: stretch;
+  border-radius: 8px !important;
+  @media only screen and (max-width: 550px) {
+    padding-right: var(--space-11xl);
+  }
+}
+/*-------------------------------------
+  2. Page CSS
+--------------------------------------*/
+.adminthemtaikhoanadmin {
+  padding-bottom: 618px;
+  gap: 40px;
+  background-color: var(--white_A700);
+  box-shadow: var(--shadow-xs);
+  width: 100%;
+  @media only screen and (max-width: 1050px) {
+    padding-bottom: var(--space-11xl);
+  }
+}
+.group-612 {
+  gap: 29px;
+  display: flex;
+  width: 85%;
+  flex-direction: column;
+  align-items: start;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+    padding: var(--space-11xl);
+  }
+}
+.group-611 {
+  gap: var(--space-13xl);
+  display: flex;
+  align-items: center;
+  @media only screen and (max-width: 550px) {
+    flex-direction: column;
+  }
+}
+.arrow-down-1 {
+  height: 24px;
+  margin-bottom: 8px;
+  align-self: end;
+  width: 24px;
+  @media only screen and (max-width: 550px) {
+    width: 100%;
+  }
+}
+.group-158 {
+  gap: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  @media only screen and (max-width: 1050px) {
+    gap: 6px;
+  }
+
+  @media only screen and (max-width: 550px) {
+    gap: 4px;
+  }
+}
+.line-43-1 {
+  height: 1px;
+  background-color: var(--gray_300);
+  align-self: stretch;
+  width: 100%;
+}
+.group-156 {
+  width: 36%;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+.textbox-5 {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.button-18 {
+  margin-top: 59px;
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  @media only screen and (max-width: 550px) {
+    padding-left: var(--space-11xl);
+    padding-right: var(--space-11xl);
+  }
+}
+

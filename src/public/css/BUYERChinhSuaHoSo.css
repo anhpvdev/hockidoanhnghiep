@@ -1,0 +1,155 @@
+/*=========== TABLE OF CONTENTS ===========
+1. Common CSS
+2. Page CSS
+==========================================*/
+/*-------------------------------------
+  1. Common CSS
+--------------------------------------*/
+
+.mon {
+  color: var(--deep_orange_300) !important;
+  font-weight: 600 !important;
+}
+.tue {
+  height: 23px;
+  color: var(--deep_orange_300) !important;
+  font-weight: 600 !important;
+  width: 24px;
+}
+/*-------------------------------------
+  2. Page CSS
+--------------------------------------*/
+.group-813 {
+  width: 88%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: var(--space-11xl);
+  @media only screen and (max-width: 1050px) {
+    flex-direction: column;
+    width: 100%;
+    padding: var(--space-11xl);
+  }
+}
+.container-220-1 {
+  margin-top: 73px;
+  align-self: end;
+  background-color: var(--white_A700);
+  width: 93%;
+  display: flex;
+  padding: 56px 40px var(--space-16xl) 40px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--gray_300);
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+    padding-top: var(--space-11xl);
+    padding-bottom: var(--space-11xl);
+  }
+  @media only screen and (max-width: 550px) {
+    padding: var(--space-11xl);
+  }
+}
+.group-811 {
+  width: 86%;
+  display: flex;
+  flex-direction: column;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+.group-808 {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: var(--space-11xl);
+}
+.t-n-1 {
+  height: 27px;
+  color: var(--blue_gray_500) !important;
+  margin-top: 6px;
+  width: 200px;
+}
+.textbox-66 {
+  width: 66%;
+  border: 1px solid var(--gray_500_01);
+  @media only screen and (max-width: 550px) {
+    padding-right: var(--space-11xl);
+  }
+}
+.group-809 {
+  margin-top: 24px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-11xl);
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+.ng-y-sinh-1 {
+  color: var(--blue_gray_500) !important;
+  align-self: end;
+}
+.textbox-67 {
+  color: var(--gray_900);
+  font-size: 14px;
+  gap: var(--space-lg);
+  display: flex;
+  width: 57%;
+  background-color: transparent;
+  position: relative;
+  padding: var(--space-3xl) var(--space-14xl) var(--space-3xl) var(--space-8xl);
+  border-radius: var(--radius-md);
+  border: 5px solid var(--deep_orange_300_33);
+  @media only screen and (max-width: 550px) {
+    padding-right: var(--space-11xl);
+  }
+}
+.group-791 {
+  height: 45px;
+  flex: 1;
+  position: relative;
+}
+.textbox-66-2 {
+  width: 20%;
+  margin: auto;
+  border: 1px solid var(--gray_500_01);
+  @media only screen and (max-width: 550px) {
+    padding-right: var(--space-11xl);
+  }
+}
+.n-ng {
+  gap: var(--space-xs);
+  width: 20%;
+  margin: auto;
+  border-radius: 6px !important;
+  border: 1px solid var(--gray_500_01);
+  @media only screen and (max-width: 550px) {
+    padding-right: var(--space-11xl);
+  }
+}
+.ellipse {
+  height: 9px;
+  background-color: var(--red_50);
+  width: 9px;
+  border-radius: var(--radius-sm);
+}
+.group805-1 {
+  color: var(--gray_900);
+  font-size: 16px;
+  gap: var(--space-2xl);
+  display: flex;
+}
+.button-213-1 {
+  margin-top: -24px;
+  margin-right: 116px;
+  z-index: 3;
+  position: relative;
+  min-width: 93px;
+  border-radius: 6px !important;
+  @media only screen and (max-width: 1050px) {
+    margin-right: 0px;
+  }
+}

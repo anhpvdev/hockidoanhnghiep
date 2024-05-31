@@ -1,0 +1,181 @@
+/*=========== TABLE OF CONTENTS ===========
+1. Common CSS
+2. Page CSS
+==========================================*/
+/*-------------------------------------
+  1. Common CSS
+--------------------------------------*/
+.n-ng-1 {
+  gap: var(--space-xs);
+  width: 100%;
+  background-image: url(../public/images/img_arrowdown_gray_900.svg);
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: calc(100% - 35px);
+  border-radius: 6px !important;
+  border: 1px solid var(--gray_500_01);
+  @media only screen and (max-width: 550px) {
+    width: 100%;
+    padding-right: var(--space-11xl);
+  }
+}
+.textbox-66-3 {
+  width: 66%;
+  border: 1px solid var(--gray_500_01);
+  @media only screen and (max-width: 550px) {
+    width: 100%;
+    padding-right: var(--space-11xl);
+  }
+}
+/*-------------------------------------
+  2. Page CSS
+--------------------------------------*/
+.group-261 {
+  width: 88%;
+  display: flex;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+    padding: var(--space-11xl);
+  }
+}
+.group-870 {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: var(--space-11xl);
+  @media only screen and (max-width: 1050px) {
+    flex-direction: column;
+  }
+}
+.group-475 {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.27px;
+  padding: 0px;
+  li {
+    width: 100%;
+  }
+  a {
+    gap: var(--space-2xl);
+    align-self: start;
+    color: var(--blue_gray_800);
+    font-weight: 400;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: var(--space-6xl);
+    &:hover {
+      color: var(--gray_700);
+    }
+  }
+}
+.group-869 {
+  margin-top: 66px;
+  gap: 76px;
+  display: flex;
+  width: 68%;
+  flex-direction: column;
+  align-items: start;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+  @media only screen and (max-width: 550px) {
+    gap: 32px;
+  }
+}
+.container-220-3 {
+  margin-left: 38px;
+  gap: 42px;
+  background-color: var(--white_A700);
+  display: flex;
+  align-self: stretch;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  padding: 56px 40px 78px 40px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--gray_300);
+  @media only screen and (max-width: 1050px) {
+    padding-top: var(--space-11xl);
+    padding-bottom: var(--space-11xl);
+    margin-left: 0px;
+  }
+  @media only screen and (max-width: 550px) {
+    padding: var(--space-11xl);
+  }
+}
+.group-851 {
+  width: 56%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-11xl);
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+  @media only screen and (max-width: 550px) {
+    flex-direction: column;
+  }
+}
+.group-852 {
+  width: 86%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-11xl);
+  @media only screen and (max-width: 1050px) {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+.a-ch-2 {
+  color: var(--blue_gray_500) !important;
+  margin-bottom: 6px;
+  align-self: end;
+}
+.group-247 {
+  gap: var(--space-xl);
+  display: flex;
+  width: 78%;
+  justify-content: center;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+  @media only screen and (max-width: 550px) {
+    flex-direction: column;
+  }
+}
+.textbox-66-5 {
+  width: 100%;
+  border: 1px solid var(--gray_500_01);
+  @media only screen and (max-width: 550px) {
+    width: 100%;
+    padding-right: var(--space-11xl);
+  }
+}
+.group-853 {
+  width: 57%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-11xl);
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+  @media only screen and (max-width: 550px) {
+    flex-direction: column;
+  }
+}
+.button-214-1 {
+  margin-left: 157px;
+  min-width: 71px;
+  border-radius: 6px !important;
+  @media only screen and (max-width: 1050px) {
+    margin-left: 0px;
+  }
+}
+

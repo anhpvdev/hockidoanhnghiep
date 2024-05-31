@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,4 +14,199 @@
           <% } %> 
     </div>
 </body>
+</html> -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Quản lý tài khoản</title>
+    <link rel="icon" href="../../../public/images/shop//Logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <img
+      alt="Logo"
+      src="https://appproject.dhiwise.com/dhiwise-logo.png?c=&v="
+      style="width: 0px; height: 0px; display: none"
+    />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/index.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/font.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/components.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/ADMINQuanLyTaiKhoan.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/HeaderADMIN.css" />
+  </head>
+  <body>
+    <div class="adminquanlytaikhoan">
+      <header class="container-204-1">
+        <div class="group-878">
+          <img src="../../../public/images/shop//Logo_Text.png" alt="header logo" class="header-logo" />
+          <ul class="group-481">
+            <li>
+              <a href="./ADMINQuanLyTaiKhoan.html">
+                <div class="group-205">
+                  <h6 class="qu-n-l-t-i-kho-n-1 ui heading size-s">Quản lý tài khoản</h6>
+                  <div class="rectangle"></div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="qu-n-l-danh-m-c-link">
+                <p class="qu-n-l-danh-m-c ui text size-lg">Quản lý danh mục</p>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="qu-n-l-danh-m-c-link">
+                <p class="qu-n-l-danh-m-c ui text size-lg">Duyệt tài khoản bán hàng</p>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="qu-n-l-danh-m-c-link">
+                <p class="qu-n-l-danh-m-c ui text size-lg">Thống kê</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <div class="group-566">
+        <div class="group-567">
+          <div class="group-558">
+            <h1 class="ch-m-s-c-kh-ch-h-ng ui heading size-2xl">Quản lý tài khoản</h1>
+            <div class="group-879">
+              <button class="button-142 ui button gray_100 size-md fill round">
+                <img src="../../../public/images/shop//ExportPdf.png" alt="twitter" class="twitter" />
+                <span> Xuất pdf</span>
+              </button>
+              <button class="button-141 ui button gray_100 size-md fill round">
+                <img src="../../../public/images/shop//Loc.png" alt="funnel" class="twitter" />
+                <span> Lọc</span>
+              </button>
+              <a href="../addadmin" target="_blank">
+                <button class="button-143 ui button deep_orange_300 size-md fill round">
+                  <img src="../../../public/images/shop//icon_AddWhite.png" alt="e add" class="twitter" />
+                  <span> Thêm tài khoản admin</span>
+                </button>
+              </a>
+            </div>
+          </div>
+          <div class="line-43 container-xs"></div>
+        </div>
+        <div class="group-609 container-xs">
+          <h2 class="ch-m-s-c-kh-ch-h-ng ui heading size-xl">Thống kê tháng qua</h2>
+          <div class="group-568">
+            <div class="group-211">
+              <div class="container-201">
+                <h3 class="ng-i-b-n ui heading size-s">Người bán</h3>
+                <h4 class="class-2-490 ui heading size-2xl">2,490</h4>
+              </div>
+              <div class="container-202">
+                <h5 class="ng-i-b-n ui heading size-s">Người mua</h5>
+                <h6 class="class-1-980 ui heading size-2xl">1,980</h6>
+              </div>
+              <div class="container-203">
+                <h6 class="ng-i-b-n ui heading size-s">Người dùng mới</h6>
+                <h2 class="class-490 ui heading size-2xl">490</h2>
+              </div>
+            </div>
+            <div class="group-269">
+              <p class="ui text size-md">2,490 Người dùng</p>
+              <div class="group-880">
+                <label class="textbox-36 ui input gray_100 size-xs fill round">
+                  <img src="../../../public/images/shop//icon_Find.png" alt="search" class="search" />
+                  <input name="Textbox 36" placeholder="Tìm kiếm" type="text" />
+                </label>
+                <button class="button-153 ui button gray_100 size-md fill round">
+                  <img src="../../../public/images/shop//icon_Column.png" alt="columns" class="twitter" />
+                  <span> Quản lý cột</span>
+                </button>
+              </div>
+            </div>
+            <table class="table-9 ui table size-xs simple" cellpadding="0" cellspacing="0">
+              <thead>
+                <tr>
+                  <th width="89px">
+                    <div class="group-12">
+                      <input type="checkbox" id="myCheckbox" name="myCheckbox" value="1">
+                    </div>
+                  </th>
+                  <th width="210px">
+                    <p class="frame ui heading size-xs">Tên người dùng</p>
+                  </th>
+                  <th width="282px">
+                    <p class="frame ui heading size-xs">Tài khoản</p>
+                  </th>
+                  <th width="160px">
+                    <p class="frame ui heading size-xs">Chức vụ</p>
+                  </th>
+                  <th width="183px">
+                    <button class="frame-3 ui button gray_50 size-2xl fill square">Trạng thái</button>
+                  </th>
+                  <th width="89px">
+                    <div class="frame-4"></div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                 <% for(var i = 0; i < data.length; i++) { %>
+            <tr>
+                    
+                <td>
+                  <div class="frame-5">
+                    <input type="checkbox" id="myCheckbox" name="myCheckbox" value="1">
+                  </div>
+                </td>
+                <td>
+                  <div class="frame-6">
+                    <p class="avatar ui text size-xl">B</p>
+                    <p class="ui heading size-xs"><%= data[i].Shop_name %></p>
+                  </div>
+                </td>
+                <td>
+                  <p class="frame-7 ui text size-md">bthomas</p>
+                </td>
+                <td>
+                  <p class="frame-7 ui text size-md">seller</p>
+                </td>
+                <td>
+                  <div class="frame-9">
+                    <p class="frame-60 ui text size-s">Inactive</p>
+                  </div>
+                </td>
+                <td>
+                  <div class="group-22">
+                    <!-- Sửa và xóa -->
+                    <a href="regis/<%= data[i].Seller_id %>"><img src="../../../public/images/shop//icon_pen.png" alt="bin 1" class="cart" /></a>
+                    
+                    <img src="../../../public/images/shop//icon_delete.png" alt="g check 1" class="cart" />
+                  </div>
+                </td>
+              </tr>
+            <% } %> 
+               
+             
+              </tbody>
+            </table>
+            <div class="group-561">
+              <button class="button-145 ui button white_a700 size-md fill round">
+                <img src="../../../public/images/shop//icon_trangdau.png" alt="arrow left" class="arrow-left" />
+              </button>
+              <button class="button-152 ui button deep_orange_300 size-md fill round">1</button>
+              <button class="button-145 ui button white_a700 size-md fill round">2</button>
+              <button class="button-145 ui button white_a700 size-md fill round">3</button>
+              <button class="button-145 ui button white_a700 size-md fill round">4</button>
+              <button class="button-145 ui button white_a700 size-md fill round">...</button>
+              <button class="button-145 ui button white_a700 size-md fill round">10</button>
+              <button class="button-145 ui button white_a700 size-md fill round">11</button>
+              <button class="button-145 ui button white_a700 size-md fill round">
+                <img src="../../../public/images/shop//icon_trangcuoi.png" alt="arrow right" class="arrow-right" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
+
+

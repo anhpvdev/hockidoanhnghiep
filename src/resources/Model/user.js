@@ -4,6 +4,10 @@ const emailServices = require("../../config/mailer")
 const { change_password } = require('./buyer')
 
 const UserServices = {
+
+    error: async (req, res) => {
+        res.render(path.join(__dirname+"../../views/404.ejs"))
+    },
     home: async (req, res) => {
         connection.query('select * from buyers',(err,row)=>{
             if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
@@ -15,7 +19,16 @@ const UserServices = {
                 connection.query('SELECT * FROM `product_types`',(err,type)=>{
                     if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
 
-                    if(req.user) return res.render(path.join(__dirname+"../../views/Users/home.ejs"),{data:row,type:type,name:req.user.gmail})
+                    if(req.user) {
+                        connection.query('select * from products as p LEFT JOIN products_image as pm on p.Product_id = pm.Product_id GROUP By p.Product_id;',(err,product)=>{
+                            if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
+                            else {
+                              
+                                return res.render(path.join(__dirname+"../../views/Users/home.ejs"),{data:row,product:product,type:type,name:req.user.gmail})
+                            }
+                        })
+                        
+                    }
                     else return res.render(path.join(__dirname+"../../views/Users/home.ejs"),{data:row,type:type,name:"chưa đăng nhập bro"})
                 })
             }
@@ -74,12 +87,13 @@ const UserServices = {
     post_registry: async (req, res) => {
         let {mail,pass} = req.body
         console.log(mail,pass)
-
-        connection.query('select * from buyers where Email = ?',[mail],async(err,row)=>{
+        let query = `select * from buyers where Email = "${mail}"`
+        console.log(query)
+        connection.query(query,async(err,row)=>{
             if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
             
             if(row.length !=0){
-                if(row[0].role ==1) return res.json({success:false,data:"Email đã được đăng ký"})
+                if(row[0].role ==1||row[0].role ==2||row[0].role ==3) return res.json({success:false,data:"Email đã được đăng ký"})
                 else{
                     // xử lý gửi lại opt về mail
                     const sendmail = await emailServices(mail,`<b>Mã xác nhận của bạn là: <h3>${row[0].token}</h3></b>`)

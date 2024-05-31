@@ -1,0 +1,370 @@
+/*=========== TABLE OF CONTENTS ===========
+1. Common CSS
+2. Page CSS
+==========================================*/
+/*-------------------------------------
+  1. Common CSS
+--------------------------------------*/
+.frame {
+  color: var(--gray_700) !important;
+  font-family: Noto Sans !important;
+  font-weight: 600 !important;
+  border-top-width: 0.5px;
+  background-color: var(--gray_50);
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border-bottom: 0.5px solid var(--gray_100);
+}
+.brian-thomas {
+  margin-top: 5px;
+}
+.frame-58 {
+  color: var(--green_800) !important;
+  background-color: var(--gray_100_01);
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  padding: var(--space-md) var(--space-2xl);
+  border-radius: var(--radius-3xl);
+}
+.frame-6 {
+  gap: var(--space-2xl);
+  border-top-width: 0.5px;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  border-bottom: 0.5px solid var(--gray_100);
+  @media only screen and (max-width: 1050px) {
+    align-self: stretch;
+  }
+}
+.frame-7 {
+  border-top-width: 0.5px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border-bottom: 0.5px solid var(--gray_100);
+}
+.frame-9 {
+  border-top-width: 0.5px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  border-bottom: 0.5px solid var(--gray_100);
+  @media only screen and (max-width: 1050px) {
+    align-self: stretch;
+  }
+}
+.frame-60 {
+  color: var(--blue_gray_900) !important;
+  background-color: var(--gray_100);
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  padding: var(--space-md) var(--space-2xl);
+  border-radius: var(--radius-3xl);
+}
+.frame-5 {
+  border-top-width: 0.5px;
+  display: flex;
+  justify-content: center;
+  border-bottom: 0.5px solid var(--gray_100);
+}
+.create {
+  height: 20px;
+  width: 20px;
+}
+/*-------------------------------------
+  2. Page CSS
+--------------------------------------*/
+.adminquanlytaikhoan {
+  padding-bottom: 44px;
+  gap: 44px;
+  background-color: var(--white_A700);
+  box-shadow: var(--shadow-xs);
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  @media only screen and (max-width: 1050px) {
+    padding-bottom: var(--space-11xl);
+  }
+}
+.group-566 {
+  gap: var(--space-13xl);
+  display: flex;
+  width: 87%;
+  flex-direction: column;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+    padding: var(--space-11xl);
+  }
+}
+.group-567 {
+  gap: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.group-558 {
+  align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: var(--space-11xl);
+  @media only screen and (max-width: 1050px) {
+    flex-direction: column;
+  }
+}
+.group-879 {
+  gap: var(--space-9xl);
+  display: flex;
+}
+.button-142 {
+  gap: var(--space-lg);
+  min-width: 95px;
+}
+.button-141 {
+  gap: var(--space-lg);
+  min-width: 66px;
+}
+.button-143 {
+  gap: var(--space-lg);
+  min-width: 175px;
+}
+.line-43 {
+  height: 1px;
+  background-color: var(--gray_300);
+  @media only screen and (max-width: 1050px) {
+    padding: var(--space-11xl);
+  }
+}
+.group-609 {
+  gap: var(--space-10xl);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.group-211 {
+  gap: 43px;
+  display: flex;
+  width: 53%;
+  @media only screen and (max-width: 1050px) {
+    flex-direction: row;
+    width: 100%;
+  }
+  @media only screen and (max-width: 550px) {
+    flex-direction: column;
+  }
+}
+.container-201 {
+  gap: var(--space-xl);
+  background-color: var(--white_A700);
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-13xl);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray_300);
+  @media only screen and (max-width: 550px) {
+    width: 100%;
+    padding: var(--space-11xl);
+  }
+}
+.class-2-490 {
+  color: var(--deep_orange_300) !important;
+  font-family: Noto Sans !important;
+  font-weight: 600 !important;
+  align-self: center;
+}
+.container-202 {
+  gap: var(--space-xl);
+  background-color: var(--white_A700);
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-13xl);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray_300);
+  @media only screen and (max-width: 550px) {
+    width: 100%;
+    padding: var(--space-11xl);
+  }
+}
+.class-1-980 {
+  color: var(--teal_400) !important;
+  font-family: Noto Sans !important;
+  font-weight: 600 !important;
+}
+.container-203 {
+  gap: var(--space-xl);
+  background-color: var(--white_A700);
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-13xl);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--gray_300);
+  @media only screen and (max-width: 550px) {
+    width: 100%;
+    padding: var(--space-11xl);
+  }
+}
+.class-490 {
+  color: var(--orange_300) !important;
+  font-family: Noto Sans !important;
+  font-weight: 600 !important;
+}
+.group-269 {
+  margin-top: 24px;
+  align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-11xl);
+  @media only screen and (max-width: 1050px) {
+    flex-direction: column;
+  }
+}
+.group-880 {
+  gap: 22px;
+  display: flex;
+  width: 43%;
+  justify-content: center;
+  align-items: center;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+  @media only screen and (max-width: 550px) {
+    flex-direction: column;
+  }
+}
+.textbox-36 {
+  gap: var(--space-lg);
+  flex-grow: 1;
+  border-radius: 8px !important;
+  @media only screen and (max-width: 550px) {
+    padding-right: var(--space-11xl);
+  }
+}
+.button-153 {
+  gap: var(--space-lg);
+  min-width: 111px;
+}
+.table-9 {
+  margin-top: 41px;
+  align-self: center;
+  width: 88%;
+  border-radius: var(--radius-lg);
+  border: 0.5px solid var(--gray_300);
+}
+.group-12 {
+  display: flex;
+  padding: var(--space-8xl);
+}
+.frame-3 {
+  font-family: Noto Sans;
+  font-weight: 600;
+  border-top-width: 0.5px;
+  flex: 1;
+  border-bottom: 0.5px solid var(--gray_100);
+  @media only screen and (max-width: 1050px) {
+    align-self: stretch;
+  }
+  @media only screen and (max-width: 550px) {
+    padding-left: var(--space-11xl);
+    padding-right: var(--space-11xl);
+  }
+}
+.frame-4 {
+  height: 48px;
+  border-top-width: 0.5px;
+  background-color: var(--gray_50);
+  border-bottom: 0.5px solid var(--gray_100);
+}
+.group-22 {
+  gap: var(--space-9xl);
+  border-top-width: 0.5px;
+  display: flex;
+  border-bottom: 0.5px solid var(--gray_100);
+}
+.frame-23 {
+  gap: var(--space-2xl);
+  border-top-width: 0.5px;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 0.5px solid var(--gray_100);
+  @media only screen and (max-width: 1050px) {
+    align-self: stretch;
+  }
+}
+.avatar {
+  height: 36px;
+  color: var(--white_A700) !important;
+  background-color: var(--purple_A100);
+  width: 36px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border-radius: var(--radius-4xl);
+}
+.frame-47 {
+  gap: var(--space-2xl);
+  border-top-width: 0.5px;
+  display: flex;
+  flex: 1;
+  align-items: start;
+  flex-wrap: wrap;
+  border-bottom: 0.5px solid var(--gray_100);
+  @media only screen and (max-width: 1050px) {
+    align-self: stretch;
+  }
+}
+.avatar-1 {
+  height: 36px;
+  color: var(--white_A700) !important;
+  background-color: var(--deep_orange_300);
+  width: 36px;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border-radius: var(--radius-4xl);
+}
+.group-561 {
+  margin-top: 19px;
+  align-self: end;
+  display: flex;
+}
+.arrow-left {
+  height: 13px;
+  width: 13px;
+  border-radius: var(--radius-md);
+}
+
+.button-152 {
+  margin-left: 3px;
+  min-width: 31px;
+  border-radius: 6px !important;
+  border: 1px solid var(--gray_300);
+}
+.button-145 {
+  color: var(--gray_500_01) !important;
+  margin-left: 3px;
+  min-width: 31px;
+  border-radius: 6px !important;
+  border: 1px solid var(--gray_300);
+}
+.arrow-right {
+  height: 13px;
+  width: 13px;
+  border-radius: var(--radius-md);
+}
+

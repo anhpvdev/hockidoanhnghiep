@@ -11,6 +11,7 @@ const adminServices = {
         connection.query('SELECT * FROM admins as a LEFT JOIN admins_roles as ar on ar.Role_id = a.Role WHERE role !=1',async(err,row)=>{
             if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
                 
+                console.log(row)
             return res.render(path.join(__dirname+"../../views/Admins/listadmin.ejs"),{data:row})
         })
     },
@@ -42,7 +43,7 @@ const adminServices = {
                 connection.query('INSERT INTO admins (Admin_name, Password, Role) VALUES(?, ?, ?);',[name,pass,role],async(err,resuilt)=>{
                     if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
 
-                    return res.redirect("/admin/listadmin/" + resuilt.insertId)
+                    return res.redirect("/admin/listadmin")
                 })
             }else{
                 return res.render(path.join(__dirname+"../../views/Admins/add_admin.ejs"),{status:"Tài khoản admin đã tồn tại"})
@@ -89,7 +90,7 @@ const adminServices = {
         connection.query('SELECT * FROM sellers',async(err,row)=>{
             if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
             
-
+            console.log(row)
               
             return res.render(path.join(__dirname+"../../views/Admins/seller.ejs"),{data:row,content:"",admin:req.admin})
         })

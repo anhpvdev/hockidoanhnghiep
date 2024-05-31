@@ -24,7 +24,7 @@ const userRoutes = (app) => {
   router.get('/logout',UserModel.logout)
   router.get('/repassword',UserModel.get_repassword)
   router.post('/repassword',UserModel.post_repassword)
-
+  router.get('/404',checkauth.auth,UserModel.error)
 
   
   return app.use("/", router)
