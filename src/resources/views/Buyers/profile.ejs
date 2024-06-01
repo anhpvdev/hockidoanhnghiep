@@ -27,32 +27,8 @@
     <div class="buyerhosocuatoi">
       <div>
         <div class="group-316">
-          <header class="container159">
-            <div class="group-437">
-              <a href="./BUYERTrangChu.html" target="_self">
-                <img src="../../../public/images/shop/Logo_Text.png" alt="header logo" class="header-logo" />
-              </a>
-              <label class="textbox-41 ui input gray_100 size-xs fill round">
-                <img src="../../../public/images/shop/icon_Find.png" alt="search" class="search" />
-                <input name="Textbox 41" placeholder="Tìm kiếm sản phẩm" type="text" />
-              </label>
-              <div class="group-875">
-                <a href="#">
-                  <img src="../../../public/images/shop/icon_giohang.png" alt="cart" class="cart" />
-                </a>
-                <a href="#">
-                  <img src="../../../public/images/shop/icon_thongBao.png" alt="bell 12" class="bell-12" />
-                </a>
-                <div class="group-24">
-                  <a href="./BUYERHoSoCuaToi.html">
-                    <img src="../../../public/images/shop/icon_avata.png" alt="avatar 21" class="avatar-21" />
-                  </a>
-                  <p class="ui text size-md">Xuân Huỳnh</p>
-                  <img src="../../../public/images/shop/icon_dropdown.png" alt="arrow down" class="arrow-down" />
-                </div>
-              </div>
-            </div>
-          </header>
+          <%- include("./header") %>
+        
           <div class="group-813">
             <!-- tab bar -->
             <aside class="container218">
@@ -64,62 +40,7 @@
                 <% }%>
                 <p class="ui text size-md"><%= data.Name %></p>
               </div>
-              <ul class="group-468">
-                <li>
-                  <a href="./BUYERHoSoCuaToi.html" class="selected">
-                    <img src="../../../public/images/shop/hosocuatoi_selected.png" alt="file article" class="cart" />
-                    <span> Hồ sơ của tôi</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="./BUYERDoiMatKhau.html">
-                    <img src="../../../public/images/shop/doimatkhau_default.png" alt="lock" class="cart" />
-                    <span> Đổi mật khẩu</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="http://localhost:8081/buyer/cart">
-                    <img src="../../../public/images/shop/giohang_default.png" alt="shopping cart" class="cart" />
-                    <span> Giỏ hàng</span>
-                    <div class="group-466">
-                      <p class="frame-94 ui text size-s">9</p>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="http://localhost:8081/buyer/history">
-                    <img src="../../../public/images/shop/lichsumuahang_default.png" alt="history" class="cart" />
-                    <span> Lịch sử mua hàng</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="http://localhost:8081/buyer/spending">
-                    <img src="../../../public/images/shop/thongbao_default.png" alt="alarm" class="cart" />
-                    <span>Chi tiêu</span>
-                    <div class="group-467">
-                      <p class="frame-95 ui text size-s">N</p>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="http://localhost:8081/buyer/seller">
-                    <img src="../../../public/images/shop/dangkybanhang_default.png" alt="passenger" class="cart" />
-                    <span> Đăng ký bán hàng</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img src="../../../public/images/shop/caidat_default.png" alt="search" class="cart" />
-                    <span> Cài đặt</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="http://localhost:8081/logout">
-                    <img src="../../../public/images/shop/dangxuat_default.png" alt="qrcode" class="cart" />
-                    <span> Đăng xuất</span>
-                  </a>
-                </li>
-              </ul>
+              <%- include("./navbar") %>
             </aside>
             <form action="/buyer/profile" method="post"  class="group-781">
               <div class="userprofile2">

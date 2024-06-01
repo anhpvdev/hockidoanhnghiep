@@ -1,0 +1,276 @@
+/*=========== TABLE OF CONTENTS ===========
+1. Common CSS
+2. Page CSS
+==========================================*/
+/*-------------------------------------
+  1. Common CSS
+--------------------------------------*/
+.buyer-giohang__discount-input {
+  color: var(--gray_400) !important;
+  gap: var(--space-xl);
+  align-self: stretch;
+  border-radius: var(--radius-xl);
+  @media only screen and (max-width: 550px) {
+    padding-right: var(--space-11xl);
+  }
+}
+.television {
+  width: 24px;
+  height: 24px;
+}
+.buyer-giohang__shipping-container {
+  margin-top: 7px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-11xl);
+}
+.buyer-giohang__total-label {
+  color: var(--blue_gray_500) !important;
+}
+/*-------------------------------------
+  2. Page CSS
+--------------------------------------*/
+.column_nine {
+  gap: 86px;
+  display: flex;
+  flex-direction: column;
+  @media only screen and (max-width: 1050px) {
+    gap: 64px;
+  }
+  @media only screen and (max-width: 550px) {
+    gap: 43px;
+  }
+}
+.main-row {
+  width: 92%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: var(--space-11xl);
+  @media only screen and (max-width: 1050px) {
+    flex-direction: column;
+    width: 100%;
+    padding: var(--space-11xl);
+  }
+}
+.cart__title {
+  font-family: Noto Sans !important;
+  align-self: start;
+}
+.main-column {
+  width: 74%;
+  flex-direction: column;
+  align-items: end;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+.buyer-giohang {
+  width: 88%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: var(--space-11xl);
+  @media only screen and (max-width: 1050px) {
+    flex-direction: column;
+    width: 100%;
+    padding: var(--space-11xl);
+  }
+}
+.buyer-giohang__content {
+  margin-top: 67px;
+  gap: 46px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+.product-details-column {
+  gap: var(--space-15xl);
+  align-self: end;
+  display: flex;
+  width: 92%;
+  flex-direction: column;
+  align-items: start;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+.buyer-giohang__info {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+.buyer-giohang__address-container {
+  margin-left: 9px;
+  gap: 4px;
+  display: flex;
+  align-self: stretch;
+  align-items: start;
+  @media only screen and (max-width: 1050px) {
+    flex-direction: column;
+    margin-left: 0px;
+  }
+}
+.buyer-giohang__address-icon {
+  height: 38px;
+  width: 38px;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+.buyer-giohang__address-text {
+  width: 95%;
+  line-height: 48px;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+.buyer-giohang__table {
+  margin-top: 50px;
+  align-self: stretch;
+  border: 0.5px solid var(--gray_100);
+}
+.buyer-giohang__discounts {
+  margin-top: 52px;
+  margin-left: 9px;
+  gap: var(--space-md);
+  display: flex;
+  width: 58%;
+  flex-direction: column;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+    margin-left: 0px;
+  }
+}
+.buyer-giohang__payment-method {
+  margin-top: 14px;
+  margin-left: 9px;
+  width: 31%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+    margin-left: 0px;
+  }
+}
+.buyer-giohang__payment-dropdown {
+  gap: var(--space-xs);
+  align-self: stretch;
+  background-image: url(../public/images/img_arrowdown_gray_900.svg);
+  background-repeat: no-repeat;
+  background-size: 18px;
+  background-position: calc(100% - 35px);
+  border-radius: 6px !important;
+  border: 1px solid var(--gray_500);
+ @media only screen and (max-width: 550px) {
+    padding-right: var(--space-11xl);
+  }
+}
+.buyer-giohang__summary {
+  margin-top: 48px;
+  margin-left: 9px;
+  background-color: var(--white_A700);
+  width: 54%;
+  display: flex;
+  justify-content: center;
+  padding: var(--space-4xl);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--gray_300);
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+    margin-left: 0px;
+  }
+}
+.buyer-giohang__summary-column {
+  width: 83%;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+.buyer-giohang__total-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-11xl);
+}
+.buyer-giohang__discount-container {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-11xl);
+}
+.buyer-giohang__discount-value {
+  align-self: end;
+}
+.buyer-giohang__free-shipping-container {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-11xl);
+}
+.buyer-giohang__total-payment-value {
+  color: var(--red_600) !important;
+}
+.buyer-giohang__order-button {
+  margin-left: 7px;
+  min-width: 192px;
+  border-radius: 6px !important;
+  @media only screen and (max-width: 1050px) {
+    margin-left: 0px;
+  }
+  @media only screen and (max-width: 550px) {
+    padding-left: var(--space-11xl);
+    padding-right: var(--space-11xl);
+  }
+}
+.footer__column--secondary__row--nested__item-3 {
+  width: 81%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-11xl);
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+.footer__column--secondary__row--nested__item__column-5 {
+  gap: 27px;
+  display: flex;
+  width: 37%;
+  flex-direction: column;
+  align-items: start;
+  @media only screen and (max-width: 550px) {
+    width: 100%;
+  }
+}
+.footer__column--secondary__row--nested__item__container-1 {
+  background-color: var(--white_A700);
+  width: 29%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-2xl);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gray_300);
+  @media only screen and (max-width: 550px) {
+    width: 100%;
+  }
+}
+.footer__row__column__row__item-1 {
+  width: 63%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+

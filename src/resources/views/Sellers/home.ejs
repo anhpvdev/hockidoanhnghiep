@@ -1,11 +1,160 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    trang chu admins, xin chao <%= name %>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Quản lý sản phẩm</title>
+    <link rel="icon" href="../../../public/images/shop/Logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Efficiently manage your active and inactive products including shirts, sneakers, and jackets. Keep track of inventory and update product statuses."
+    />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/index.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/font.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/components.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/SELLERDanhSachSanPham.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/BUYERTrangChu.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/HeaderSELLER.css" />
+    <script>
+      /**
+       * Handles the tab change functionality in a tablist
+       */
+      function handleTabs(/** @type {HTMLElement} */ target) {
+        const tabs = /** @type {HTMLElement[]} */ (target.querySelectorAll('[role="tab"]'));
+        const tabPanels = /** @type {HTMLElement[]} */ (target.querySelectorAll('[role="tabpanel"]'));
+        const activeClassList = ["active"];
+        function changeTab(/** @type {HTMLElement}*/ target) {
+          target.focus();
+          const controls = /** @type {string} */ (target.getAttribute("aria-controls"));
+          for (const tab of tabs) {
+            const isActiveTab = tab.id === target.id;
+            const tabIndex = isActiveTab ? "0" : "-1";
+            const ariaSelected = isActiveTab ? "true" : "false";
+            tab.setAttribute("tabindex", tabIndex);
+            tab.setAttribute("aria-selected", ariaSelected);
+            isActiveTab ? tab.classList.add(...activeClassList) : tab.classList.remove(...activeClassList);
+          }
+          for (const panel of tabPanels) {
+            const shouldHidePanel = panel.id !== controls;
+            panel.hidden = shouldHidePanel;
+            panel.style.display = shouldHidePanel ? "none" : "";
+          }
+        }
+        function handleClickEvent(/** @type {MouseEvent} */ event) {
+          changeTab(event.target);
+        }
+        function handleKeyboardEvent(/** @type {KeyboardEvent} */ event) {
+          const key = event.key;
+          const target = event.target;
+          const index = [...tabs].findIndex((tab) => tab.id === target.id);
+          switch (key) {
+            case "ArrowLeft": {
+              const prevTab = tabs[index - 1];
+              if (prevTab) changeTab(prevTab);
+              break;
+            }
+            case "ArrowRight": {
+              const nextTab = tabs[index + 1];
+              if (nextTab) changeTab(nextTab);
+              break;
+            }
+            case "Home": {
+              const firstTab = tabs[0];
+              if (firstTab) changeTab(firstTab);
+              break;
+            }
+            case "End": {
+              const lastTab = tabs[tabs.length - 1];
+              if (lastTab) changeTab(lastTab);
+              break;
+            }
+          }
+        }
+        for (const tab of tabs) {
+          tab.style.cursor = "pointer";
+          tab.addEventListener("click", handleClickEvent);
+          tab.addEventListener("keydown", handleKeyboardEvent);
+        }
+      }
+      /**
+       * Hydrate tablist(s)
+       */
+      document.addEventListener("DOMContentLoaded", () => {
+        const tabLists = /** @type {NodeListOf<HTMLElement>} */ (document.querySelectorAll('[role="tablist"]'));
+        for (const tabList of tabLists) handleTabs(tabList);
+      });
+    </script>
+  </head>
+  <body>
+    <!-- product listing section -->
+    <div class="rowdanh_s_ch_s_n">
+      <div class="columnheaderlog-1">
+        <!-- header section -->
+        <header class="container-204-1">
+          <div class="group-878">
+            <img src="../../../public/images/shop/Logo_Text.png" alt="header logo" class="header-logo" />
+            <ul class="group-481">
+              <li>
+                <a href="#">
+                  <p class="qu-n-l-danh-m-c ui text size-lg">Kênh bán hàng</p>
+                </a>
+              </li>
+              <li>
+                <a href="./SELLERDanhSachSanPham.html" class="qu-n-l-danh-m-c-link">
+                  <div class="group-205">
+                    <h6 class="qu-n-l-t-i-kho-n-1 ui heading size-s">Quản lý sản phẩm</h6>
+                    <div class="rectangle"></div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="qu-n-l-danh-m-c-link">
+                  <p class="qu-n-l-danh-m-c ui text size-lg">Thống kê</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </header>
+        <div class="product-list">
+          <h1 class="title ui heading size-lg">Danh sách sản phẩm</h1>
+          <div class="product-actions">
+            <a class="add-product-button ui button deep_orange_300 size-sm fill" href="http://localhost:8081/seller/addproduct">
+              <img src="../../../public/images/shop/icon_Add.png" alt="e add" class="e-add" />
+              <span> Thêm sản phẩm</span>
+            </a>
+            <div class="group-272">
+    
+                <% for(var i = 0; i < product.length; i++) { %>
+    
+                    <a href="/products/<%= product[i].Product_id %>" target="_blank">
+                        <div class="container-202-1">
+                          <img src="../../../public/images/Products/<%= product[i].image %>" alt="" class="image-131" />
+                          <div class="group-316">
+                            <h5 class="ch-m-s-c-kh-ch-h-ng ui heading size-lg"><%= product[i].name %></h5>
+                            <h6 class="qu-n-l-t-i-kho-n-1 ui heading size-s"></h6>
+                            <div class="group-295">
+                              <div class="rating-14 ui ratingbar">
+                                <label for="Rating101" title="text"> </label>
+                                <label for="Rating102" title="text"> </label>
+                                <label for="Rating103" title="text"> </label>
+                                <label for="Rating104" title="text"> </label>
+                                <label for="Rating105" title="text"> </label>
+                              </div>
+                              <p class="trang-ng-nh-p ui text size-xs">Đã bán 360</p>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                 
+                  <% } %> 
+                
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
+

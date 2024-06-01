@@ -161,6 +161,9 @@ details[open] .group-338::before {
   align-items: start;
   margin-top: 15px;
 }
+.l-u-ng-nh-p{
+  width: 20px;
+}
 .checkbox-64 {
   gap: var(--space-xl);
   display: flex;

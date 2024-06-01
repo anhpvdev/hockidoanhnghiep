@@ -18,6 +18,7 @@ const checkauth = {
                         if(err) res.redirect("/login")
                         else {
                             req.user = decoded
+                            req.info = row[0]
                             next()   
                         }
                     })
@@ -45,6 +46,7 @@ const checkauth = {
                         else {
                             req.user = decoded
                             req.role = row[0].role
+                            req.info = row[0]
                             next()   
                         }
                     })
@@ -73,6 +75,7 @@ const checkauth = {
                                 req.user = decoded
                                 if(row[0].role ==3){
                                     req.role = row[0].role
+                                    req.info = row[0]
                                     next()
                                 }else{
                                     res.redirect("/login")

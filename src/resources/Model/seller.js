@@ -42,15 +42,21 @@ function addclassify(product,value,data){
 
 const seller = {
     home: async (req, res) => {
-        connection.query('select * from buyers',(err,row)=>{
+        connection.query('SELECT Seller_id FROM `sellers` WHERE Buyer_id = ?',[req.user.id],(err,row)=>{
             if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
             else {
+                var sellerid = row[0].Seller_id
+                connection.query('select * from products as p LEFT JOIN products_image as pm on p.Product_id = pm.Product_id WHERE p.Seller_id = ? GROUP By p.Product_id;',[sellerid],(err,product)=>{
+                    if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
+                    else {
+                        console.log(product)
+                        if(req.user) return res.render(path.join(__dirname+"../../views/sellers/home.ejs"),{name:req.user.gmail,product:product})
+                            else return res.render(path.join(__dirname+"../../views/sellers/home.ejs"),{name:"chưa đăng nhập bro"})
+                    }
+                })
 
-                var name = "phan huu viet anh"
-
-                console.log(req.user)
-                if(req.user) return res.render(path.join(__dirname+"../../views/sellers/home.ejs"),{name:req.user.gmail})
-                else return res.render(path.join(__dirname+"../../views/sellers/home.ejs"),{name:"chưa đăng nhập bro"})
+              
+                
             }
         })
     },
@@ -134,7 +140,7 @@ const seller = {
         connection.query(query,async(err,product)=>{
             if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
        
-            res.redirect("/products/"+prductid)
+            res.redirect("/seller")
             })
     },
     typeproduct: async (req, res) => {

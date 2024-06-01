@@ -1,0 +1,269 @@
+/*=========== TABLE OF CONTENTS ===========
+1. Common CSS
+2. Page CSS
+==========================================*/
+/*-------------------------------------
+  1. Common CSS
+--------------------------------------*/
+.all-products {
+  color: var(--gray_700);
+  font-size: 14px;
+  height: 23px;
+}
+.column_two {
+  margin-top: 9px;
+  margin-bottom: 9px;
+  background-color: var(--red_A200);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-sm);
+  border-radius: var(--radius-xs);
+}
+.active-1 {
+  color: var(--teal_400) !important;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  background-color: var(--gray_50_01);
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  padding: 4px 9px;
+  border-radius: var(--radius-2xl);
+}
+.shirt {
+  color: var(--deep_orange_300) !important;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  background-color: var(--red_50);
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  padding: 4px var(--space-xl);
+  border-radius: var(--radius-2xl);
+}
+.placeholder-view {
+  height: 16px;
+  margin-top: 9px;
+  margin-bottom: 9px;
+  background-color: var(--white_A700);
+  width: 16px;
+  border-radius: var(--radius-xs);
+  border: 1px solid var(--gray_700);
+}
+.row_two {
+  display: flex;
+  justify-content: center;
+}
+.category-button-1 {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  min-width: 38px;
+  border-radius: var(--radius-2xl);
+}
+.classicwhitetsh {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+.rowshirt {
+  display: flex;
+}
+.inactive-status {
+  color: var(--blue_gray_900) !important;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  background-color: var(--gray_100);
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  padding: 4px var(--space-xl);
+  border-radius: var(--radius-2xl);
+}
+.pen_one {
+  height: 16px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  width: 16px;
+}
+.previous-page {
+  height: 16px;
+  width: 16px;
+  border-radius: var(--radius-md);
+}
+.e-add{
+  width: 16px;
+  height: 16px;
+}
+/*-------------------------------------
+  2. Page CSS
+--------------------------------------*/
+.rowdanh_s_ch_s_n {
+  padding-bottom: 108px;
+  background-color: var(--gray_50);
+  box-shadow: var(--shadow-xs);
+  width: 100%;
+  @media only screen and (max-width: 1050px) {
+    padding-bottom: var(--space-11xl);
+  }
+}
+.columnheaderlog-1 {
+  gap: var(--space-16xl);
+  display: flex;
+  flex-direction: column;
+}
+.header__submenu {
+  width: 47%;
+  display: flex;
+  position: absolute;
+  left: 23%;
+  bottom: 0px;
+  top: 0px;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: max-content;
+}
+.product-list {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  max-width: 1376px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  @media only screen and (max-width: 1050px) {
+    padding: var(--space-11xl);
+  }
+}
+.product-actions {
+  margin-top: -27px;
+  gap: var(--space-15xl);
+  position: relative;
+  display: flex;
+  align-self: stretch;
+  flex-direction: column;
+  align-items: end;
+}
+.add-product-button {
+  margin-right: 18px;
+  gap: var(--space-lg);
+  min-width: 138px;
+  border-radius: var(--radius-lg);
+  @media only screen and (max-width: 1050px) {
+    margin-right: 0px;
+  }
+}
+.product-tabs {
+  background-color: var(--white_A700);
+  align-self: stretch;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--gray_300);
+}
+.tab-content {
+  margin-top: 7px;
+  margin-bottom: 23px;
+  gap: var(--space-15xl);
+  display: flex;
+  flex-direction: column;
+}
+.product-filters {
+  gap: 40px;
+  display: flex;
+  padding: var(--space-4xl);
+  @media only screen and (max-width: 1050px) {
+    flex-direction: column;
+  }
+  .active {
+    color: var(--deep_orange_300) !important;
+    font-weight: 700;
+  }
+}
+.inactive-products {
+  color: var(--gray_700);
+  margin-right: 876px;
+  font-size: 14px;
+  height: 23px;
+  @media only screen and (max-width: 1050px) {
+    margin-right: 0px;
+  }
+}
+.product-table-column {
+  gap: var(--space-15xl);
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+.image-column {
+  border-top-width: 0.5px;
+  background-color: var(--gray_50_02);
+  padding: var(--space-5xl);
+  border-bottom: 0.5px solid var(--gray_100);
+}
+.image-wrapper {
+  background-color: var(--red_500);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-sm);
+  border-radius: var(--radius-xs);
+}
+.product-label {
+  font-family: Noto Sans;
+  font-weight: 500;
+  border-top-width: 0.5px;
+  min-width: 127px;
+  border-bottom: 0.5px solid var(--gray_100);
+  @media only screen and (max-width: 550px) {
+    padding-left: var(--space-11xl);
+    padding-right: var(--space-11xl);
+  }
+}
+.category-button {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  min-width: 51px;
+  border-radius: var(--radius-2xl);
+}
+.draft-status {
+  color: var(--deep_orange_300) !important;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  background-color: var(--red_50);
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  padding: 4px 9px;
+  border-radius: var(--radius-2xl);
+}
+.pagination-row {
+  margin-right: 23px;
+  gap: var(--space-xl);
+  display: flex;
+  width: 18%;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+    margin-right: 0px;
+  }
+}
+.page-buttons {
+  gap: var(--space-3xl);
+  display: flex;
+  flex: 1;
+}
+.page-one {
+  flex: 1;
+  width: 100%;
+  border-radius: var(--radius-md);
+}
+.page-two {
+  flex: 1;
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gray_300);
+}
+.page-ten {
+  min-width: 37px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gray_300);
+}
+

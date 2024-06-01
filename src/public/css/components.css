@@ -157,6 +157,18 @@
 .ui.selectbox.round {
   border-radius: var(--radius-sm);
 }
+.ui.selectbox.size-lg {
+  height: 43px;
+  padding-left: var(--space-7xl);
+  padding-right: 35px;
+  font-size: 16px;
+}
+.ui.selectbox.size-xl {
+  height: 51px;
+  padding-left: var(--space-11xl);
+  padding-right: 35px;
+  font-size: 18px;
+}
 .ui.selectbox.size-sm {
   height: 35px;
   padding-left: var(--space-5xl);

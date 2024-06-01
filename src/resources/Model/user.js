@@ -65,7 +65,7 @@ const UserServices = {
     },
 
     products_type:async (req, res) => {
-        connection.query('SELECT pr.*,prt.name as pname FROM products as pr INNER JOIN types as t on t.Type_id = pr.type INNER JOIN product_types as prt on t.Product_type_id = prt.Product_Types_id WHERE prt.Product_Types_id = ?;',[req.params.id],(err,row)=>{
+        connection.query('SELECT pr.*,pm.image,prt.name as pname FROM products as pr LEFT JOIN products_image as pm on pr.Product_id = pm.Product_id INNER JOIN types as t on t.Type_id = pr.type INNER JOIN product_types as prt on t.Product_type_id = prt.Product_Types_id WHERE prt.Product_Types_id = ? GROUP By pr.Product_id;',[req.params.id],(err,row)=>{
             if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
             else {
                 console.log(row)

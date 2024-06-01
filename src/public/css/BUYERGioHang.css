@@ -1,0 +1,300 @@
+/*=========== TABLE OF CONTENTS ===========
+1. Common CSS
+2. Page CSS
+==========================================*/
+/*-------------------------------------
+  1. Common CSS
+--------------------------------------*/
+.buyergiohang {
+  gap: 66px;
+  background-color: var(--white_A700);
+  box-shadow: var(--shadow-xs);
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  @media only screen and (max-width: 550px) {
+    gap: 33px;
+  }
+}
+.columnpen_three {
+  background-color: var(--gray_50_02);
+}
+.columnpen_one {
+  background-color: var(--white_A700);
+}
+.pen_one-1 {
+  height: 16px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  width: 16px;
+}
+/*-------------------------------------
+  2. Page CSS
+--------------------------------------*/
+.column_nine {
+  gap: 86px;
+  display: flex;
+  flex-direction: column;
+  @media only screen and (max-width: 1050px) {
+    gap: 64px;
+  }
+  @media only screen and (max-width: 550px) {
+    gap: 43px;
+  }
+}
+.main-row {
+  width: 92%;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: var(--space-11xl);
+  @media only screen and (max-width: 1050px) {
+    flex-direction: column;
+    width: 100%;
+    padding: var(--space-11xl);
+  }
+}
+.sidebar-1 {
+  padding-top: 28px;
+  gap: 54px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white_A700);
+  box-shadow: var(--shadow-sm);
+  width: 258px;
+  height: 100vh;
+  position: sticky !important;
+  top: 0px;
+  overflow: auto;
+  @media only screen and (max-width: 1050px) {
+    display: none;
+  }
+  @media only screen and (max-width: 550px) {
+    gap: 27px;
+    padding-top: var(--space-11xl);
+  }
+}
+.sidebar__profile {
+  margin-left: 52px;
+  gap: var(--space-lg);
+  display: flex;
+  width: 56%;
+  align-items: center;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+    padding: var(--space-11xl);
+    margin-left: 0px;
+  }
+}
+.sidebar__menu-1 {
+  margin-bottom: 125px;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.28px;
+  padding: 0px;
+  li {
+    width: 100%;
+  }
+  a {
+    gap: var(--space-xl);
+    color: var(--blue_gray_800);
+    font-weight: 400;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: var(--space-5xl) var(--space-7xl);
+    &:hover {
+      color: var(--deep_orange_300);
+      font-weight: 700 !important;
+    }
+  }
+}
+.menu-item__notification {
+  padding-bottom: var(--space-xl);
+  padding-left: var(--space-xl);
+  padding-right: var(--space-xl);
+  background-color: var(--red_600);
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  border-radius: var(--radius-xl);
+}
+.notification__count {
+  color: var(--white_A700) !important;
+  margin-bottom: 7px;
+}
+.menu-item__notification-1 {
+  padding-bottom: 7px;
+  padding-left: 7px;
+  padding-right: 7px;
+  background-color: var(--red_600);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  border-radius: var(--radius-xl);
+}
+.notification__count-1 {
+  color: var(--white_A700) !important;
+  margin-bottom: 9px;
+}
+.main-column {
+  margin-top: 67px;
+  width: 74%;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+.cart__title {
+  font-family: Noto Sans !important;
+  align-self: start;
+}
+.textbox-57 {
+  color: var(--gray_900) !important;
+  min-width: 20px;
+  border-radius: 6px !important;
+}
+.cart__table {
+  margin-top: 29px;
+  width: 93%;
+  border: 0.5px solid var(--gray_100);
+}
+.cart__summary {
+  margin-top: 47px;
+  margin-right: 45px;
+  width: 55%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-11xl);
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+    margin-right: 0px;
+  }
+}
+.cart__summary-price {
+  font-family: Noto Sans !important;
+  font-weight: 700 !important;
+  align-self: end;
+}
+.cart__summary-price-span {
+  color: var(--gray_900);
+}
+.cart__summary-price-span-1 {
+  color: var(--deep_orange_300);
+}
+.cart__summary-button {
+  min-width: 192px;
+  border-radius: 6px !important;
+  @media only screen and (max-width: 550px) {
+    padding-left: var(--space-11xl);
+    padding-right: var(--space-11xl);
+  }
+}
+.footer__column--secondary__row--nested__item-1 {
+  width: 81%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-11xl);
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+.footer__column--secondary__row--nested__item__column-2 {
+  gap: 27px;
+  display: flex;
+  width: 37%;
+  flex-direction: column;
+  @media only screen and (max-width: 550px) {
+    width: 100%;
+  }
+}
+.footer__image {
+  height: 21px;
+  width: 35%;
+}
+.footer__column--secondary__row--nested__item__container {
+  background-color: var(--white_A700);
+  width: 29%;
+  padding: var(--space-2xl);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--gray_300);
+  @media only screen and (max-width: 550px) {
+    width: 100%;
+  }
+}
+.footer__row__column__row__item {
+  width: 63%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media only screen and (max-width: 1050px) {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+.footer__row__column__row__item__row-1 {
+  width: 78%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-11xl);
+  @media only screen and (max-width: 1050px) {
+    width: 100%;
+  }
+}
+.footer__dropdown-1 {
+  gap: var(--space-xs);
+  width: 24%;
+  background-image: url(../public/images/img_arrowdown_gray_900.svg);
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: calc(100% - 35px);
+  border-radius: var(--radius-sm);
+  @media only screen and (max-width: 550px) {
+    padding-right: var(--space-11xl);
+  }
+}
+.footer__row__column__row__item__row-2 {
+  margin-left: 23px;
+  gap: var(--space-xl);
+  align-self: end;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  @media only screen and (max-width: 1050px) {
+    margin-left: 0px;
+  }
+}
+.footer__separator-3 {
+  color: var(--gray_700) !important;
+  margin-left: 11px;
+  @media only screen and (max-width: 1050px) {
+    margin-left: 0px;
+  }
+}
+.footer__row__column__row__item__row-3 {
+  margin-left: 8px;
+  gap: var(--space-xl);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  @media only screen and (max-width: 1050px) {
+    margin-left: 0px;
+  }
+}
+.sitemap-link-link-1 {
+  margin-left: 8px;
+  align-self: end;
+  @media only screen and (max-width: 1050px) {
+    margin-left: 0px;
+  }
+}
+

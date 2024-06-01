@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -80,4 +80,246 @@
         }
     </script>
 </body>
+</html> -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Trang chủ</title>
+    <link rel="icon" href="../../../public/images/shop/Logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <img
+      alt="Logo"
+      src="https://appproject.dhiwise.com/dhiwise-logo.png?c=&v="
+      style="width: 0px; height: 0px; display: none"
+    />
+    <link
+      id="swiper-css"
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/swiper@11.0.6/swiper.min.css"
+    />
+    <!-- <link rel="stylesheet" type="text/css" href="../../../public/css/index.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/font.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/components.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/BUYERTrangChu.css" /> -->
+    <link rel="stylesheet" type="text/css" href="../../../public/css/HeaderBuyer.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/FooterBuyer.css" />
+    <script id="swiper-js" src="https://cdn.jsdelivr.net/npm/swiper@11.0.6/swiper-bundle.min.js"></script>
+    <script src="../../../public/Scripts/jquery.js"></script>
+    <style>
+      #list_seach{
+        display: block;
+      color: black;
+      position: absolute;
+      top: 69px;
+      background-color: #cfcfcf;
+      padding: 10px;
+      border: 1px solid black;
+      width: 100%;
+      z-index: 10;
+      }
+
+      .img_pr{
+            width: 200px;
+            height: auto;
+        }
+        h1{
+            color: red;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="buyertrangchu">
+      <%- include("./header") %>
+      <div class="newscreenbody-1">
+       
+        <h1><%= data[0].prname %></h1>
+        <% for(var i = 0; i < image.length; i++) { %>
+            <img class="img_pr" src="/public/images/Products/<%= image[i].image %>" alt="">
+          <% } %> 
+        <div></div>
+        <h3>Phân Loại</h3>
+        <div>
+            <% for(var i = 0; i < data.length; i++) { %>
+                <button id="<%= data[i].Classify_type_id%>" style="color: #9e9e9e;" onclick="changetype(this)"  value="<%= data[i].Prices%>"><%= data[i].Name %> - <%=data[i].clname %></button>
+              <% } %> 
+            <div>-----</div>
+            <div style="display: flex;"><button id="num_dow">-</button> <input id="num_add" type="text" value="1"> <button id="num_up">+</button></div>
+            <div class="price"></div>
+            <div>-----</div>
+            <button id="buy_cart">mua hàng</button>
+        </div>
+      </div>
+      <footer class="container203">
+        <div class="group-546 container-xs">
+          <img src="../../../public/images/shop/Logo_Text.png" alt="footer logo" class="header-logo-footer" />
+        </div>
+        <div class="group-194 container-xs">
+          <div class="group-540">
+            <div class="group-492">
+              <p class="ch-m-s-c-kh-ch-h-ng ui text size-lg">CHĂM SÓC KHÁCH HÀNG</p>
+              <ul class="group">
+                <li>
+                  <a href="#">
+                    <p class="ui text size-md">Trung Tâm Trợ Giúp</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <p class="ui text size-md">Hướng Dẫn Mua Sắm</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <p class="ui text size-md">Thanh Toán</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <p class="ui text size-md">Vận Chuyển</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <p class="ui text size-md">Trả Hàng Và Hoàn Tiền</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <p class="ui text size-md">Chính Sách Bảo Hành</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="group-493">
+              <p class="ch-m-s-c-kh-ch-h-ng ui text size-lg">VỀ BUSHOP</p>
+              <ul class="group">
+                <li>
+                  <a href="#">
+                    <p class="ui text size-md">Giới Thiệu Về BUSHOP</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <p class="ui text size-md">Tuyển Dụng</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <p class="ui text size-md">Chính Sách Bảo Mật</p>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <p class="ui text size-md">Kênh người bán</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer_thanhtoan">
+                <p class="thanh-to-n ui text size-lg">THANH TOÁN</p>
+                <img src="../../../public/images/shop/thanhtoan_visa.png" alt="thumbs up" class="thumbs-up" />
+                <img src="../../../public/images/shop/thanhtoan_2.png" alt="thumbs up" class="thumbs-up" />
+                <img src="../../../public/images/shop/thanhtoan_amex.png" alt="thumbs up" class="thumbs-up" />
+                <img src="../../../public/images/shop/thanhtoan_paypal.png" alt="thumbs up" class="thumbs-up" />
+            </div>
+            <div class="group-541">
+              <p class="ch-m-s-c-kh-ch-h-ng ui text size-lg">TẢI APP</p>
+              <div class="container-204">
+                <img src="../../../public/images/shop/qr_taiapp.png" alt="image 136" class="image-136" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="group-194 container-xs">
+          <div class="group-539">
+            <div class="line-47"></div>
+            <div class="group-538">
+              <div class="group-531">
+                <select class="ti-ng-vi-t ui selectbox gray_500_01 size-xs outline round" name="Ti ng vi t">
+                  <option value="option1">Tiếng việt</option>
+                  <option value="option2">English</option>
+                </select>
+                <div class="groupcon-531">
+                    <a href="#">
+                        <p class="class-b0p ui text size-md">© 2024 Brand, Inc.</p>
+                      </a>
+                      <p class="class-dsc ui text size-xs">•</p>
+                      <a href="Privacy" target="_blank" rel="noreferrer">
+                        <p class="class-b0p ui text size-md">Privacy</p>
+                      </a>
+                      <p class="class-b0p ui text size-xs">•</p>
+                      <a href="Sitemap" target="_blank" rel="noreferrer" class="sitemap-link">
+                        <p class="class-b0p ui text size-md">Sitemap</p>
+                      </a>
+                </div>
+                
+              </div>
+              <img src="../../../public/images/shop/logo_twitter.png" alt="logo twitter 2" class="logo-twitter-2" />
+              <img src="../../../public/images/shop/logo_facebook.png" alt="logo facebook 2" class="logo-facebook-2" />
+              <img src="../../../public/images/shop/logo_linkedin.png" alt="logo linkedin 2" class="logo-facebook-2" />
+              <img src="../../../public/images/shop/logo_youtube.png" alt="logo youtube 2" class="logo-facebook-2" />
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script>
+        var last_call
+        function changetype(node){
+            if(last_call) last_call.style.color = "#9e9e9e"
+            node.style.color = "black"
+            last_call = node
+            let price = parseInt(node.value) * parseInt(numadd.value)
+            document.querySelector(".price").innerHTML = price +" VND"
+        }
+
+        const numadd = document.getElementById("num_add")
+        const numup = document.getElementById("num_up")
+        const numdow = document.getElementById("num_dow")
+        const buycart = document.getElementById("buy_cart")
+        numup.onclick = function(){
+            numadd.value = parseInt(numadd.value) + 1
+            let price = parseInt(last_call.value) * parseInt(numadd.value)
+            document.querySelector(".price").innerHTML = price +" VND"
+        }
+        numdow.onclick = function(){
+            if(numadd.value>=1){
+                numadd.value = parseInt(numadd.value) - 1
+                let price = parseInt(last_call.value) * parseInt(numadd.value)
+                document.querySelector(".price").innerHTML = price +" VND"
+            }
+        }
+
+        buycart.onclick = function(){
+            $.ajax({
+                url: '/buyer/buy',
+                type: 'POST',
+                data:{
+                    product: last_call.id,
+                    num: numadd.value
+                },
+                success: function(data) {
+                    console.log(data.success)
+                    if(data.success){
+                       alert(data.data)
+                    }else{
+                        alert(data.data)
+                        window.location.reload()
+                    }
+                }
+            });
+        }
+    </script>
+
+  
+  
+
+  </body>
 </html>
+

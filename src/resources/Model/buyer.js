@@ -4,7 +4,8 @@ const path = require('path')
 const BuyerServices = {
     get_profile: (req, res) => {
         let user = req.user
-
+        let infouser = req.info
+        console.log(infouser)
         connection.query('select b.* ,w.Name as wname,d.name as district,c.name as city from buyers as b LEFT JOIN ward as w on b.Ward = w.Ward_id LEFT JOIN district as d on w.District = d.District_id LEFT JOIN city as c on c.City_id = d.City WHERE b.Buyer_id =?',[user.id],async(err,row)=>{
             if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
         
@@ -18,8 +19,8 @@ const BuyerServices = {
                 //     y:checkdate.getFullYear()
                 // }
                 // console.log(checkdate.getDate(),checkdate.getMonth(),checkdate.getFullYear())
-                return res.render(path.join(__dirname+"../../views/Buyers/profile.ejs"),{data:row[0]})
-            }
+                return res.render(path.join(__dirname+"../../views/Buyers/profile.ejs"),{data:row[0],info:infouser})
+            }s
         })
     },
     post_profile: (req, res) => {
@@ -37,7 +38,7 @@ const BuyerServices = {
         if(!user) return res.render(path.join(__dirname+"../../views/Users/login.ejs"))
         else{
             console.log(user)
-            connection.query('select c.cart_id,c.Quantity as num,cl_t.*,cl.name as cname,pr.name as pname,pr.Seller_id from carts as c LEFT JOIN buyers as b ON c.user_id = b.Buyer_id LEFT JOIN classify_types as cl_t on c.classify_type_id = cl_t.Classify_type_id LEFT JOIN classify as cl on cl_t.classify_id = cl.classify_id LEFT JOIN products as pr on pr.Product_id = cl.Product_id WHERE b.Buyer_id = ? and status =0;',[user.id],async(err,row)=>{
+            connection.query('select c.cart_id,pm.image,c.Quantity as num,cl_t.*,cl.name as cname,pr.name as pname,pr.Seller_id from carts as c LEFT JOIN buyers as b ON c.user_id = b.Buyer_id LEFT JOIN classify_types as cl_t on c.classify_type_id = cl_t.Classify_type_id LEFT JOIN classify as cl on cl_t.classify_id = cl.classify_id LEFT JOIN products as pr on pr.Product_id = cl.Product_id LEFT JOIN products_image as pm on pm.Product_id = pr.Product_id WHERE b.Buyer_id = ? and status =0 GROUP by c.cart_id;',[user.id],async(err,row)=>{
                 if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
             
                 console.log(row)

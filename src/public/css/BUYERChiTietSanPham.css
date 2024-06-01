@@ -231,9 +231,13 @@
     width: 100%;
   }
 }
+.frame-70 {
+  height: 20px;
+  width: 20px;
+  object-fit: cover;
+}
 .rating-28 {
   margin-left: 11px;
-  background: linear-gradient(90deg, #f3c63f, #dee1e6);
   flex: 1;
   display: flex;
   justify-content: space-between;
@@ -381,7 +385,7 @@
 }
 .textbox-57 {
   color: var(--gray_900) !important;
-  min-width: 31px;
+  min-width: 20px;
   border-radius: 6px !important;
 }
 .group-293 {
