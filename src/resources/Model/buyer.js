@@ -40,7 +40,7 @@ const BuyerServices = {
             connection.query('select c.cart_id,c.Quantity as num,cl_t.*,cl.name as cname,pr.name as pname,pr.Seller_id from carts as c LEFT JOIN buyers as b ON c.user_id = b.Buyer_id LEFT JOIN classify_types as cl_t on c.classify_type_id = cl_t.Classify_type_id LEFT JOIN classify as cl on cl_t.classify_id = cl.classify_id LEFT JOIN products as pr on pr.Product_id = cl.Product_id WHERE b.Buyer_id = ? and status =0;',[user.id],async(err,row)=>{
                 if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
             
-                console.log(row[0])
+                console.log(row)
                 return res.render(path.join(__dirname+"../../views/Buyers/cart.ejs"),{data:row})
             })
         }

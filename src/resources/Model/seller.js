@@ -150,7 +150,7 @@ const seller = {
     get_profile: (req, res) => {
         let user = req.user
 
-        connection.query('select b.* ,w.Name as wname,d.name as district,c.name as city from Sellers as b LEFT JOIN ward as w on b.Shop_Ward = w.Ward_id LEFT JOIN district as d on w.District = d.District_id LEFT JOIN city as c on c.City_id = d.City WHERE b.Buyer_id =?',[user.id],async(err,row)=>{
+        connection.query('select b.*,bu.Avatar ,w.Name as wname,d.name as district,c.name as city from Sellers as b INNER JOIN buyers as bu ON bu.Buyer_id =b.Buyer_id LEFT JOIN ward as w on b.Shop_Ward = w.Ward_id LEFT JOIN district as d on w.District = d.District_id LEFT JOIN city as c on c.City_id = d.City WHERE b.Buyer_id =?',[user.id],async(err,row)=>{
             if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
         
             if(row.length ==0) res.render(path.join(__dirname+"../../views/Users/login.ejs"))

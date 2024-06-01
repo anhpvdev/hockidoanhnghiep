@@ -164,7 +164,7 @@ const UserServices = {
     },
     logout: async (req, res) => {
         res.cookie("AU2", "")
-        res.redirect("/")
+        res.redirect("/login")
     },
 
     get_login: async (req, res) => {

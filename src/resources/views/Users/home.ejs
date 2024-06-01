@@ -26,7 +26,20 @@
     <link rel="stylesheet" type="text/css" href="../../../public/css/HeaderBuyer.css" />
     <link rel="stylesheet" type="text/css" href="../../../public/css/FooterBuyer.css" />
     <script id="swiper-js" src="https://cdn.jsdelivr.net/npm/swiper@11.0.6/swiper-bundle.min.js"></script>
-
+    <script src="../../../public/Scripts/jquery.js"></script>
+    <style>
+      #list_seach{
+        display: block;
+      color: black;
+      position: absolute;
+      top: 69px;
+      background-color: #cfcfcf;
+      padding: 10px;
+      border: 1px solid black;
+      width: 100%;
+      z-index: 10;
+      }
+    </style>
   </head>
   <body>
     <div class="buyertrangchu">
@@ -35,10 +48,14 @@
           <a href="./BUYERTrangChu.html" target="_self">
             <img src="../../../public/images/shop/Logo_Text.png" alt="header logo" class="header-logo" />
           </a>
-          <label class="textbox-41 ui input gray_100 size-xs fill round">
+          <form class="textbox-41 ui input gray_100 size-xs fill round" action="/longseach" method="post" style="position: relative;">
             <img src="../../../public/images/shop/icon_Find.png" alt="search" class="search" />
-            <input name="Textbox 41" placeholder="Tìm kiếm sản phẩm" type="text" />
-          </label>
+            <input name="Textbox 41" placeholder="Tìm kiếm sản phẩm" type="text" name="content" id="input_seach"/>
+            <div id="list_seach" style="display: none;">
+            
+              <div></div>
+          </div>
+          </form>
           <div class="group-875">
             <a href="#">
               <img src="../../../public/images/shop/icon_giohang.png" alt="cart" class="cart" />
@@ -220,7 +237,7 @@
             <div class="header-menu-25">
                 <% for(var i = 0; i < type.length; i++) { %>
                     <div class="frame-67">
-                        <h3 class="qu-n-l-t-i-kho-n-1 ui heading size-s"><%= type[i].name %></h3>
+                        <h3 class="qu-n-l-t-i-kho-n-1 ui heading size-s"><a href="/products/type/<%= type[i].Product_Types_id%>"><%= type[i].name %></a></h3>
                       </div>
                     <!-- <li><a href="/products/type/<%= type[i].Product_Types_id%>"><%= type[i].name %></a></li> -->
                   <% } %> 
@@ -265,7 +282,7 @@
                       <img src="../../../public/images/Products/<%= product[i].image %>" alt="" class="image-131" />
                       <div class="group-316">
                         <h5 class="ch-m-s-c-kh-ch-h-ng ui heading size-lg"><%= product[i].name %></h5>
-                        <h6 class="qu-n-l-t-i-kho-n-1 ui heading size-s">₫ 200.000.000</h6>
+                        <h6 class="qu-n-l-t-i-kho-n-1 ui heading size-s"></h6>
                         <div class="group-295">
                           <div class="rating-14 ui ratingbar">
                             <label for="Rating101" title="text"> </label>
@@ -281,7 +298,7 @@
                   </a>
              
               <% } %> 
-
+            
           </div>
           <div class="button-182">
             <p class="qu-n-l-t-i-kho-n-1 ui text size-md">Xem thêm</p>
@@ -403,6 +420,44 @@
         </div>
       </footer>
     </div>
+
+    <script>
+      var seachproduct = document.getElementById("input_seach");
+      var showproduct = document.getElementById("list_seach");
+      var listitem = []
+      seachproduct.oninput = function(){
+
+          if(seachproduct.value){
+              showproduct.style.display ="block"
+              $.ajax({
+                  type: "post",
+                  url: "/sortseach",
+                  data: {
+                      content:seachproduct.value
+                  },
+                  success: function(data) {   
+                      console.log(data) 
+                      if(data.success){
+                          if(data.success =="err") alert("đã có lỗi sảy ra, vui lòng thử lại sau")
+                          else{
+                              listitem = data.data 
+                              let content_node = "<h3>Danh sách sản phẩm</h3>"
+                              for(i=0; i<listitem.length;i++){
+                               
+                                  content_node += `<div>  <a href=" /products/${listitem[i].Product_id}">${listitem[i].name}</a></div>`
+                              }
+                              showproduct.innerHTML = content_node
+                          }
+                      }else{
+                          showproduct.style.display ="none"
+                      }                 
+                  }
+              })
+          }else{
+              showproduct.style.display ="none"
+          }
+      };
+  </script>
     <script>
         /**
          * Hydrate slider #slider

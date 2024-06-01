@@ -113,7 +113,24 @@ const adminServices = {
         connection.query('select b.*,se.Shop_name ,w.Name as wname,d.name as district,c.name as city from buyers as b LEFT JOIN sellers as se on se.Buyer_id = b.Buyer_id LEFT JOIN ward as w on b.Ward = w.Ward_id LEFT JOIN district as d on w.District = d.District_id LEFT JOIN city as c on c.City_id = d.City WHERE se.Seller_id = ?',[user],async(err,row)=>{
             if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
         
-            if(row.length ==0) res.render(path.join(__dirname+"../../views/Users/login.ejs"))
+            if(row.length ==0){
+                    connection.query('select b.*,se.Shop_name ,w.Name as wname,d.name as district,c.name as city from buyers as b LEFT JOIN sellers as se on se.Buyer_id = b.Buyer_id LEFT JOIN ward as w on b.Ward = w.Ward_id LEFT JOIN district as d on w.District = d.District_id LEFT JOIN city as c on c.City_id = d.City WHERE b.Buyer_id = ?',[user],async(err,row)=>{
+                        if(err) return res.render(path.join(__dirname+"../../views/404.ejs"))
+            
+                        if(row.length ==0) res.render(path.join(__dirname+"../../views/Users/login.ejs"))
+                        else{
+                            var checkdate=new Date(row[0].Birth)
+                            row[0].Birth = checkdate
+                            // row[0].Birth = {
+                            //     d:checkdate.getDate(),
+                            //     m:checkdate.getMonth() +1,
+                            //     y:checkdate.getFullYear()
+                            // }
+                            // console.log(checkdate.getDate(),checkdate.getMonth(),checkdate.getFullYear())
+                            return res.render(path.join(__dirname+"../../views/Admins/seller_add_detail.ejs"),{data:row[0]})
+                        }
+                    })
+            }
             else{
                 var checkdate=new Date(row[0].Birth)
                 row[0].Birth = checkdate

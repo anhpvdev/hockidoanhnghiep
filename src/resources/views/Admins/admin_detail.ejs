@@ -1,22 +1,95 @@
-<!DOCTYPE html>
+
+
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="/admin/update" method="post" >
-            
-        <input type="text" name="admin"  value="<%= data.Admin_id  %>" hidden="true">
-        admin: <input type="text" name="name"  value="<%= data.Admin_name %>"><br><div>-</div>
-        pass: <input type="text" name="name"  value="<%= data.Password %>"><br><div>-</div>
-        role: <input type="text" name="name"  value="<%= data.name %>"><br><div>-</div>
-        <button type="submit">lưu</button>
-   </form>
-
-
-  
-   <div>/////</div>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>Thêm tài khoản</title>
+    <link rel="icon" href="../../../public/images/shop/Logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Web site created using create-react-app" />
+    <img
+      alt="Logo"
+      src="https://appproject.dhiwise.com/dhiwise-logo.png?c=&v="
+      style="width: 0px; height: 0px; display: none"
+    />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/index.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/font.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/components.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/ADMINThemTaiKhoanAdmin.css" />
+    <link rel="stylesheet" type="text/css" href="../../../public/css/HeaderADMIN.css" />
+  </head>
+  <body>
+    <div class="flex-col-center-center adminthemtaikhoanadmin">
+      <header class="container-204-1">
+        <div class="group-878">
+          <img src="../../../public/images/shop/Logo_Text.png" alt="header logo" class="header-logo" />
+          <ul class="group-481">
+            <li>
+              <a href="./ADMINQuanLyTaiKhoan.html">
+                <div class="group-205">
+                  <h6 class="qu-n-l-t-i-kho-n-1 ui heading size-s">Quản lý tài khoản</h6>
+                  <div class="rectangle"></div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="qu-n-l-danh-m-c-link">
+                <p class="qu-n-l-danh-m-c ui text size-lg">Quản lý danh mục</p>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="qu-n-l-danh-m-c-link">
+                <p class="qu-n-l-danh-m-c ui text size-lg">Duyệt tài khoản bán hàng</p>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="qu-n-l-danh-m-c-link">
+                <p class="qu-n-l-danh-m-c ui text size-lg">Thống kê</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </header>
+      <div class="group-612">
+        <div class="group-611">
+          <a href="http://localhost:8081/admin/addadmin" target="_blank">
+            <img src="../../../public/images/shop/icon_Back.png" alt="arrow down" class="arrow-down-1" />
+          </a>
+          <h1 class="ch-m-s-c-kh-ch-h-ng ui heading size-2xl">Thêm tài khoản admin</h1>
+        </div>
+        <form action="/admin/addadmin" method="post" class="group-158 container-xs">
+          <div class="line-43-1"></div>
+          <div class="group-156">
+            <div class="group-149">
+                <h2 class="t-i-kho-n ui heading size-s">Vai trò</h2>
+                <label class="textfield-2 ui input gray_100 size-sm fill round">
+                  <!-- <input name="Textfield" placeholder="Nhập tên tài khoản" type="text" /> -->
+                  <input type="text" name="name"  value="<%= data.name %>">
+                </label>
+              </div>
+            <div class="group-149">
+              <h2 class="t-i-kho-n ui heading size-s">Tên tài khoản</h2>
+              <label class="textfield-2 ui input gray_100 size-sm fill round">
+                <input name="name"  value="<%= data.Admin_name %>"  type="text" />
+              </label>
+            </div>
+            <div class="textbox-5">
+              <h3 class="t-i-kho-n ui heading size-s">Mật khẩu</h3>
+              <label class="textfield-2 ui input gray_100 size-sm fill round">
+                <input name="pass"  value="<%= data.Password %>" type="text" />
+              </label>
+            </div>
+           
+            <!-- <a href="https://www.youtube.com/embed/bv8Fxk0sz7I" target="_blank">
+              <button type="submit" class="button-18 ui button deep_orange_300 size-xl fill round">Lưu</button>
+            </a> -->
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>
+
